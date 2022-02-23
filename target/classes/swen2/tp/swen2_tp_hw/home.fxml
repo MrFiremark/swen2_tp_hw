@@ -3,8 +3,9 @@
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.HomeController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
         <menus>
@@ -30,20 +31,57 @@
             </Menu>
         </menus>
       </MenuBar>
-      <TextField layoutY="27.0" prefHeight="25.0" prefWidth="1200.0" promptText="Search" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0" />
-      <SplitPane dividerPositions="0.3093645484949833" prefHeight="348.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="52.0">
+      <TextField layoutY="27.0" prefHeight="25.0" prefWidth="1200.0" promptText="Search" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="30.0" />
+      <SplitPane dividerPositions="0.3093645484949833" prefHeight="348.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="58.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
-                    <menus>
-                      <Menu mnemonicParsing="false" text="Tours" />
-                      <Menu mnemonicParsing="false" text="+" />
-                      <Menu mnemonicParsing="false" text="-" />
-                        <Menu mnemonicParsing="false" text="[ ]" />
-                    </menus>
-                  </MenuBar>
-                  <ListView layoutX="-1.0" layoutY="27.0" prefHeight="722.0" prefWidth="611.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="27.0">
+                  <HBox prefHeight="36.0" prefWidth="368.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="44.0" text="Tours">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label alignment="CENTER" onMouseClicked="#onAddTourClick" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="+">
+                           <HBox.margin>
+                              <Insets left="50.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="-">
+                           <HBox.margin>
+                              <Insets left="50.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                        <Label alignment="CENTER" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="[ ]">
+                           <HBox.margin>
+                              <Insets left="50.0" top="5.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <ListView layoutX="-1.0" layoutY="34.0" prefHeight="709.0" prefWidth="375.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="34.0">
                      <padding>
                         <Insets top="10.0" />
                      </padding></ListView>
@@ -58,10 +96,13 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                               <children>
-                              <Label layoutY="6.0" prefHeight="17.0" prefWidth="408.0" text="Title:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
+                              <Label layoutY="6.0" prefHeight="27.0" prefWidth="53.0" text="Title:" underline="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="769.0" AnchorPane.topAnchor="6.0">
                                  <padding>
                                     <Insets bottom="10.0" left="10.0" />
                                  </padding>
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
                               </Label>
                               <TabPane layoutY="23.0" prefHeight="147.0" prefWidth="408.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
                                 <tabs>
@@ -80,32 +121,24 @@
                                     <Insets top="5.0" />
                                  </padding>
                               </TabPane>
+                              <Label layoutX="53.0" layoutY="6.0" prefHeight="17.0" prefWidth="764.0" text="Test" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="6.0">
+                                 <padding>
+                                    <Insets bottom="10.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
                               <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="408.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
                                 <menus>
-                                  <Menu mnemonicParsing="false" text="Logs:">
-                                    <items>
-                                      <MenuItem mnemonicParsing="false" text="Close" />
-                                    </items>
-                                  </Menu>
-                                  <Menu mnemonicParsing="false" text="+">
-                                    <items>
-                                      <MenuItem mnemonicParsing="false" text="Delete" />
-                                    </items>
-                                  </Menu>
-                                  <Menu mnemonicParsing="false" text="-">
-                                    <items>
-                                      <MenuItem mnemonicParsing="false" text="About" />
-                                    </items>
-                                  </Menu>
-                                    <Menu mnemonicParsing="false" text="[ ]">
-                                       <items>
-                                          <MenuItem mnemonicParsing="false" text="About" />
-                                       </items>
-                                    </Menu>
+                                  <Menu mnemonicParsing="false" text="Logs:" />
+                                  <Menu mnemonicParsing="false" text="+" />
+                                  <Menu mnemonicParsing="false" text="-" />
+                                    <Menu mnemonicParsing="false" text="[ ]" />
                                 </menus>
                               </MenuBar>
                               <TableView layoutY="28.0" prefHeight="147.0" prefWidth="408.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
