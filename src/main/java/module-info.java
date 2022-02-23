@@ -1,0 +1,8 @@
+module swen2.tp.swen2_tp_hw {
+    requires javafx.controls;
+    requires javafx.fxml;
+
+
+    opens swen2.tp.swen2_tp_hw to javafx.fxml;
+    exports swen2.tp.swen2_tp_hw;
+}
