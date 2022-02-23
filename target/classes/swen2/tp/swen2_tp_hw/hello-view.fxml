@@ -35,7 +35,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+                  <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <menus>
                       <Menu mnemonicParsing="false" text="Tours">
                         <items>
@@ -70,25 +70,22 @@
                               <children>
                               <Label layoutY="6.0" prefHeight="17.0" prefWidth="408.0" text="Title:" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="6.0">
                                  <padding>
-                                    <Insets bottom="10.0" left="10.0" />
+                                    <Insets left="10.0" />
                                  </padding>
                               </Label>
                               <TabPane layoutY="23.0" prefHeight="147.0" prefWidth="408.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
                                 <tabs>
-                                  <Tab text="Route">
+                                  <Tab text="Untitled Tab 1">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                     </content>
                                   </Tab>
-                                  <Tab text="Description">
+                                  <Tab text="Untitled Tab 2">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
                                     </content>
                                   </Tab>
                                 </tabs>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
                               </TabPane>
                            </children>
                         </AnchorPane>
@@ -118,12 +115,10 @@
                                     </Menu>
                                 </menus>
                               </MenuBar>
-                              <TableView layoutY="28.0" prefHeight="147.0" prefWidth="408.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
+                              <TableView layoutY="28.0" prefHeight="200.0" prefWidth="408.0" AnchorPane.bottomAnchor="-59.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="28.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="Date" />
-                                  <TableColumn prefWidth="75.0" text="Duration" />
-                                    <TableColumn prefWidth="75.0" text="Distance" />
-                                    <TableColumn prefWidth="75.0" text="Comments" />
+                                  <TableColumn prefWidth="75.0" text="C1" />
+                                  <TableColumn prefWidth="75.0" text="C2" />
                                 </columns>
                               </TableView>
                            </children>
