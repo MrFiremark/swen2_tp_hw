@@ -19,4 +19,14 @@ public class HomeController {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    protected void onAddLogClick(){
+        AddLogApplikation addLogApplikation = new AddLogApplikation();
+        try {
+            addLogApplikation.start(new Stage());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

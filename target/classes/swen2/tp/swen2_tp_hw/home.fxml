@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
@@ -107,13 +108,25 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <TabPane layoutY="23.0" prefHeight="147.0" prefWidth="408.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
+                              <Label layoutX="53.0" layoutY="6.0" prefHeight="17.0" prefWidth="764.0" text="Test" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="6.0">
+                                 <padding>
+                                    <Insets bottom="10.0" />
+                                 </padding>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <TabPane layoutY="36.0" prefHeight="303.0" prefWidth="955.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
                                 <tabs>
                                   <Tab text="Route">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                              <children>
-                                                <Pane prefHeight="338.0" prefWidth="923.0" style="-fx-background-image: url('https://open.mapquestapi.com/staticmap/v5/map?start=Vienna&amp;end=Dresdnerstrasse,Vienna&amp;size=600,400@2x&amp;key=g6R1j3Y0bqSVIOGYDGzob93YQcS4d5EJ'); -fx-background-repeat: stretch; -fx-background-position: center center;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                                <ScrollPane layoutX="220.0" layoutY="54.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                                   <content>
+                                                      <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" style="-fx-image: url('https://open.mapquestapi.com/staticmap/v5/map?start=Vienna&amp;end=Dresdnerstrasse,Vienna&amp;size=600,400@2x&amp;key=g6R1j3Y0bqSVIOGYDGzob93YQcS4d5EJ');" />
+                                                   </content>
+                                                </ScrollPane>
                                              </children></AnchorPane>
                                     </content>
                                   </Tab>
@@ -123,18 +136,7 @@
                                     </content>
                                   </Tab>
                                 </tabs>
-                                 <padding>
-                                    <Insets top="5.0" />
-                                 </padding>
                               </TabPane>
-                              <Label layoutX="53.0" layoutY="6.0" prefHeight="17.0" prefWidth="764.0" text="Test" AnchorPane.leftAnchor="53.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="6.0">
-                                 <padding>
-                                    <Insets bottom="10.0" />
-                                 </padding>
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -157,7 +159,7 @@
                                           <Insets top="5.0" />
                                        </HBox.margin>
                                     </Label>
-                                    <Label alignment="CENTER" onMouseClicked="#onAddTourClick" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="+">
+                                    <Label alignment="CENTER" onMouseClicked="#onAddLogClick" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="+">
                                        <HBox.margin>
                                           <Insets left="50.0" top="5.0" />
                                        </HBox.margin>
@@ -202,7 +204,6 @@
                                     <TableColumn prefWidth="75.0" text="Rating" />
                                 </columns>
                               </TableView>
-                              <HBox prefHeight="36.0" prefWidth="953.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                     </items>
