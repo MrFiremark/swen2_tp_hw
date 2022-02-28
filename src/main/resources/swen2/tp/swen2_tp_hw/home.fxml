@@ -31,8 +31,11 @@
             </Menu>
         </menus>
       </MenuBar>
-      <TextField layoutY="27.0" prefHeight="25.0" prefWidth="1200.0" promptText="Search" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="30.0" />
-      <SplitPane dividerPositions="0.3093645484949833" prefHeight="348.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="58.0">
+      <TextField layoutX="3.0" layoutY="29.0" prefHeight="25.0" prefWidth="1200.0" promptText="Search" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="29.0">
+         <font>
+            <Font size="13.0" />
+         </font></TextField>
+      <SplitPane dividerPositions="0.2" prefHeight="348.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="58.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
@@ -48,7 +51,7 @@
                         </Label>
                         <Label alignment="CENTER" onMouseClicked="#onAddTourClick" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="+">
                            <HBox.margin>
-                              <Insets left="50.0" top="5.0" />
+                              <Insets left="20.0" top="5.0" />
                            </HBox.margin>
                            <font>
                               <Font size="14.0" />
@@ -59,7 +62,7 @@
                         </Label>
                         <Label alignment="CENTER" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="-">
                            <HBox.margin>
-                              <Insets left="50.0" top="5.0" />
+                              <Insets left="20.0" top="5.0" />
                            </HBox.margin>
                            <font>
                               <Font size="14.0" />
@@ -70,7 +73,7 @@
                         </Label>
                         <Label alignment="CENTER" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="[ ]">
                            <HBox.margin>
-                              <Insets left="50.0" top="5.0" />
+                              <Insets left="20.0" top="5.0" />
                            </HBox.margin>
                            <font>
                               <Font size="14.0" />
@@ -104,11 +107,14 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <TabPane layoutY="23.0" prefHeight="147.0" prefWidth="408.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
+                              <TabPane layoutY="23.0" prefHeight="147.0" prefWidth="408.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="23.0">
                                 <tabs>
                                   <Tab text="Route">
                                     <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                             <children>
+                                                <Pane prefHeight="338.0" prefWidth="923.0" style="-fx-background-image: url('https://open.mapquestapi.com/staticmap/v5/map?start=Vienna&amp;end=Dresdnerstrasse,Vienna&amp;size=600,400@2x&amp;key=g6R1j3Y0bqSVIOGYDGzob93YQcS4d5EJ'); -fx-background-repeat: stretch; -fx-background-position: center center;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                             </children></AnchorPane>
                                     </content>
                                   </Tab>
                                   <Tab text="Description">
@@ -191,10 +197,12 @@
                                   <TableColumn prefWidth="75.0" text="Date" />
                                   <TableColumn prefWidth="75.0" text="Duration" />
                                     <TableColumn prefWidth="75.0" text="Distance" />
+                                    <TableColumn prefWidth="75.0" text="Difficulty" />
                                     <TableColumn prefWidth="75.0" text="Comments" />
+                                    <TableColumn prefWidth="75.0" text="Rating" />
                                 </columns>
                               </TableView>
-                              <HBox prefHeight="100.0" prefWidth="822.0" />
+                              <HBox prefHeight="36.0" prefWidth="953.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children>
                         </AnchorPane>
                     </items>
