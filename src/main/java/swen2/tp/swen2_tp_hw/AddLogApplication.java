@@ -7,15 +7,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class AddTourApplikation extends Application {
+public class AddLogApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(AddTourApplikation.class.getResource("addTour.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(AddTourApplication.class.getResource("addLog.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
         stage.setTitle("Add Tour");
         stage.setScene(scene);
         stage.show();
     }
-
 }

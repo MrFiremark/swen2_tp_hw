@@ -1,4 +1,77 @@
 package swen2.tp.swen2_tp_hw.repository;
 
+import swen2.tp.swen2_tp_hw.model.Tour;
+
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
+import java.util.UUID;
+
 public class TourRepository extends Repository{
+
+    public void addTour(Tour tour){
+
+        try (
+                Connection connection = getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "INSERT INTO tour_data (id, name, description, from, to, transporttype) VALUES (?, ?, ?, ?, ?, ?);"
+                )
+        ) {
+
+            statement.setObject(1, tour.getid());
+            statement.setString(2, tour.getName());
+            statement.setString(3, tour.getDescription());
+            statement.setString(4, tour.getFrom());
+            statement.setString(5, tour.getTo());
+            statement.setString(5, tour.getTransportType());
+
+            statement.execute();
+
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public Map getTours(){
+
+        Map<String, Tour> map = new HashMap<>();
+
+        try (
+                Connection connection = getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "SELECT id, name, description, from, to, transporttype, distance, time, information FROM tour_data"
+                );
+        ) {
+
+            ResultSet resultSet = statement.executeQuery();
+
+            Tour tour = null;
+
+            while(resultSet.next()){
+                 tour = new Tour(
+                        resultSet.getString("id"),
+                        resultSet.getString("name"),
+                        resultSet.getString("description"),
+                        resultSet.getString("from"),
+                        resultSet.getString("to"),
+                        resultSet.getString("transporttype")
+                );
+                 map.put(tour.getName(), tour);
+            }
+
+            return map;
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
 }
