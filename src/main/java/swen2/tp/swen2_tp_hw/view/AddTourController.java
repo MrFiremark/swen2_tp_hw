@@ -1,4 +1,4 @@
-package swen2.tp.swen2_tp_hw;
+package swen2.tp.swen2_tp_hw.view;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

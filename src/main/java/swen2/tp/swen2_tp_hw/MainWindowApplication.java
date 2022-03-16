@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HomeApplication extends Application {
+public class MainWindowApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HomeApplication.class.getResource("home.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MainWindowApplication.class.getResource("home.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
 
         stage.setTitle("Tour Planner");

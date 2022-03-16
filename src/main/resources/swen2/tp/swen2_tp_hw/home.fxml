@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.HomeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.MainWindowController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
         <menus>
@@ -40,55 +40,8 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <HBox prefHeight="36.0" prefWidth="368.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Label prefHeight="17.0" prefWidth="44.0" text="Tours" underline="true">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                           <HBox.margin>
-                              <Insets left="10.0" top="5.0" />
-                           </HBox.margin>
-                        </Label>
-                        <Label alignment="CENTER" onMouseClicked="#onAddTourClick" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="+">
-                           <HBox.margin>
-                              <Insets left="20.0" top="5.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <padding>
-                              <Insets left="10.0" right="10.0" />
-                           </padding>
-                        </Label>
-                        <Label alignment="CENTER" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="-">
-                           <HBox.margin>
-                              <Insets left="20.0" top="5.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <padding>
-                              <Insets left="10.0" right="10.0" />
-                           </padding>
-                        </Label>
-                        <Label alignment="CENTER" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="[ ]">
-                           <HBox.margin>
-                              <Insets left="20.0" top="5.0" />
-                           </HBox.margin>
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <padding>
-                              <Insets left="10.0" right="10.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <ListView fx:id="lv_tourList" layoutX="-1.0" layoutY="34.0" prefHeight="709.0" prefWidth="375.0" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="34.0">
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding></ListView>
+                   <fx:include fx:id="ListMenu" source="listMenu_subview.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                   <fx:include fx:id="listView" source="list_subview.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0" />
                </children>
                <opaqueInsets>
                   <Insets />

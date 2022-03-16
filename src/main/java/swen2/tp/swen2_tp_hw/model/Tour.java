@@ -1,5 +1,7 @@
 package swen2.tp.swen2_tp_hw.model;
 
+import java.util.ArrayList;
+
 public class Tour {
 
     private String id;
@@ -8,6 +10,7 @@ public class Tour {
     private String from;
     private String to;
     private String transportType;
+    private ArrayList<TourLog> tourLogs;
 
     public Tour(String uuid, String name, String description, String from, String to, String transportType) {
         this.id = uuid;
