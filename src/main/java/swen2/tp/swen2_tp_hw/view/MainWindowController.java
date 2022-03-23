@@ -9,6 +9,7 @@ import swen2.tp.swen2_tp_hw.AddTourApplication;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.repository.TourRepository;
 import swen2.tp.swen2_tp_hw.service.TourService;
+import swen2.tp.swen2_tp_hw.viewmodel.MainWindowViewModel;
 
 import java.io.IOException;
 import java.util.Map;
@@ -18,8 +19,13 @@ public class MainWindowController {
     TourService tourService = new TourService();
     TourRepository tourRepository = new TourRepository();
 
-    @FXML
-    private ListView lv_tourList;
+    private final MainWindowViewModel mainWindowViewModel;
+
+    @FXML private ListView lv_tourList;
+
+    public MainWindowController(MainWindowViewModel mainWindowViewModel) {
+        this.mainWindowViewModel = mainWindowViewModel;
+    }
 
     @FXML
     protected void onAddTourClick() {

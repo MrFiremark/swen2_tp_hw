@@ -6,6 +6,7 @@ import swen2.tp.swen2_tp_hw.viewmodel.SearchBarViewModel;
 import swen2.tp.swen2_tp_hw.viewmodel.TourListViewModel;
 
 public class ControllerFactory {
+
     private final MainWindowViewModel mainWindowViewModel;
     private final SearchBarViewModel searchBarViewModel;
     private final TourListViewModel tourListViewModel;
@@ -26,10 +27,10 @@ public class ControllerFactory {
             return new MainWindowController(mainWindowViewModel);
         } else if (controllerClass == SearchBarController.class) {
             return new SearchBarController(searchBarViewModel);
-        } else if (controllerClass == MediaDetailsController.class) {
-            return new MediaDetailsController(mediaDetailsViewModel);
-        } else if (controllerClass == MediaOverviewController.class) {
-            return new MediaOverviewController(mediaOverviewViewModel);
+        } else if (controllerClass == TourListController.class) {
+            return new TourListController(tourListViewModel);
+        } else if (controllerClass == ListMenuController.class) {
+            return new ListMenuController(listMenuViewModel);
         }
         throw new IllegalArgumentException("Unknown controller class: " + controllerClass);
     }

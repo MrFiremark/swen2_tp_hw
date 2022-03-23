@@ -2,16 +2,19 @@ package swen2.tp.swen2_tp_hw;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Locale;
 
 public class MainWindowApplication extends Application {
+
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MainWindowApplication.class.getResource("home.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
+        Parent root = FXMLDependencyInjection.load("MainWindow.fxml", Locale.ENGLISH );
+        Scene scene = new Scene(root);
 
         stage.setTitle("Tour Planner");
         stage.setScene(scene);
@@ -19,6 +22,6 @@ public class MainWindowApplication extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }
