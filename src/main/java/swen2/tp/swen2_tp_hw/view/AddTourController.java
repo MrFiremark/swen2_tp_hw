@@ -9,6 +9,7 @@ import javafx.scene.control.TextField;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.repository.TourRepository;
 import swen2.tp.swen2_tp_hw.service.TourService;
+import swen2.tp.swen2_tp_hw.viewmodel.AddTourViewModel;
 
 import java.util.UUID;
 
@@ -17,6 +18,7 @@ public class AddTourController {
     //private final TourService tourService;
     //private final TourRepository tourRepository;
 
+    private final AddTourViewModel addTourViewModel = new AddTourViewModel();
     ObservableList<String> itemList = FXCollections.observableArrayList("Bike", "Walk", "Car");
 
     @FXML
@@ -32,6 +34,10 @@ public class AddTourController {
 
     @FXML
     private void initialize(){
+        tf_tourname.textProperty().bindBidirectional(addTourViewModel.getTourName());
+        ta_description.textProperty().bindBidirectional(addTourViewModel.getDescription());
+        tf_to.textProperty().bindBidirectional(addTourViewModel.getTo());
+        tf_from.textProperty().bindBidirectional(addTourViewModel.getFrom());
         cb_transportType.setValue("Transport type");
         cb_transportType.setItems(itemList);
     }

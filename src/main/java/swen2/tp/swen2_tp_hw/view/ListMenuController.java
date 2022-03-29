@@ -17,11 +17,6 @@ public class ListMenuController {
 
     @FXML
     protected void onAddTourClick() {
-        AddTourApplication addTourApplication = new AddTourApplication();
-        try {
-            addTourApplication.start(new Stage());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        listMenuViewModel.openAddTourWindow();
     }
 }

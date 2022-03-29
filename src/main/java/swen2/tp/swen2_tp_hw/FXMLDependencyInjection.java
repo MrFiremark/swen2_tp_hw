@@ -18,7 +18,7 @@ public class FXMLDependencyInjection {
 
     public static FXMLLoader getLoader(String location, Locale locale) {
         return new FXMLLoader(
-                FXMLDependencyInjection.class.getResource("/swen2/tp/swen2_tp_hw/view/" + location),
+                FXMLDependencyInjection.class.getResource("/swen2/tp/swen2_tp_hw/" + location),
                 ResourceBundle.getBundle("swen2.tp.swen2_tp_hw." + "gui_strings", locale),
                 new JavaFXBuilderFactory(),
                 controllerClass-> ControllerFactory.getInstance().create(controllerClass)

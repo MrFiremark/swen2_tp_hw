@@ -11,9 +11,13 @@ import java.util.Locale;
 
 public class MainWindowApplication extends Application {
 
+    public static void main(String[] args) {
+        launch(args);
+    }
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLDependencyInjection.load("MainWindow.fxml", Locale.ENGLISH );
+        Parent root = FXMLDependencyInjection.load("home.fxml", Locale.ENGLISH );
+
         Scene scene = new Scene(root);
 
         stage.setTitle("Tour Planner");
@@ -21,7 +25,4 @@ public class MainWindowApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 }
