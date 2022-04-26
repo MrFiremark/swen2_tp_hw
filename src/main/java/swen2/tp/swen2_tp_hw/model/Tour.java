@@ -10,6 +10,9 @@ public class Tour {
     private String from;
     private String to;
     private String transportType;
+    private String distance;
+    private String time;
+    private String imagePath;
     private ArrayList<TourLog> tourLogs;
 
     public Tour(String uuid, String name, String description, String from, String to, String transportType) {
@@ -35,6 +38,30 @@ public class Tour {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getDistance() {
+        return distance;
+    }
+
+    public void setDistance(String distance) {
+        this.distance = distance;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
     public String getFrom() {
