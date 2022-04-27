@@ -99,4 +99,8 @@ public class Tour {
     public ArrayList<TourLog> getTourLogs() {
         return tourLogs;
     }
+
+    public void addTourLog(TourLog tourLog){
+        this.tourLogs.add(tourLog);
+    }
 }

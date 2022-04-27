@@ -2,18 +2,38 @@ package swen2.tp.swen2_tp_hw.model;
 
 public class TourLog {
 
+    private String tourId;
+    private String logId;
     private String dateTime;
     private String comment;
     private String difficulty;
     private String totalTime;
     private String rating;
 
-    public TourLog(String dateTime, String comment, String difficulty, String totalTime, String rating) {
+    public TourLog(String tourId, String logId, String dateTime, String comment, String difficulty, String totalTime, String rating) {
+        this.tourId = tourId;
+        this.logId = logId;
         this.dateTime = dateTime;
         this.comment = comment;
         this.difficulty = difficulty;
         this.totalTime = totalTime;
         this.rating = rating;
+    }
+
+    public String getLogId() {
+        return logId;
+    }
+
+    public void setLogId(String logId) {
+        this.logId = logId;
+    }
+
+    public String getTourId() {
+        return tourId;
+    }
+
+    public void setTourId(String tourId) {
+        this.tourId = tourId;
     }
 
     public String getDateTime() {
