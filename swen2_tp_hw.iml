@@ -30,5 +30,6 @@
     <orderEntry type="library" name="itextpdf1" level="project" />
     <orderEntry type="library" name="itextpdf.io" level="project" />
     <orderEntry type="library" name="itextpdf.layout" level="project" />
+    <orderEntry type="library" name="apache.logging.log4j.api" level="project" />
   </component>
 </module>

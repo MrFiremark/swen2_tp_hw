@@ -95,4 +95,8 @@ public class Tour {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public ArrayList<TourLog> getTourLogs() {
+        return tourLogs;
+    }
 }

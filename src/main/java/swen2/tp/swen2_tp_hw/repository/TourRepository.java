@@ -19,7 +19,7 @@ public class TourRepository extends Repository{
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "INSERT INTO tour_data (id, name, description, from, to, transporttype) VALUES (?, ?, ?, ?, ?, ?);"
+                        "INSERT INTO tour_data (id, name, description, from, to, transporttype, traveltime, traveldistance, imagePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
                 )
         ) {
 
@@ -29,6 +29,9 @@ public class TourRepository extends Repository{
             statement.setString(4, tour.getFrom());
             statement.setString(5, tour.getTo());
             statement.setString(5, tour.getTransportType());
+            statement.setString(6, tour.getTime());
+            statement.setString(7, tour.getDistance());
+            statement.setString(8, tour.getImagePath());
 
             statement.execute();
 
@@ -46,7 +49,7 @@ public class TourRepository extends Repository{
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "SELECT id, name, description, from, to, transporttype, distance, time, information FROM tour_data"
+                        "SELECT id, name, description, from, to, transporttype, time, distance, imagepath FROM tour_data"
                 );
         ) {
 
@@ -73,5 +76,25 @@ public class TourRepository extends Repository{
         }
 
         return null;
+    }
+
+    public void deleteTour(String id) {
+
+        try (
+                Connection connection = getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "DELETE FROM tour_data WHERE id = ?;"
+                )
+        ) {
+
+            statement.setObject(1, id);
+            //statement.setString(2, tour.getName());
+
+            statement.execute();
+
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

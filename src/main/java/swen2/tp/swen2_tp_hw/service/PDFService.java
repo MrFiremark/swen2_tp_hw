@@ -9,47 +9,113 @@ import com.itextpdf.kernel.pdf.*;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.*;
 import com.itextpdf.layout.properties.UnitValue;
+import swen2.tp.swen2_tp_hw.model.Tour;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Time;
+import java.time.LocalTime;
 
 public class PDFService {
 
-    private String target = "report.pdf";
-    private String input;
-    private String picturePath;
+    private String target = "_report.pdf";
 
-    public void generatePDF() throws IOException {
+    public void generateTourPDF(Tour tour) throws IOException {
 
-        PdfWriter writer = new PdfWriter(target);
+        PdfWriter writer = new PdfWriter(tour.getName() + target);
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf);
 
-        Paragraph loremIpsumHeader = new Paragraph("HEADER")
+        Paragraph Header = new Paragraph(tour.getName() + "Report")
                 .setFont(PdfFontFactory.createFont(StandardFonts.HELVETICA))
-                .setFontSize(14)
+                .setFontSize(22)
                 .setBold()
-                .setFontColor(ColorConstants.RED);
-        document.add(loremIpsumHeader);
-        document.add(new Paragraph(input));
+                .setFontColor(ColorConstants.BLUE);
+        document.add(Header);
+        document.add(new Paragraph(tour.getDescription()));
 
-        Paragraph listHeader = new Paragraph("NEW PARAGRAPH LIST")
+        Paragraph listHeader = new Paragraph("Tour Details:")
                 .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_BOLD))
                 .setFontSize(14)
                 .setBold()
-                .setFontColor(ColorConstants.BLUE);
+                .setFontColor(ColorConstants.GREEN);
         List list = new List()
                 .setSymbolIndent(12)
                 .setListSymbol("\u2022")
                 .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_BOLD));
-        list.add(new ListItem("item 1"))
-                .add(new ListItem("item 2"))
-                .add(new ListItem("item 3"))
-                .add(new ListItem("item 4"))
-                .add(new ListItem("item 5"))
-                .add(new ListItem("item 6"));
+        list.add(new ListItem("From : " + tour.getFrom()))
+                .add(new ListItem("To: " + tour.getTo()))
+                .add(new ListItem("Transport type: " + tour.getTransportType()))
+                .add(new ListItem("Estimated distance: " + tour.getDistance()))
+                .add(new ListItem("Estimated traveltime: " + tour.getTime()));
         document.add(listHeader);
         document.add(list);
+
+        Paragraph tableHeader = new Paragraph("Tour Logs")
+                .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN))
+                .setFontSize(18)
+                .setBold()
+                .setFontColor(ColorConstants.MAGENTA);
+        document.add(tableHeader);
+        Table table = new Table(UnitValue.createPercentArray(4)).useAllAvailableWidth();
+        table.addHeaderCell(getHeaderCell("Date/Time"));
+        table.addHeaderCell(getHeaderCell("Comment"));
+        table.addHeaderCell(getHeaderCell("Difficulty"));
+        table.addHeaderCell(getHeaderCell("Total time"));
+        table.addHeaderCell(getHeaderCell("Rating"));
+        table.setFontSize(14).setBackgroundColor(ColorConstants.WHITE);
+        table.addCell(tour.getTourLogs().get(0).getDateTime());
+        table.addCell(tour.getTourLogs().get(0).getComment());
+        table.addCell(tour.getTourLogs().get(0).getDifficulty());
+        table.addCell(tour.getTourLogs().get(0).getTotalTime());
+        table.addCell(tour.getTourLogs().get(0).getRating());
+        document.add(table);
+
+        document.add(new AreaBreak());
+
+        Paragraph imageHeader = new Paragraph("Tour Map")
+                .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN))
+                .setFontSize(18)
+                .setBold()
+                .setFontColor(ColorConstants.GREEN);
+        document.add(imageHeader);
+        ImageData imageData = ImageDataFactory.create(tour.getImagePath());
+        document.add(new Image(imageData));
+
+        document.close();
+    }
+
+    public void generateSummaryPDF(Tour tour) throws IOException {
+
+        PdfWriter writer = new PdfWriter("Summary_" + Time.valueOf(LocalTime.MIN) + target );
+        PdfDocument pdf = new PdfDocument(writer);
+        Document document = new Document(pdf);
+
+        Paragraph Header = new Paragraph("Summary Report")
+                .setFont(PdfFontFactory.createFont(StandardFonts.HELVETICA))
+                .setFontSize(22)
+                .setBold()
+                .setFontColor(ColorConstants.BLUE);
+        document.add(Header);
+        document.add(new Paragraph(tour.getDescription()));
+
+        Paragraph listHeader = new Paragraph("Tour Details:")
+                .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_BOLD))
+                .setFontSize(14)
+                .setBold()
+                .setFontColor(ColorConstants.GREEN);
+        List list = new List()
+                .setSymbolIndent(12)
+                .setListSymbol("\u2022")
+                .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_BOLD));
+        list.add(new ListItem("From : " + tour.getFrom()))
+                .add(new ListItem("To: " + tour.getTo()))
+                .add(new ListItem("Transport type: " + tour.getTransportType()))
+                .add(new ListItem("Estimated distance: " + tour.getDistance()))
+                .add(new ListItem("Estimated traveltime: " + tour.getTime()));
+        document.add(listHeader);
+        document.add(list);
+
 
         Paragraph tableHeader = new Paragraph("NEW PARAGRAPGTABELLE")
                 .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN))
@@ -71,13 +137,13 @@ public class PDFService {
 
         document.add(new AreaBreak());
 
-        Paragraph imageHeader = new Paragraph("PICTURE")
+        Paragraph imageHeader = new Paragraph("Tour Map")
                 .setFont(PdfFontFactory.createFont(StandardFonts.TIMES_ROMAN))
                 .setFontSize(18)
                 .setBold()
                 .setFontColor(ColorConstants.GREEN);
         document.add(imageHeader);
-        ImageData imageData = ImageDataFactory.create(picturePath);
+        ImageData imageData = ImageDataFactory.create(tour.getImagePath());
         document.add(new Image(imageData));
 
         document.close();
