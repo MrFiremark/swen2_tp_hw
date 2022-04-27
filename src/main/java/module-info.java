@@ -9,6 +9,7 @@ module swen2.tp.swen2_tp_hw {
     requires kernel;
     requires layout;
     requires java.desktop;
+    requires org.apache.logging.log4j;
 
 
     opens swen2.tp.swen2_tp_hw to javafx.fxml;
