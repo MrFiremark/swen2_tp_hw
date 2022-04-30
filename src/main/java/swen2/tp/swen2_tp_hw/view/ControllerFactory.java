@@ -1,9 +1,7 @@
 package swen2.tp.swen2_tp_hw.view;
 
-import swen2.tp.swen2_tp_hw.viewmodel.ListMenuViewModel;
-import swen2.tp.swen2_tp_hw.viewmodel.MainWindowViewModel;
-import swen2.tp.swen2_tp_hw.viewmodel.SearchBarViewModel;
-import swen2.tp.swen2_tp_hw.viewmodel.TourListViewModel;
+import swen2.tp.swen2_tp_hw.service.TourService;
+import swen2.tp.swen2_tp_hw.viewmodel.*;
 
 public class ControllerFactory {
 
@@ -11,12 +9,16 @@ public class ControllerFactory {
     private final SearchBarViewModel searchBarViewModel;
     private final TourListViewModel tourListViewModel;
     private final ListMenuViewModel listMenuViewModel;
+    private final AddTourViewModel addTourViewModel;
+    private final TourService tourService;
 
     public ControllerFactory() {
+        tourService = new TourService();
         searchBarViewModel = new SearchBarViewModel();
-        tourListViewModel = new TourListViewModel();
+        tourListViewModel = new TourListViewModel(tourService);
         listMenuViewModel = new ListMenuViewModel();
         mainWindowViewModel = new MainWindowViewModel(searchBarViewModel, tourListViewModel, listMenuViewModel);
+        addTourViewModel = new AddTourViewModel(tourService);
     }
 
     //
@@ -31,7 +33,10 @@ public class ControllerFactory {
             return new TourListController(tourListViewModel);
         } else if (controllerClass == ListMenuController.class) {
             return new ListMenuController(listMenuViewModel);
+        } else if (controllerClass == AddTourController.class) {
+            return new AddTourController(addTourViewModel);
         }
+
         throw new IllegalArgumentException("Unknown controller class: " + controllerClass);
     }
 

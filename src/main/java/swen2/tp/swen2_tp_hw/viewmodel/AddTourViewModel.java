@@ -18,7 +18,11 @@ public class AddTourViewModel {
     private final StringProperty to = new SimpleStringProperty();
     private final StringProperty transportType = new SimpleStringProperty();
 
+    private final TourService tourService;
 
+    public AddTourViewModel(TourService tourService){
+        this.tourService = tourService;
+    }
     public StringProperty getTourName() {
         return tourName;
     }
@@ -41,5 +45,6 @@ public class AddTourViewModel {
 
     public void saveTour(){
         Tour tour = new Tour(UUID.randomUUID().toString() ,tourName.get(), description.get(), to.get(), from.get(), "Bike");
+        tourService.addTour(tour);
     }
 }

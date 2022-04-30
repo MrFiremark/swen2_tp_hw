@@ -18,8 +18,9 @@ public class AddTourController {
     //private final TourService tourService;
     //private final TourRepository tourRepository;
 
-    private final AddTourViewModel addTourViewModel = new AddTourViewModel();
     ObservableList<String> itemList = FXCollections.observableArrayList("Bike", "Walk", "Car");
+
+    private final AddTourViewModel addTourViewModel;
 
     @FXML
     private TextField tf_tourname;
@@ -31,6 +32,10 @@ public class AddTourController {
     private TextField tf_to;
     @FXML
     private ChoiceBox cb_transportType;
+
+    public AddTourController(AddTourViewModel addTourViewModel){
+        this.addTourViewModel = addTourViewModel;
+    }
 
     @FXML
     private void initialize(){
@@ -49,9 +54,7 @@ public class AddTourController {
     //}
 
     protected void onAddButtonClick(){
-        Tour tour = new Tour(UUID.randomUUID().toString(), tf_tourname.getText(), ta_description.getText(), tf_from.getText(), tf_to.getText(), cb_transportType.getValue().toString());
-        //tourRepository.addTour(tour);
-        //tourService.updateTourList();
+        addTourViewModel.saveTour();
     }
 
 
