@@ -27,16 +27,16 @@ public class TourListViewModel implements Listener {
     }
 
     public ChangeListener<Tour> getChangeListener(){
-        return (observableValue, oldValue, newValue) -> notifyListeners();
+        return (observableValue, oldValue, newValue) -> notifyListeners(newValue);
     }
 
     public void addListener(Listener listener){
         listeners.add(listener);
     }
 
-    private void notifyListeners() {
+    private void notifyListeners(Tour tour) {
         for ( var listener : listeners ) {
-            listener.update();
+            listener.update(tour);
         }
     }
 
@@ -54,8 +54,8 @@ public class TourListViewModel implements Listener {
     }
 
     @Override
-    public void update() {
-        //TODO Update
-        notifyListeners();
+    public void update(Tour tour) {
+        observableTours.add(tour);
+        notifyListeners(tour);
     }
 }

@@ -1,0 +1,17 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+AddTourController -> AddTourViewModel: Sends user input
+AddTourViewModel -> AddTourViewModel: Create tour
+AddTourViewModel -> HttpService: Sends tour data
+HttpService --> AddTourViewModel: Updates tour data and map image
+AddTourViewModel -> TourService: Sends tour
+TourService -> TourRepository: Saves Tour in DB
+TourRepository --> TourService: Success or fail
+TourService -> TourListViewModel: Notify listener
+TourListViewModel -> TourListController: Notify listener
+TourListController -> TourListController: Updates listView \nwith tour data
+
+@enduml

@@ -7,7 +7,7 @@ import swen2.tp.swen2_tp_hw.viewmodel.ListMenuViewModel;
 
 import java.io.IOException;
 
-public class ListMenuController {
+public class ListMenuController{
 
     private final ListMenuViewModel listMenuViewModel;
 
@@ -19,4 +19,11 @@ public class ListMenuController {
     protected void onAddTourClick() {
         listMenuViewModel.openAddTourWindow();
     }
+
+    @FXML
+    protected void onDeleteTourClick(){
+        listMenuViewModel.deleteTour();
+    }
+
+
 }

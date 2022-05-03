@@ -18,18 +18,17 @@ public class TourService {
         listeners.add(listener);
     }
 
-    private void notifyListeners() {
+    private void notifyListeners(Tour tour) {
         for ( var listener : listeners ) {
-            listener.update();
+            listener.update(tour);
         }
     }
-
 
     private Map<String, Tour> toursMap = new HashMap<>();
 
     public void addTour(Tour tour){
         toursMap.put(tour.getName(), tour);
-        notifyListeners();
+        notifyListeners(tour);
     }
 
     public Map<String, Tour> getToursMap() {

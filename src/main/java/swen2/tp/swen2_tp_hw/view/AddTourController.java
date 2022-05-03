@@ -1,8 +1,10 @@
 package swen2.tp.swen2_tp_hw.view;
 
+import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -11,6 +13,7 @@ import swen2.tp.swen2_tp_hw.repository.TourRepository;
 import swen2.tp.swen2_tp_hw.service.TourService;
 import swen2.tp.swen2_tp_hw.viewmodel.AddTourViewModel;
 
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.UUID;
 
 public class AddTourController {
@@ -32,6 +35,8 @@ public class AddTourController {
     private TextField tf_to;
     @FXML
     private ChoiceBox cb_transportType;
+    @FXML
+    private Button btn_add;
 
     public AddTourController(AddTourViewModel addTourViewModel){
         this.addTourViewModel = addTourViewModel;
@@ -53,8 +58,15 @@ public class AddTourController {
 
     //}
 
+    @FXML
     protected void onAddButtonClick(){
         addTourViewModel.saveTour();
+    }
+
+    @FXML
+    protected void onCancelButtonClick(){
+
+        addTourViewModel.closeWindow();
     }
 
 

@@ -13,6 +13,8 @@ public class Tour {
     private String distance;
     private String time;
     private String imagePath;
+    private String popularity;
+    private String childFriendliness;
     private ArrayList<TourLog> tourLogs;
 
     public Tour(String uuid, String name, String description, String from, String to, String transportType) {
@@ -102,5 +104,21 @@ public class Tour {
 
     public void addTourLog(TourLog tourLog){
         this.tourLogs.add(tourLog);
+    }
+
+    public String getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(String popularity) {
+        this.popularity = popularity;
+    }
+
+    public String getChildFriendliness() {
+        return childFriendliness;
+    }
+
+    public void setChildFriendliness(String childFriendliness) {
+        this.childFriendliness = childFriendliness;
     }
 }
