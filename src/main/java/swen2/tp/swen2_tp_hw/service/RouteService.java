@@ -32,7 +32,8 @@ public class RouteService {
 
         RouteResponse routeResponse = objectMapper.readValue(httpService.handleHttpRequest(url).body(), RouteResponse.class);
 
-        /*JsonNode jsonNode = objectMapper.readValue(httpService.handleHttpRequest(url).body(), Route.class);
+        /*
+        JsonNode jsonNode = objectMapper.readValue(httpService.handleHttpRequest(url).body(), Route.class);
 
         String lr_lat = jsonNode.get("route").get("boundingBox").get("lr").get("lat").asText();
         String lr_lng = jsonNode.get("route").get("boundingBox").get("lr").get("lng").asText();
@@ -45,14 +46,13 @@ public class RouteService {
         String sessionid = jsonNode.get("route").get("sessionId").textValue();
          */
 
-        url = "https://www.mapquestapi.com/staticmap/v5/map?key=g6R1j3Y0bqSVIOGYDGzob93YQcS4d5EJ&session="+routeResponse.route.sessionId+"&size=640,480&boundingBox="+ BoundingBox.lr.class + "," + BoundingBox.ul.class;
+        url = "https://www.mapquestapi.com/staticmap/v5/map?key=g6R1j3Y0bqSVIOGYDGzob93YQcS4d5EJ&session=" + routeResponse.route.sessionId + "&size=640,480&boundingBox=" + BoundingBox.lr.class + "," + BoundingBox.ul.class;
 
         byte[] image = httpService.handleHttpRequest(url).body().getBytes();
 
         Image map = objectMapper.readValue(image, Image.class);
 
-        File outputfile = new File(tour.getid()+".png");
-        //ImageIO doesnt work????
+        File outputfile = new File("src/main/resources/img/"+ tour.getid()+".png");
         ImageIO.write((RenderedImage) map, "PNG", outputfile);
 
         tour.setImagePath(outputfile.getPath());

@@ -1,5 +1,7 @@
 package swen2.tp.swen2_tp_hw.model;
 
+import java.sql.Time;
+
 public class TourLog {
 
     private String tourId;
