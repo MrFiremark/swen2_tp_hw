@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="36.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.TableMenuController">
+    <children>
+        <HBox prefHeight="45.0" prefWidth="600.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <Label text="Logs:" underline="true">
+                    <font>
+                        <Font name="Arial Bold" size="14.0" />
+                    </font>
+                    <padding>
+                        <Insets right="10.0" top="6.0" />
+                    </padding>
+                </Label>
+                <Label text="Name">
+                    <font>
+                        <Font name="Arial Bold" size="14.0" />
+                    </font>
+                    <padding>
+                        <Insets right="20.0" top="6.0" />
+                    </padding>
+                </Label>
+                <Button fx:id="btn_createLog" onAction="#onAddLogClick" mnemonicParsing="false" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="+">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></Button>
+                <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="-">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin></Button>
+                <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="[ ]" />
+            </children>
+         <padding>
+            <Insets left="6.0" right="10.0" top="4.0" />
+         </padding>
+        </HBox>
+    </children>
+</AnchorPane>

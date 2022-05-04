@@ -10,6 +10,8 @@ public class ControllerFactory {
     private final TourListViewModel tourListViewModel;
     private final ListMenuViewModel listMenuViewModel;
     private final AddTourViewModel addTourViewModel;
+    private final LogTableViewModel logTableViewModel;
+    private final TableMenuViewModel tableMenuViewModel;
     private final TourService tourService;
 
     public ControllerFactory() {
@@ -17,7 +19,9 @@ public class ControllerFactory {
         searchBarViewModel = new SearchBarViewModel();
         tourListViewModel = new TourListViewModel(tourService);
         listMenuViewModel = new ListMenuViewModel();
-        mainWindowViewModel = new MainWindowViewModel(searchBarViewModel, tourListViewModel, listMenuViewModel);
+        logTableViewModel = new LogTableViewModel();
+        tableMenuViewModel = new TableMenuViewModel();
+        mainWindowViewModel = new MainWindowViewModel(listMenuViewModel, tourListViewModel, searchBarViewModel, tableMenuViewModel, logTableViewModel);
         addTourViewModel = new AddTourViewModel(tourService);
     }
 
@@ -35,6 +39,10 @@ public class ControllerFactory {
             return new ListMenuController(listMenuViewModel);
         } else if (controllerClass == AddTourController.class) {
             return new AddTourController(addTourViewModel);
+        } else if (controllerClass == TableMenuController.class){
+            return new TableMenuController(tableMenuViewModel);
+        } else if (controllerClass == LogTableController.class){
+            return new LogTableController(logTableViewModel);
         }
 
         throw new IllegalArgumentException("Unknown controller class: " + controllerClass);

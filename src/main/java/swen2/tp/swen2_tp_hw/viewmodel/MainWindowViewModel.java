@@ -7,12 +7,15 @@ public class MainWindowViewModel {
     private ListMenuViewModel listMenuViewModel;
     private TourListViewModel tourListViewModel;
     private SearchBarViewModel searchBarViewModel;
+    private TableMenuViewModel tableMenuViewModel;
+    private LogTableViewModel logTableViewModel;
 
-    public MainWindowViewModel(SearchBarViewModel searchBarViewModel, TourListViewModel tourListViewModel, ListMenuViewModel listMenuViewModel) {
-        this.searchBarViewModel = searchBarViewModel;
+    public MainWindowViewModel(ListMenuViewModel listMenuViewModel, TourListViewModel tourListViewModel, SearchBarViewModel searchBarViewModel, TableMenuViewModel tableMenuViewModel, LogTableViewModel logTableViewModel) {
         this.listMenuViewModel = listMenuViewModel;
         this.tourListViewModel = tourListViewModel;
+        this.searchBarViewModel = searchBarViewModel;
+        this.tableMenuViewModel = tableMenuViewModel;
+        this.logTableViewModel = logTableViewModel;
     }
-
 
 }

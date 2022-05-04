@@ -6,12 +6,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.MainWindowController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.MainWindowController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
+                  <MenuItem mnemonicParsing="false" text="Export Tour-Report" />
+                  <MenuItem mnemonicParsing="false" text="Export Summary-Report" />
               <MenuItem mnemonicParsing="false" text="Close" />
             </items>
           </Menu>
@@ -94,69 +96,8 @@
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <HBox prefHeight="36.0" prefWidth="822.0">
-                                 <children>
-                                    <Label prefHeight="20.0" prefWidth="50.0" text="Logs:">
-                                       <font>
-                                          <Font name="System Bold" size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="10.0" top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label layoutX="20.0" layoutY="15.0" prefHeight="20.0" prefWidth="74.0" text="Test">
-                                       <font>
-                                          <Font name="System Bold" size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets top="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label alignment="CENTER" onMouseClicked="#onAddLogClick" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="+">
-                                       <HBox.margin>
-                                          <Insets left="50.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" right="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label alignment="CENTER" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="-">
-                                       <HBox.margin>
-                                          <Insets left="50.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" right="10.0" />
-                                       </padding>
-                                    </Label>
-                                    <Label alignment="CENTER" style="-fx-background-color: #d3d3d3; -fx-border-color: BLACK;" text="[ ]">
-                                       <HBox.margin>
-                                          <Insets left="50.0" top="5.0" />
-                                       </HBox.margin>
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="10.0" right="10.0" />
-                                       </padding>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <TableView layoutY="34.0" prefHeight="338.0" prefWidth="822.0" AnchorPane.bottomAnchor="-6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="34.0">
-                                <columns>
-                                  <TableColumn prefWidth="75.0" text="Date" />
-                                  <TableColumn prefWidth="75.0" text="Duration" />
-                                    <TableColumn prefWidth="75.0" text="Distance" />
-                                    <TableColumn prefWidth="75.0" text="Difficulty" />
-                                    <TableColumn prefWidth="75.0" text="Comments" />
-                                    <TableColumn prefWidth="75.0" text="Rating" />
-                                </columns>
-                              </TableView>
+                               <fx:include fx:id="TableMenu" source="tableMenu_Subview.fxml" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                               <fx:include fx:id="LogTable" source="table_subview.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0" />
                            </children>
                         </AnchorPane>
                     </items>
