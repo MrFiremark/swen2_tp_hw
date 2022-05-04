@@ -3,19 +3,19 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <Label layoutX="64.0" layoutY="20.0" text="Date:" />
         <Label layoutX="44.0" layoutY="55.0" text="Duration:" />
         <Label layoutX="44.0" layoutY="93.0" text="Difficulty:" />
         <Label layoutX="41.0" layoutY="130.0" text="Comment:" />
-        <Label layoutX="60.0" layoutY="172.0" text="Rating:" />
+        <Label layoutX="60.0" layoutY="250.0" text="Rating:" />
         <TextField layoutX="111.0" layoutY="16.0" prefHeight="25.0" prefWidth="455.0" />
-        <TextField layoutX="111.0" layoutY="89.0" prefHeight="25.0" prefWidth="455.0" />
-        <TextField layoutX="111.0" layoutY="126.0" prefHeight="25.0" prefWidth="455.0" />
         <TextField layoutX="111.0" layoutY="51.0" prefHeight="25.0" prefWidth="455.0" />
+        <TextField layoutX="111.0" layoutY="89.0" prefHeight="25.0" prefWidth="455.0" />
+        <TextField layoutX="111.0" layoutY="128.0" prefHeight="102.0" prefWidth="455.0" />
         <Button layoutX="113.0" layoutY="361.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="52.0" text="Add" AnchorPane.bottomAnchor="14.0" />
         <Button layoutX="433.0" layoutY="361.0" mnemonicParsing="false" text="Cancel" AnchorPane.bottomAnchor="14.0" />
-      <Slider layoutX="111.0" layoutY="175.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="14.0" prefWidth="233.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="2.5" />
+      <Slider layoutX="111.0" layoutY="250.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="14.0" prefWidth="233.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="2.5" />
     </children>
 </AnchorPane>

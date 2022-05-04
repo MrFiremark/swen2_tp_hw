@@ -9,13 +9,21 @@ public class MainWindowViewModel {
     private SearchBarViewModel searchBarViewModel;
     private TableMenuViewModel tableMenuViewModel;
     private LogTableViewModel logTableViewModel;
+    private TabPaneViewModel tabPaneViewModel;
 
-    public MainWindowViewModel(ListMenuViewModel listMenuViewModel, TourListViewModel tourListViewModel, SearchBarViewModel searchBarViewModel, TableMenuViewModel tableMenuViewModel, LogTableViewModel logTableViewModel) {
+    public MainWindowViewModel(
+            ListMenuViewModel listMenuViewModel,
+            TourListViewModel tourListViewModel,
+            SearchBarViewModel searchBarViewModel,
+            TableMenuViewModel tableMenuViewModel,
+            LogTableViewModel logTableViewModel,
+            TabPaneViewModel tabPaneViewModel) {
         this.listMenuViewModel = listMenuViewModel;
         this.tourListViewModel = tourListViewModel;
         this.searchBarViewModel = searchBarViewModel;
         this.tableMenuViewModel = tableMenuViewModel;
         this.logTableViewModel = logTableViewModel;
+        this.tabPaneViewModel = tabPaneViewModel;
     }
 
 }

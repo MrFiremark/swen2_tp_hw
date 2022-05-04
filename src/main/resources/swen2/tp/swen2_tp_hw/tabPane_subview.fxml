@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.TabPaneController">
+    <Label layoutY="6.0" prefHeight="27.0" prefWidth="110.0" text="Tourname:" underline="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
+        <padding>
+            <Insets bottom="10.0" left="10.0" />
+        </padding>
+        <font>
+            <Font name="System Bold" size="14.0" />
+        </font>
+    </Label>
+    <Label layoutX="115.0" layoutY="6.0" prefWidth="161.0" text="Test" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="324.0" AnchorPane.topAnchor="6.0">
+        <padding>
+            <Insets bottom="10.0" />
+        </padding>
+        <font>
+            <Font size="14.0" />
+        </font>
+    </Label>
+    <TabPane layoutY="36.0" prefHeight="303.0" prefWidth="955.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+        <tabs>
+            <Tab text="Description">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                  <children>
+                     <Label text="From:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
+                     <Label text="To:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="48.0" />
+                     <Label layoutX="22.0" layoutY="58.0" text="Transport Type:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="84.0" />
+                     <Label layoutX="22.0" layoutY="94.0" text="Distance:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="120.0" />
+                     <Label layoutX="22.0" layoutY="130.0" text="Estiamted Time:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="156.0" />
+                     <Label layoutX="22.0" layoutY="166.0" text="Popularity:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="192.0" />
+                     <Label layoutX="22.0" layoutY="202.0" text="Child-Friendliness:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="228.0" />
+                     <Label layoutX="22.0" layoutY="238.0" text="Description:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="264.0" />
+                  </children>
+                  <padding>
+                     <Insets top="2.0" />
+                  </padding></AnchorPane>
+                </content>
+            </Tab>
+            <Tab text="Route">
+                <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                        <children>
+                            <ScrollPane layoutX="220.0" layoutY="54.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <content>
+                                    <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
+                                </content>
+                            </ScrollPane>
+                        </children></AnchorPane>
+                </content>
+            </Tab>
+        </tabs>
+    </TabPane>
+
+</AnchorPane>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="30.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.SearchBarController">
+    <TextField layoutX="3.0" layoutY="29.0" prefHeight="25.0" prefWidth="1200.0" promptText="Search" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="3.0" AnchorPane.bottomAnchor="3.0">
+        <font>
+            <Font size="13.0" />
+        </font></TextField>
+</AnchorPane>
