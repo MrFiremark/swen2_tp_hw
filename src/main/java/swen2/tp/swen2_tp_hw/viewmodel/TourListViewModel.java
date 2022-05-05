@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TourListViewModel implements Listener {
+
     private ObservableList<Tour> observableTours = FXCollections.observableArrayList();
 
     private ArrayList<Listener> listeners = new ArrayList<>();

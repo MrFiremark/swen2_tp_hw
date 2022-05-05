@@ -14,6 +14,8 @@ public class TourService {
 
     private ArrayList<Listener> listeners = new ArrayList<>();
 
+    private Map<String, Tour> toursMap = new HashMap<>();
+
     public void addListener(Listener listener){
         listeners.add(listener);
     }
@@ -23,8 +25,6 @@ public class TourService {
             listener.update(tour);
         }
     }
-
-    private Map<String, Tour> toursMap = new HashMap<>();
 
     public void addTour(Tour tour){
         toursMap.put(tour.getName(), tour);

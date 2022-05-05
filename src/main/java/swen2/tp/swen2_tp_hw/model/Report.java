@@ -6,13 +6,11 @@ public class Report {
 
     private String tourname;
     private String averageTime;
-    private String averageDistance;
     private String averageRating;
 
-    public Report(String tourname, String averageTime, String averageDistance, String averageRating) {
+    public Report(String tourname, String averageTime, String averageRating) {
         this.tourname = tourname;
         this.averageTime = averageTime;
-        this.averageDistance = averageDistance;
         this.averageRating = averageRating;
     }
 
@@ -22,14 +20,6 @@ public class Report {
 
     public void setAverageTime(String averageTime) {
         this.averageTime = averageTime;
-    }
-
-    public String getAverageDistance() {
-        return averageDistance;
-    }
-
-    public void setAverageDistance(String averageDistance) {
-        this.averageDistance = averageDistance;
     }
 
     public String getAverageRating() {

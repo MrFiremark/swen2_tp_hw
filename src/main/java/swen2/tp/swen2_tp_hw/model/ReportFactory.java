@@ -9,20 +9,19 @@ import java.util.Date;
 
 public class ReportFactory {
 
-    ArrayList<Report> reportList;
+    private ArrayList<Report> reportList;
 
     public void generateReport (Tour tour){
         reportList.add(
                 new Report(
                         tour.getName(),
-                        getAvaerageTime(tour.getTourLogs()),
-                        getAverageDistance(tour.getTourLogs()),
+                        getAverageTime(tour.getTourLogs()),
                         getAverageRating(tour.getTourLogs())
                 )
         );
     }
 
-    public String getAvaerageTime(ArrayList<TourLog> tourLogs) {
+    public String getAverageTime(ArrayList<TourLog> tourLogs) {
         int sum = 0;
 
         Calendar calendar = Calendar.getInstance();
@@ -47,12 +46,18 @@ public class ReportFactory {
         return  simpleDateFormat.format(date);
     }
 
-    public String getAverageDistance(ArrayList<TourLog> tourLogs){
-        return "";
-    }
-
     public String getAverageRating(ArrayList<TourLog> tourLogs){
-        return "";
+
+        double rating_sum = 0;
+
+        for (TourLog tourlog: tourLogs
+             ) {
+            double rating = Double.parseDouble(tourlog.getRating());
+            rating_sum += rating;
+        }
+        rating_sum = rating_sum/ tourLogs.size();
+
+        return String.valueOf(rating_sum);
     }
 
     public Report getReport(int index){
