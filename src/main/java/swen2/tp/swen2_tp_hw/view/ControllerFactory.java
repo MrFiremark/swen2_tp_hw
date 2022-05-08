@@ -1,6 +1,7 @@
 package swen2.tp.swen2_tp_hw.view;
 
 import swen2.tp.swen2_tp_hw.service.LogService;
+import swen2.tp.swen2_tp_hw.service.SelectedItemService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 import swen2.tp.swen2_tp_hw.viewmodel.*;
 
@@ -16,16 +17,18 @@ public class ControllerFactory {
     private final TabPaneViewModel tabPaneViewModel;
     private final TourService tourService;
     private final LogService logService;
+    private final SelectedItemService selectedItemService;
 
     public ControllerFactory() {
         tourService = new TourService();
         logService = new LogService();
+        selectedItemService = new SelectedItemService();
         searchBarViewModel = new SearchBarViewModel();
-        tourListViewModel = new TourListViewModel(tourService);
-        listMenuViewModel = new ListMenuViewModel();
+        tourListViewModel = new TourListViewModel(tourService, selectedItemService);
+        listMenuViewModel = new ListMenuViewModel(tourService, selectedItemService);
         logTableViewModel = new LogTableViewModel(logService);
         tableMenuViewModel = new TableMenuViewModel();
-        tabPaneViewModel = new TabPaneViewModel();
+        tabPaneViewModel = new TabPaneViewModel(selectedItemService);
         mainWindowViewModel = new MainWindowViewModel(
                 listMenuViewModel,
                 tourListViewModel,

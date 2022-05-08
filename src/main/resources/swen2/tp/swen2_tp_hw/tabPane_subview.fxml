@@ -29,8 +29,8 @@
                 <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                     <Label text="From:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
-                     <Label text="To:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="48.0" />
+                     <Label fx:id="lbl_from" text="From:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
+                     <Label fx:id="lbl_to" text="To:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="48.0" />
                      <Label layoutX="22.0" layoutY="58.0" text="Transport Type:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="84.0" />
                      <Label layoutX="22.0" layoutY="94.0" text="Distance:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="120.0" />
                      <Label layoutX="22.0" layoutY="130.0" text="Estiamted Time:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="156.0" />

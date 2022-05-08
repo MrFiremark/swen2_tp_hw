@@ -2,9 +2,7 @@ package swen2.tp.swen2_tp_hw.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
-import swen2.tp.swen2_tp_hw.listener.Listener;
 import swen2.tp.swen2_tp_hw.listener.LogListener;
-import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 import swen2.tp.swen2_tp_hw.viewmodel.LogTableViewModel;
 

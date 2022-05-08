@@ -1,10 +1,7 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
-import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ChangeListener;
-import swen2.tp.swen2_tp_hw.listener.Listener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.service.TourService;
 

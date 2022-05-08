@@ -3,12 +3,9 @@ package swen2.tp.swen2_tp_hw.viewmodel;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import swen2.tp.swen2_tp_hw.listener.Listener;
 import swen2.tp.swen2_tp_hw.listener.LogListener;
-import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 import swen2.tp.swen2_tp_hw.service.LogService;
-import swen2.tp.swen2_tp_hw.service.TourService;
 
 import java.util.ArrayList;
 import java.util.List;

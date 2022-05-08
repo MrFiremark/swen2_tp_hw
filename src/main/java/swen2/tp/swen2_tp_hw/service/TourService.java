@@ -1,6 +1,6 @@
 package swen2.tp.swen2_tp_hw.service;
 
-import swen2.tp.swen2_tp_hw.listener.Listener;
+import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.repository.TourRepository;
 
@@ -12,12 +12,12 @@ public class TourService {
 
     private final TourRepository tourRepository = new TourRepository();
 
-    private ArrayList<Listener> listeners = new ArrayList<>();
+    private ArrayList<TourListener> listeners = new ArrayList<>();
 
     private Map<String, Tour> toursMap = new HashMap<>();
 
-    public void addListener(Listener listener){
-        listeners.add(listener);
+    public void addListener(TourListener tourListener){
+        listeners.add(tourListener);
     }
 
     private void notifyListeners(Tour tour) {
@@ -27,7 +27,16 @@ public class TourService {
     }
 
     public void addTour(Tour tour){
+        // TODO validation
         toursMap.put(tour.getName(), tour);
+        tourRepository.addTour(tour);
+        notifyListeners(tour);
+    }
+
+    public void deleteTour(Tour tour){
+        //TODO delete
+        toursMap.remove(tour);
+        tourRepository.deleteTour(tour.getid());
         notifyListeners(tour);
     }
 

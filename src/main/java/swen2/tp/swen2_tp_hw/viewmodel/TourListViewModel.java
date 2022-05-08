@@ -3,23 +3,26 @@ package swen2.tp.swen2_tp_hw.viewmodel;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import swen2.tp.swen2_tp_hw.listener.Listener;
+import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
+import swen2.tp.swen2_tp_hw.service.SelectedItemService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TourListViewModel implements Listener {
+public class TourListViewModel implements TourListener {
 
     private ObservableList<Tour> observableTours = FXCollections.observableArrayList();
 
-    private ArrayList<Listener> listeners = new ArrayList<>();
+    private ArrayList<TourListener> listeners = new ArrayList<>();
 
     private final TourService tourService;
+    private final SelectedItemService selectedItemService;
 
-    public TourListViewModel(TourService tourService){
+    public TourListViewModel(TourService tourService, SelectedItemService selectedItemService){
         this.tourService = tourService;
+        this.selectedItemService = selectedItemService;
         tourService.addListener(this);
     }
 
@@ -31,8 +34,8 @@ public class TourListViewModel implements Listener {
         return (observableValue, oldValue, newValue) -> notifyListeners(newValue);
     }
 
-    public void addListener(Listener listener){
-        listeners.add(listener);
+    public void addListener(TourListener tourLIstener){
+        listeners.add(tourLIstener);
     }
 
     private void notifyListeners(Tour tour) {
@@ -58,5 +61,10 @@ public class TourListViewModel implements Listener {
     public void update(Tour tour) {
         observableTours.add(tour);
         notifyListeners(tour);
+    }
+
+    public void itemClicked(int index){
+        Tour tour = observableTours.get(index);
+        selectedItemService.setSelectedTour(tour);
     }
 }
