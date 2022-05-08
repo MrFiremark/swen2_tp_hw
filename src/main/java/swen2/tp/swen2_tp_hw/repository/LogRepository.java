@@ -18,13 +18,14 @@ public class LogRepository extends Repository{
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "INSERT INTO log_data (tourid, logid, datetime, comment, difficulty, totaltime, rating) VALUES (?, ?, ?, ?, ?, ?, ?);"
+                        "INSERT INTO log_data (tourid, logid, date, time, comment, difficulty, totaltime, rating) VALUES (?, ?, ?, ?, ?, ?, ?);"
                 )
         ) {
 
             statement.setString(1, tourLog.getTourId());
-            statement.setString(2, tourLog.getLogId());
-            statement.setObject(3, tourLog.getDateTime());
+            statement.setString(2, tourLog.getLogid());
+            statement.setString(2, tourLog.getDate());
+            statement.setObject(3, tourLog.getTime());
             statement.setString(4, tourLog.getComment());
             statement.setString(5, tourLog.getDifficulty());
             statement.setString(6, tourLog.getTotalTime());
@@ -44,7 +45,7 @@ public class LogRepository extends Repository{
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "SELECT tourid, logid, datetime, comment, difficulty, totaltime, rating FROM log_data WHERE tourid = ?"
+                        "SELECT tourid, logid, date, time, comment, difficulty, totaltime, rating FROM log_data WHERE tourid = ?"
                 );
         ) {
 
@@ -53,15 +54,18 @@ public class LogRepository extends Repository{
             ResultSet resultSet = statement.executeQuery();
 
             while(resultSet.next()){
-                tour.addTourLog(new TourLog(
-                        resultSet.getString("tourid"),
-                        resultSet.getString("logid"),
-                        resultSet.getString("datetime"),
-                        resultSet.getString("comment"),
-                        resultSet.getString("difficulty"),
-                        resultSet.getString("totaltime"),
-                        resultSet.getString("rating")
-                ));
+                tour.addTourLog(
+                        new TourLog(
+                            resultSet.getString("tourid"),
+                            resultSet.getString("logid"),
+                            resultSet.getString("date"),
+                            resultSet.getString("time"),
+                            resultSet.getString("comment"),
+                            resultSet.getString("difficulty"),
+                            resultSet.getString("totaltime"),
+                            resultSet.getString("rating")
+                        )
+                );
 
             }
 

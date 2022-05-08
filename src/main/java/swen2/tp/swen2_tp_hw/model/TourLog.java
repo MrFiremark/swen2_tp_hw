@@ -5,29 +5,23 @@ import java.sql.Time;
 public class TourLog {
 
     private String tourId;
-    private String logId;
-    private String dateTime;
+    private String logid;
+    private String date;
+    private String time;
     private String comment;
     private String difficulty;
     private String totalTime;
     private String rating;
 
-    public TourLog(String tourId, String logId, String dateTime, String comment, String difficulty, String totalTime, String rating) {
+    public TourLog(String tourId, String logid, String date, String time, String comment, String difficulty, String totalTime, String rating) {
         this.tourId = tourId;
-        this.logId = logId;
-        this.dateTime = dateTime;
+        this.logid = logid;
+        this.date = date;
+        this.time = time;
         this.comment = comment;
         this.difficulty = difficulty;
         this.totalTime = totalTime;
         this.rating = rating;
-    }
-
-    public String getLogId() {
-        return logId;
-    }
-
-    public void setLogId(String logId) {
-        this.logId = logId;
     }
 
     public String getTourId() {
@@ -38,12 +32,28 @@ public class TourLog {
         this.tourId = tourId;
     }
 
-    public String getDateTime() {
-        return dateTime;
+    public String getLogid() {
+        return logid;
     }
 
-    public void setDateTime(String dateTime) {
-        this.dateTime = dateTime;
+    public void setLogid(String logid) {
+        this.logid = logid;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getComment() {

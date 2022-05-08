@@ -12,36 +12,54 @@ public class SearchRepository extends Repository{
 
         try (
                 Connection connection = getConnection();
-                PreparedStatement statement = connection.prepareStatement(
+                PreparedStatement statement1 = connection.prepareStatement(
                         "SELECT " +
-                            "id, name, description, comment " +
+                            "name, description, startpooint, endpoint" +
                             "   FROM tour_data" +
-                            "   JOIN log_data" +
-                            "       ON tour_data.id=lod_data.tourid" +
                             "           WHERE" +
                             "               name like '%'?'%' OR" +
                             "               description like '%'?'%' OR" +
-                            "               comment like '%'?'%' OR" +
-                                "           from like '%'?'%' OR" +
-                                "           to like '%'?'%' OR"
+                            "               startpooint like '%'?'%' OR" +
+                                "           endpoint like '%'?'%';"
+                );
+
+                PreparedStatement statement2 = connection.prepareStatement(
+                        "SELECT " +
+                                "comment, difficulty" +
+                                "   FROM tour_data" +
+                                "   JOIN log_data" +
+                                "       ON tour_data.id=lod_data.tourid" +
+                                "           WHERE" +
+                                "               comment like '%'?'%' OR" +
+                                "               difficulty like '%'?'%';"
+
                 );
         ) {
 
-            statement.setString(1, searchString);
-            statement.setString(2, searchString);
-            statement.setString(3, searchString);
-            statement.setString(4, searchString);
-            statement.setString(5, searchString);
+            statement1.setString(1, searchString);
+            statement1.setString(2, searchString);
+            statement1.setString(3, searchString);
+            statement1.setString(4, searchString);
 
-            ResultSet resultSet = statement.executeQuery();
+            ResultSet resultSet1 = statement1.executeQuery();
 
             ArrayList<String> resultList = new ArrayList<>();
             StringBuilder stringBuilder = new StringBuilder();
 
-            while (resultSet.next()) {
-                stringBuilder.append("Tourname: " + resultSet.getString("name"));
-                //TODO BUILD FINISHED STRING
-                resultList.add(stringBuilder.toString());
+            if(resultSet1.next()){
+                while (resultSet1.next()) {
+                    stringBuilder.append("Tourname: " + resultSet1.getString("name"));
+                    //TODO BUILD FINISHED STRING
+                    resultList.add(stringBuilder.toString());
+                }
+            }else {
+                ResultSet resultSet2 = statement2.executeQuery();
+
+                while (resultSet2.next()) {
+                    stringBuilder.append("Tourname: " + resultSet1.getString("name"));
+                    //TODO BUILD FINISHED STRING
+                    resultList.add(stringBuilder.toString());
+                }
             }
 
             return resultList;

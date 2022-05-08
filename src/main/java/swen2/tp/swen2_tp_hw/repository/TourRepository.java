@@ -19,19 +19,19 @@ public class TourRepository extends Repository{
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "INSERT INTO tour_data (id, name, description, from, to, transporttype, traveltime, traveldistance, imagePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
+                        "INSERT INTO tour_data (id, name, description, transporttype, distance, traveltime, startpoint, endpoint, imagePath) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);"
                 )
         ) {
 
             statement.setObject(1, tour.getid());
             statement.setString(2, tour.getName());
             statement.setString(3, tour.getDescription());
-            statement.setString(4, tour.getFrom());
-            statement.setString(5, tour.getTo());
-            statement.setString(5, tour.getTransportType());
+            statement.setString(4, tour.getTransportType());
+            statement.setString(5, tour.getDistance());
             statement.setString(6, tour.getTime());
-            statement.setString(7, tour.getDistance());
-            statement.setString(8, tour.getImagePath());
+            statement.setString(7, tour.getFrom());
+            statement.setString(8, tour.getTo());
+            statement.setString(9, tour.getImagePath());
 
             statement.execute();
 
@@ -49,7 +49,7 @@ public class TourRepository extends Repository{
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "SELECT id, name, description, from, to, transporttype, time, distance, imagepath FROM tour_data"
+                        "SELECT id, name, description, transporttype, distance, traveltime, startpoint, endpoint, imagepath FROM tour_data"
                 );
         ) {
 
@@ -62,9 +62,12 @@ public class TourRepository extends Repository{
                         resultSet.getString("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"),
-                        resultSet.getString("from"),
-                        resultSet.getString("to"),
-                        resultSet.getString("transporttype")
+                        resultSet.getString("transporttype"),
+                        resultSet.getString("distance"),
+                        resultSet.getString("traveltime"),
+                        resultSet.getString("startpoint"),
+                        resultSet.getString("endpoint"),
+                        resultSet.getString("imagepath")
                 );
                  map.put(tour.getName(), tour);
             }

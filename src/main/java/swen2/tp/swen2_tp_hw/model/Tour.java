@@ -26,6 +26,18 @@ public class Tour {
         this.transportType = transportType;
     }
 
+    public Tour(String id, String name, String description, String from, String to, String transportType, String distance, String time, String imagePath) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.from = from;
+        this.to = to;
+        this.transportType = transportType;
+        this.distance = distance;
+        this.time = time;
+        this.imagePath = imagePath;
+    }
+
     public String getid() {
         return id;
     }
