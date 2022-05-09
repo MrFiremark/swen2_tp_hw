@@ -87,4 +87,6 @@ public class TourLog {
     public void setRating(String rating) {
         this.rating = rating;
     }
+
+
 }

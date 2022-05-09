@@ -34,7 +34,7 @@ public class TabPaneController {
     public void initialize(){
         lbl_from.textProperty().bind(tabPaneViewModel.getFrom());
         lbl_to.textProperty().bind(tabPaneViewModel.getTo());
-        lbl_transportType.textProperty().bind(tabPaneViewModel.getFrom());
+        lbl_transportType.textProperty().bind(tabPaneViewModel.getTransportType());
         lbl_distance.textProperty().bind(tabPaneViewModel.getDistance());
         lbl_time.textProperty().bind(tabPaneViewModel.getTime());
         lbl_popularity.textProperty().bind(tabPaneViewModel.getPopularity());

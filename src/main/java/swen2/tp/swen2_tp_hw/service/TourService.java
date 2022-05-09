@@ -29,7 +29,8 @@ public class TourService {
     public void addTour(Tour tour){
         // TODO validation
         toursMap.put(tour.getName(), tour);
-        tourRepository.addTour(tour);
+        // TODO Path
+        //tourRepository.addTour(tour);
         notifyListeners(tour);
     }
 

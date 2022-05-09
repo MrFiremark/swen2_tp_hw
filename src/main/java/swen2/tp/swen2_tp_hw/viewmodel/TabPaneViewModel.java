@@ -58,7 +58,14 @@ public class TabPaneViewModel implements SelectedItemListener {
 
     @Override
     public void update(Tour tour) {
-        from.set(tour.getFrom());
-        to.set(tour.getTo());
+        from.set("From: " + tour.getFrom());
+        to.set("To: " + tour.getTo());
+        transportType.set("Transport type: " + tour.getTransportType());
+        // TODO values from HTTP service
+        // distance.set("Distance in km: " + tour.getDistance());
+        // time.set("Time: " + tour.getTime());
+        // popularity.set("Popularity: " + tour.getPopularity());
+        // childFriendliness.set("Child friendliness: " + tour.getChildFriendliness());
+        description.set("Description: " + tour.getDescription());
     }
 }

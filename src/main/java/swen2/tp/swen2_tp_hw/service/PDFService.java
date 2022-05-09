@@ -73,7 +73,8 @@ public class PDFService {
         ArrayList<TourLog> entryList = tour.getTourLogs();
 
         for(int i = 0; i <= tour.getTourLogs().size(); i++){
-            table.addCell(tour.getTourLogs().get(i).getDateTime());
+            table.addCell(tour.getTourLogs().get(i).getDate());
+            table.addCell(tour.getTourLogs().get(i).getTime());
             table.addCell(tour.getTourLogs().get(i).getComment());
             table.addCell(tour.getTourLogs().get(i).getDifficulty());
             table.addCell(tour.getTourLogs().get(i).getTotalTime());
