@@ -1,15 +1,23 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
-import javafx.fxml.FXML;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import swen2.tp.swen2_tp_hw.FXMLDependencyInjection;
+import swen2.tp.swen2_tp_hw.listener.SelectedTourLogListener;
+import swen2.tp.swen2_tp_hw.model.TourLog;
+import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 
 import java.io.IOException;
 import java.util.Locale;
 
-public class TableMenuViewModel {
+public class TableMenuViewModel implements SelectedTourLogListener {
+
+    private final SelectedTourService selectedTourService;
+
+    public TableMenuViewModel(SelectedTourService selectedTourService) {
+        this.selectedTourService = selectedTourService;
+    }
 
     public void openAddTourWindow(){
         try {
@@ -28,4 +36,8 @@ public class TableMenuViewModel {
 
     }
 
+    @Override
+    public void update(TourLog tourLog) {
+
+    }
 }

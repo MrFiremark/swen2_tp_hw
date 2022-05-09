@@ -1,18 +1,18 @@
 package swen2.tp.swen2_tp_hw.service;
 
-import swen2.tp.swen2_tp_hw.listener.LogListener;
+import swen2.tp.swen2_tp_hw.listener.TourLogListener;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 
 import java.util.ArrayList;
-
+/*
 public class LogService {
 
-    private ArrayList<LogListener> listeners = new ArrayList<>();
+    private ArrayList<TourLogListener> listeners = new ArrayList<>();
 
     ArrayList<TourLog> tourLogs = new ArrayList<>();
 
-    public void addListener(LogListener logListener){
-        listeners.add(logListener);
+    public void addListener(TourLogListener tourLogListener){
+        listeners.add(tourLogListener);
     }
 
     private void notifyListeners(TourLog log) {
@@ -25,4 +25,4 @@ public class LogService {
         tourLogs.add(log);
         notifyListeners(log);
     }
-}
+}*/

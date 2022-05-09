@@ -24,6 +24,7 @@ public class Tour {
         this.from = from;
         this.to = to;
         this.transportType = transportType;
+        this.tourLogs = new ArrayList<>();
     }
 
     public Tour(String id, String name, String description, String from, String to, String transportType, double distance, String time, String imagePath) {
@@ -36,6 +37,7 @@ public class Tour {
         this.distance = distance;
         this.time = time;
         this.imagePath = imagePath;
+        this.tourLogs = new ArrayList<>();
     }
 
     public String getid() {

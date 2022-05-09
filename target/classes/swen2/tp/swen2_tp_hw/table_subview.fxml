@@ -3,15 +3,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.LogTableController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.TourLogTableController">
    <children>
-      <TableView prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <TableView fx:id="tv_logList" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Date" />
-          <TableColumn prefWidth="82.20001220703125" text="Comment" />
-            <TableColumn minWidth="0.0" prefWidth="68.20001220703125" text="Difficulty" />
-            <TableColumn prefWidth="75.0" text="Total Time" />
-            <TableColumn prefWidth="75.0" text="Rating" />
+          <TableColumn fx:id="tbc_date" prefWidth="75.0" text="Date" />
+          <TableColumn fx:id="tbc_comment" prefWidth="82.20001220703125" text="Comment" />
+            <TableColumn fx:id="tbc_difficulty" minWidth="0.0" prefWidth="68.20001220703125" text="Difficulty" />
+            <TableColumn fx:id="tbc_totalTime" prefWidth="75.0" text="Total Time" />
+            <TableColumn fx:id="tbc_rating" prefWidth="75.0" text="Rating" />
         </columns>
       </TableView>
    </children>
