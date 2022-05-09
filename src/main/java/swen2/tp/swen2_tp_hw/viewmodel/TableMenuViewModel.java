@@ -16,7 +16,7 @@ public class TableMenuViewModel {
             Parent root = FXMLDependencyInjection.load("addLog.fxml", Locale.ENGLISH);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("Tour Planner");
+            stage.setTitle("Add Tour");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {

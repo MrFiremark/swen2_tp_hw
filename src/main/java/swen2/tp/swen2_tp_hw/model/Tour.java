@@ -10,7 +10,7 @@ public class Tour {
     private String from;
     private String to;
     private String transportType;
-    private String distance;
+    private double distance;
     private String time;
     private String imagePath;
     private String popularity;
@@ -26,7 +26,7 @@ public class Tour {
         this.transportType = transportType;
     }
 
-    public Tour(String id, String name, String description, String from, String to, String transportType, String distance, String time, String imagePath) {
+    public Tour(String id, String name, String description, String from, String to, String transportType, double distance, String time, String imagePath) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -54,11 +54,11 @@ public class Tour {
         this.name = name;
     }
 
-    public String getDistance() {
+    public double getDistance() {
         return distance;
     }
 
-    public void setDistance(String distance) {
+    public void setDistance(double distance) {
         this.distance = distance;
     }
 

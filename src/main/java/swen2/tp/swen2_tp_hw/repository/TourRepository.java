@@ -27,7 +27,7 @@ public class TourRepository extends Repository{
             statement.setString(2, tour.getName());
             statement.setString(3, tour.getDescription());
             statement.setString(4, tour.getTransportType());
-            statement.setString(5, tour.getDistance());
+            statement.setDouble(5, tour.getDistance());
             statement.setString(6, tour.getTime());
             statement.setString(7, tour.getFrom());
             statement.setString(8, tour.getTo());
@@ -65,7 +65,7 @@ public class TourRepository extends Repository{
                         resultSet.getString("transporttype"),
                         resultSet.getString("distance"),
                         resultSet.getString("traveltime"),
-                        resultSet.getString("startpoint"),
+                        resultSet.getDouble("startpoint"),
                         resultSet.getString("endpoint"),
                         resultSet.getString("imagepath")
                 );

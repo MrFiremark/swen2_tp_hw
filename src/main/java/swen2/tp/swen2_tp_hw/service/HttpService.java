@@ -17,9 +17,24 @@ public class HttpService {
                 .build()
                 ;
 
-        HttpResponse<String> response = null;
+        HttpResponse<String> response;
 
         response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response;
+    }
+
+    public HttpResponse<byte[]> handleHttpRequestImage(String url) throws IOException, InterruptedException, URISyntaxException {
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(new URI(url))
+                .GET()
+                .build()
+                ;
+
+        HttpResponse<byte[]> response;
+
+        response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofByteArray());
 
         return response;
     }

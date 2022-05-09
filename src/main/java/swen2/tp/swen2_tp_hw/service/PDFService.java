@@ -80,7 +80,6 @@ public class PDFService {
             table.addCell(tour.getTourLogs().get(i).getTotalTime());
             table.addCell(tour.getTourLogs().get(i).getRating());
         }
-
         document.add(table);
 
         document.add(new AreaBreak());
