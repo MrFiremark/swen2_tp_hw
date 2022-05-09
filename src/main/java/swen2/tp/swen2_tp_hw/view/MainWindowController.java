@@ -16,42 +16,10 @@ import java.util.Map;
 
 public class MainWindowController {
 
-    TourService tourService = new TourService();
-    TourRepository tourRepository = new TourRepository();
-
     private final MainWindowViewModel mainWindowViewModel;
-
-    @FXML private ListView lv_tourList;
 
     public MainWindowController(MainWindowViewModel mainWindowViewModel) {
         this.mainWindowViewModel = mainWindowViewModel;
     }
-
-    @FXML
-    protected void onAddTourClick() {
-        AddTourApplication addTourApplication = new AddTourApplication();
-        try {
-            addTourApplication.start(new Stage());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    protected void onAddLogClick(){
-        AddLogApplication addLogApplication = new AddLogApplication();
-        try {
-            addLogApplication.start(new Stage());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @FXML
-    protected void refreshTourList(Map tourList){
-        lv_tourList.getItems().clear();
-        lv_tourList.getItems().addAll(tourList);
-    }
-
 
 }

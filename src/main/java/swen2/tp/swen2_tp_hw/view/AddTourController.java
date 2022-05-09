@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.repository.TourRepository;
 import swen2.tp.swen2_tp_hw.service.TourService;
@@ -62,16 +61,14 @@ public class AddTourController {
     @FXML
     protected void onAddButtonClick(){
         addTourViewModel.saveTour();
-        closeWindow();
+
     }
 
     @FXML
     protected void onCancelButtonClick(){
-        closeWindow();
+
+        addTourViewModel.closeWindow();
     }
 
-    private void closeWindow(){
-        Stage stage = (Stage) btn_add.getScene().getWindow();
-        stage.close();
-    }
+
 }
