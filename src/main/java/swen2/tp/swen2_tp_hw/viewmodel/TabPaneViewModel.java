@@ -2,14 +2,15 @@ package swen2.tp.swen2_tp_hw.viewmodel;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import swen2.tp.swen2_tp_hw.listener.SelectedItemListener;
+import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
-import swen2.tp.swen2_tp_hw.service.SelectedItemService;
+import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 
-public class TabPaneViewModel implements SelectedItemListener {
+public class TabPaneViewModel implements SelectedTourListener {
 
-    private final SelectedItemService selectedItemService;
+    private final SelectedTourService selectedTourService;
 
+    private final StringProperty tourName = new SimpleStringProperty();
     private final StringProperty from = new SimpleStringProperty();
     private final StringProperty to = new SimpleStringProperty();
     private final StringProperty transportType = new SimpleStringProperty();
@@ -18,6 +19,10 @@ public class TabPaneViewModel implements SelectedItemListener {
     private final StringProperty popularity = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
+
+    public StringProperty getTourName() {
+        return tourName;
+    }
 
     public StringProperty getFrom(){
         return this.from;
@@ -51,13 +56,14 @@ public class TabPaneViewModel implements SelectedItemListener {
         return this.description;
     }
 
-    public TabPaneViewModel(SelectedItemService selectedItemService) {
-        this.selectedItemService = selectedItemService;
-        selectedItemService.addListener(this);
+    public TabPaneViewModel(SelectedTourService selectedTourService) {
+        this.selectedTourService = selectedTourService;
+        selectedTourService.addListener(this);
     }
 
     @Override
     public void update(Tour tour) {
+        tourName.set(tour.getName());
         from.set("From: " + tour.getFrom());
         to.set("To: " + tour.getTo());
         transportType.set("Transport type: " + tour.getTransportType());

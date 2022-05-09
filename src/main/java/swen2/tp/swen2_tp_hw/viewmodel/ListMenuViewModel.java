@@ -3,11 +3,8 @@ package swen2.tp.swen2_tp_hw.viewmodel;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import swen2.tp.swen2_tp_hw.AddTourApplication;
 import swen2.tp.swen2_tp_hw.FXMLDependencyInjection;
-import swen2.tp.swen2_tp_hw.listener.SelectedItemListener;
-import swen2.tp.swen2_tp_hw.model.Tour;
-import swen2.tp.swen2_tp_hw.service.SelectedItemService;
+import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 
 import java.io.IOException;
@@ -16,11 +13,11 @@ import java.util.Locale;
 public class ListMenuViewModel{
 
     private final TourService tourService;
-    private final SelectedItemService selectedItemService;
+    private final SelectedTourService selectedTourService;
 
-    public ListMenuViewModel(TourService tourService, SelectedItemService selectedItemService) {
+    public ListMenuViewModel(TourService tourService, SelectedTourService selectedTourService) {
         this.tourService = tourService;
-        this.selectedItemService = selectedItemService;
+        this.selectedTourService = selectedTourService;
     }
 
     public void openAddTourWindow(){
@@ -37,9 +34,9 @@ public class ListMenuViewModel{
     }
 
     public void deleteTour(){
-        if(selectedItemService.getSelectedTour() != null){
-            tourService.deleteTour(selectedItemService.getSelectedTour());
-            selectedItemService.setSelectedTour(null);
+        if(selectedTourService.getSelectedTour() != null){
+            tourService.deleteTour(selectedTourService.getSelectedTour());
+            selectedTourService.setSelectedTour(null);
         }
     }
 

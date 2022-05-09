@@ -5,7 +5,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
-import swen2.tp.swen2_tp_hw.service.SelectedItemService;
+import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 
 import java.util.ArrayList;
@@ -18,11 +18,16 @@ public class TourListViewModel implements TourListener {
     private ArrayList<TourListener> listeners = new ArrayList<>();
 
     private final TourService tourService;
-    private final SelectedItemService selectedItemService;
+    private final SelectedTourService selectedTourService;
 
-    public TourListViewModel(TourService tourService, SelectedItemService selectedItemService){
+    public TourListViewModel(TourService tourService, SelectedTourService selectedTourService){
         this.tourService = tourService;
-        this.selectedItemService = selectedItemService;
+        this.selectedTourService = selectedTourService;
+        if(tourService.getToursMap() != null){
+            for (Tour tour: tourService.getToursMap().values()) {
+                observableTours.add(tour);
+            }
+        }
         tourService.addListener(this);
     }
 
@@ -44,15 +49,6 @@ public class TourListViewModel implements TourListener {
         }
     }
 
-    public void setTours(List<Tour> tours) {
-        observableTours.clear();
-        observableTours.addAll(tours);
-    }
-
-    public void addNewTour(Tour tour) {
-        observableTours.add(tour);
-    }
-
     public void deleteTour(Tour tour) {
         observableTours.remove(tour);
     }
@@ -64,7 +60,9 @@ public class TourListViewModel implements TourListener {
     }
 
     public void itemClicked(int index){
-        Tour tour = observableTours.get(index);
-        selectedItemService.setSelectedTour(tour);
+        if(index != -1){
+            Tour tour = observableTours.get(index);
+            selectedTourService.setSelectedTour(tour);
+        }
     }
 }

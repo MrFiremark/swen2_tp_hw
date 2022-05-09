@@ -10,6 +10,8 @@ public class TabPaneController {
     private final TabPaneViewModel tabPaneViewModel;
 
     @FXML
+    private Label lbl_tourName;
+    @FXML
     private Label lbl_from;
     @FXML
     private Label lbl_to;
@@ -32,6 +34,7 @@ public class TabPaneController {
 
     @FXML
     public void initialize(){
+        lbl_tourName.textProperty().bind(tabPaneViewModel.getTourName());
         lbl_from.textProperty().bind(tabPaneViewModel.getFrom());
         lbl_to.textProperty().bind(tabPaneViewModel.getTo());
         lbl_transportType.textProperty().bind(tabPaneViewModel.getTransportType());
