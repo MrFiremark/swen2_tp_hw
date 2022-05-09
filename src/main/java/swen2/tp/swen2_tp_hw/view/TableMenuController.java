@@ -20,6 +20,6 @@ public class TableMenuController {
 
     @FXML
     protected void onAddLogClick() {
-        tableMenuViewModel.openAddTourWindow();
+        tableMenuViewModel.openAddLogWindow();
     }
 }

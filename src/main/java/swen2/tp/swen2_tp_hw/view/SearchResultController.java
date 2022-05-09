@@ -9,4 +9,8 @@ public class SearchResultController {
     public SearchResultController(SearchResultViewModel searchResultViewModel) {
         this.searchResultViewModel = searchResultViewModel;
     }
+
+    public void initialize(String searchString){
+        System.out.println(searchString);
+    }
 }

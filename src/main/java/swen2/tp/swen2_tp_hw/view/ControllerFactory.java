@@ -1,5 +1,6 @@
 package swen2.tp.swen2_tp_hw.view;
 
+
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 import swen2.tp.swen2_tp_hw.viewmodel.*;
@@ -12,21 +13,19 @@ public class ControllerFactory {
     private final ListMenuViewModel listMenuViewModel;
     private final AddTourViewModel addTourViewModel;
     private final AddLogViewModel addLogViewModel;
-    private final TourLogTableViewModel logTableViewModel;
+    private final TourLogTableViewModel tourLogTableViewModel;
     private final TableMenuViewModel tableMenuViewModel;
     private final TabPaneViewModel tabPaneViewModel;
     private final TourService tourService;
-    //private final LogService logService;
     private final SelectedTourService selectedTourService;
 
     public ControllerFactory() {
         tourService = new TourService();
-        //logService = new LogService();
         selectedTourService = new SelectedTourService();
         searchBarViewModel = new SearchBarViewModel();
         tourListViewModel = new TourListViewModel(tourService, selectedTourService);
         listMenuViewModel = new ListMenuViewModel(tourService, selectedTourService);
-        logTableViewModel = new TourLogTableViewModel(selectedTourService);
+        tourLogTableViewModel = new TourLogTableViewModel(selectedTourService);
         tableMenuViewModel = new TableMenuViewModel(selectedTourService);
         tabPaneViewModel = new TabPaneViewModel(selectedTourService);
         addTourViewModel = new AddTourViewModel(tourService);
@@ -36,15 +35,11 @@ public class ControllerFactory {
                 tourListViewModel,
                 searchBarViewModel,
                 tableMenuViewModel,
-                logTableViewModel,
+                tourLogTableViewModel,
                 tabPaneViewModel
         );
 
     }
-
-    //
-    // Factory-Method Pattern
-    //
     public Object create(Class<?> controllerClass) {
         if (controllerClass == MainWindowController.class) {
             return new MainWindowController(mainWindowViewModel);
@@ -61,7 +56,7 @@ public class ControllerFactory {
         } else if (controllerClass == TableMenuController.class){
             return new TableMenuController(tableMenuViewModel);
         } else if (controllerClass == TourLogTableController.class){
-            return new TourLogTableController(logTableViewModel);
+            return new TourLogTableController(tourLogTableViewModel);
         } else if (controllerClass == TabPaneController.class){
             return new TabPaneController(tabPaneViewModel);
         }

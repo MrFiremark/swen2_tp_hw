@@ -11,7 +11,7 @@ import swen2.tp.swen2_tp_hw.viewmodel.AddLogViewModel;
 public class AddLogController {
 
     private final AddLogViewModel addLogViewModel;
-    ObservableList<String> itemList = FXCollections.observableArrayList("Very Easy", "Easy", "Medium", "Hard", "Very Hard");
+    ObservableList<String> itemList = FXCollections.observableArrayList("Very Easy", "Easy", "Normal", "Hard", "Very Hard");
 
 
     @FXML

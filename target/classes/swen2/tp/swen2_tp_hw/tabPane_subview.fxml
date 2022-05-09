@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.TabPaneController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.TabPaneController">
     <Label layoutY="6.0" prefHeight="27.0" prefWidth="110.0" text="Tourname:" underline="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
         <padding>
             <Insets bottom="10.0" left="10.0" />
@@ -49,7 +52,7 @@
                         <children>
                             <ScrollPane layoutX="220.0" layoutY="54.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <content>
-                                    <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
+                                    <ImageView fx:id="iv_map" fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" />
                                 </content>
                             </ScrollPane>
                         </children></AnchorPane>

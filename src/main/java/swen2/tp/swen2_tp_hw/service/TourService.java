@@ -31,10 +31,9 @@ public class TourService {
 
     public void addTour(Tour tour){
         // TODO validation
-        
-        Tour tmp = null;
+
         try {
-            tmp = routeService.getRouteInformationR(tour);
+            tour = routeService.getRouteInformation(tour);
         } catch (URISyntaxException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -42,7 +41,7 @@ public class TourService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        toursMap.put(tour.getName(), tmp);
+        toursMap.put(tour.getid(), tour);
         // TODO Path
         //tourRepository.addTour(tour);
         notifyListeners(tour);
@@ -50,7 +49,7 @@ public class TourService {
 
     public void deleteTour(Tour tour){
         //TODO delete
-        toursMap.remove(tour);
+        toursMap.remove(tour.getName());
         tourRepository.deleteTour(tour.getid());
         notifyListeners(tour);
     }

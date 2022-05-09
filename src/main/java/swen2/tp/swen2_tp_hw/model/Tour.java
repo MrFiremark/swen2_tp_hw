@@ -1,6 +1,10 @@
 package swen2.tp.swen2_tp_hw.model;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Tour {
 
@@ -132,7 +136,42 @@ public class Tour {
         return childFriendliness;
     }
 
-    public void setChildFriendliness(String childFriendliness) {
-        this.childFriendliness = childFriendliness;
+    public void setChildFriendliness() {
+
+        int averageTime = 0;
+        int averageDifficulty = 0;
+
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+
+        for (TourLog tourlog : tourLogs
+        ) {
+            Date date = null;
+            try {
+                date = simpleDateFormat.parse(tourlog.getTotalTime());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            calendar.setTime(date);
+            int min = calendar.get(Calendar.HOUR)*60 + calendar.get(Calendar.MINUTE);
+            averageTime += min+60 + calendar.get(Calendar.SECOND);
+
+            switch (tourlog.getDifficulty()) {
+                case "Very Easy" -> averageDifficulty += 1;
+                case "Easy" -> averageDifficulty += 2;
+                case "Normal" -> averageDifficulty += 3;
+                case "Hard" -> averageDifficulty += 4;
+                case "Very Hard" -> averageDifficulty += 5;
+            }
+        }
+
+        averageTime = averageTime/tourLogs.size();
+        averageDifficulty = averageDifficulty/tourLogs.size();
+
+        if(averageTime < 3600 && averageDifficulty <= 3 && distance <= 5){
+            this.childFriendliness = "Child Friendly";
+        }else {
+            this.childFriendliness = "NOT Child Friendly";
+        }
     }
 }

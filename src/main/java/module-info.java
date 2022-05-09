@@ -3,7 +3,6 @@ module swen2.tp.swen2_tp_hw {
     requires javafx.fxml;
     requires java.sql;
     requires java.net.http;
-    requires com.fasterxml.jackson.core;
     requires com.fasterxml.jackson.databind;
     requires io;
     requires kernel;
@@ -15,7 +14,7 @@ module swen2.tp.swen2_tp_hw {
     opens swen2.tp.swen2_tp_hw to javafx.fxml;
     exports swen2.tp.swen2_tp_hw;
     exports swen2.tp.swen2_tp_hw.view;
-    exports swen2.tp.swen2_tp_hw.model;
+    exports swen2.tp.swen2_tp_hw.dto;
     opens swen2.tp.swen2_tp_hw.view to javafx.fxml;
 
 }

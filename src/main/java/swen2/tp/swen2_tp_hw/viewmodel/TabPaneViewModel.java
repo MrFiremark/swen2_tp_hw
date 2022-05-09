@@ -6,6 +6,7 @@ import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 
+
 public class TabPaneViewModel implements SelectedTourListener {
 
     private final SelectedTourService selectedTourService;
@@ -19,9 +20,26 @@ public class TabPaneViewModel implements SelectedTourListener {
     private final StringProperty popularity = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
+    private final StringProperty imagePath = new SimpleStringProperty();
 
     public StringProperty getTourName() {
         return tourName;
+    }
+
+    public void setTourName(String tourName) {
+        this.tourName.set(tourName);
+    }
+
+    public String getImagePath() {
+        return imagePath.get();
+    }
+
+    public StringProperty imagePathProperty() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath.set(imagePath);
     }
 
     public StringProperty getFrom(){
@@ -56,6 +74,7 @@ public class TabPaneViewModel implements SelectedTourListener {
         return this.description;
     }
 
+
     public TabPaneViewModel(SelectedTourService selectedTourService) {
         this.selectedTourService = selectedTourService;
         selectedTourService.addListener(this);
@@ -63,7 +82,6 @@ public class TabPaneViewModel implements SelectedTourListener {
 
     @Override
     public void update(Tour tour) {
-        tourName.set(tour.getName());
         from.set("From: " + tour.getFrom());
         to.set("To: " + tour.getTo());
         transportType.set("Transport type: " + tour.getTransportType());
@@ -71,7 +89,8 @@ public class TabPaneViewModel implements SelectedTourListener {
         distance.set("Distance in km: " + tour.getDistance());
         time.set("Time: " + tour.getTime());
         // popularity.set("Popularity: " + tour.getPopularity());
-        // childFriendliness.set("Child friendliness: " + tour.getChildFriendliness());
+        childFriendliness.set("Child friendliness: " + tour.getChildFriendliness());
         description.set("Description: " + tour.getDescription());
+        imagePath.set(tour.getImagePath());
     }
 }

@@ -19,7 +19,7 @@ public class TableMenuViewModel implements SelectedTourLogListener {
         this.selectedTourService = selectedTourService;
     }
 
-    public void openAddTourWindow(){
+    public void openAddLogWindow(){
         try {
             Parent root = FXMLDependencyInjection.load("addLog.fxml", Locale.ENGLISH);
             Scene scene = new Scene(root);
