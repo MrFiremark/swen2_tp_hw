@@ -24,11 +24,15 @@ import javax.imageio.ImageIO;
 
 public class RouteService {
 
+    private ConfigService configService= new ConfigService();
+
     public Tour getRouteInformation(Tour tour) throws URISyntaxException, IOException, InterruptedException {
 
         HttpService httpService = new HttpService();
 
-        String url = "http://www.mapquestapi.com/directions/v2/route?key=g6R1j3Y0bqSVIOGYDGzob93YQcS4d5EJ&from="+tour.getFrom()+"&to="+tour.getTo();
+        String apikey = configService.load("mapapi.key");
+
+        String url = "http://www.mapquestapi.com/directions/v2/route?key="+apikey+"&from="+tour.getFrom()+"&to="+tour.getTo();
 
         ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
@@ -37,25 +41,25 @@ public class RouteService {
         tour.setDistance(routeResponse.route.getDistance());
         tour.setTime(routeResponse.route.getFormattedTime());
 
-        url = "https://www.mapquestapi.com/staticmap/v5/map?key=g6R1j3Y0bqSVIOGYDGzob93YQcS4d5EJ&" +
+        url = "https://www.mapquestapi.com/staticmap/v5/map?key="+apikey+"&" +
                 "session=" + routeResponse.route.sessionId + "&" +
                 "size=640,480&" +
                 "boundingBox=" + routeResponse.route.boundingBox.lr.lat + "," + routeResponse.route.boundingBox.lr.lng + "," + routeResponse.route.boundingBox.ul.lat + "," + routeResponse.route.boundingBox.ul.lng;
 
         byte[] image = httpService.handleHttpRequestImage(url).body();
-        File outputfile = new File("Maps/" + tour.getid() + ".png");
+        File outputfile = new File(configService.load("directory.maps") + tour.getid() + ".png");
         FileOutputStream fileOutputStream = new FileOutputStream(outputfile);
 
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
 
-
                 //ImageIO.write(ImageIO.read(new ByteArrayInputStream(image)), "PNG", outputfile);
 
                 try {
                     fileOutputStream.write(image);
                     fileOutputStream.flush();
+                    fileOutputStream.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

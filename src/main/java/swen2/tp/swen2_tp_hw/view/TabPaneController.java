@@ -1,10 +1,14 @@
 package swen2.tp.swen2_tp_hw.view;
 
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.viewmodel.TabPaneViewModel;
 
 import javax.imageio.ImageIO;
@@ -38,6 +42,8 @@ public class TabPaneController {
     private Label lbl_description;
     @FXML
     private ImageView iv_map;
+    @FXML
+    private PieChart pc_rating;
 
     public TabPaneController(TabPaneViewModel tabPaneViewModel) {
         this.tabPaneViewModel = tabPaneViewModel;
@@ -55,15 +61,27 @@ public class TabPaneController {
         lbl_childFriendliness.textProperty().bind(tabPaneViewModel.getChildFriendliness());
         lbl_description.textProperty().bind(tabPaneViewModel.getDescription());
         changeMap(tabPaneViewModel.getImagePath());
+        loadChart();
     }
 
     public void changeMap(String path){
         if(path != null){
             System.out.println(path);
-            System.out.println(path);
             Image image = new Image(String.valueOf(new File(path)));
             iv_map.setImage(image);
         }
+    }
 
+    public void loadChart(){
+
+        ObservableList<PieChart.Data> pieChartData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Very Easy", 13),
+                        new PieChart.Data("Easy", 25),
+                        new PieChart.Data("Medium", 10),
+                        new PieChart.Data("Hard", 22),
+                        new PieChart.Data("Very Hard", 30));
+        pc_rating.setData(pieChartData);
+        pc_rating.setTitle("Tour Difficulty");
     }
 }

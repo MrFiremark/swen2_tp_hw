@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:postgresql://localhost:5432/swen2_tp</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="tourplanner@localhost" uuid="301e5f98-19f6-4828-b608-319e418b1808">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5433/tourplanner</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>

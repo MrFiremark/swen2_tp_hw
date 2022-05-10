@@ -1,6 +1,7 @@
 package swen2.tp.swen2_tp_hw.view;
 
 
+import swen2.tp.swen2_tp_hw.service.PDFService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 import swen2.tp.swen2_tp_hw.viewmodel.*;
@@ -18,9 +19,11 @@ public class ControllerFactory {
     private final TabPaneViewModel tabPaneViewModel;
     private final TourService tourService;
     private final SelectedTourService selectedTourService;
+    private final PDFService pdfService;
 
     public ControllerFactory() {
         tourService = new TourService();
+        pdfService = new PDFService();
         selectedTourService = new SelectedTourService();
         searchBarViewModel = new SearchBarViewModel();
         tourListViewModel = new TourListViewModel(tourService, selectedTourService);
@@ -36,7 +39,9 @@ public class ControllerFactory {
                 searchBarViewModel,
                 tableMenuViewModel,
                 tourLogTableViewModel,
-                tabPaneViewModel
+                tabPaneViewModel,
+                pdfService,
+                selectedTourService
         );
 
     }

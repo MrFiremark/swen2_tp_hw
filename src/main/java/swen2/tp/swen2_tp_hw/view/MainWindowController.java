@@ -22,4 +22,8 @@ public class MainWindowController {
         this.mainWindowViewModel = mainWindowViewModel;
     }
 
+    @FXML
+    public void onMenuClickTourReport(){
+        mainWindowViewModel.generateTourPDF();
+    }
 }

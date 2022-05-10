@@ -18,15 +18,18 @@ import java.io.IOException;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Map;
+import java.util.Timer;
 
 public class PDFService {
 
     private String target = "_report.pdf";
+    private ConfigService configService = new ConfigService();
 
     public void generateTourPDF(Tour tour) throws IOException {
 
-        PdfWriter writer = new PdfWriter(tour.getName() + target);
+        PdfWriter writer = new PdfWriter(configService.load("directory.pdf") + tour.getName() + target);
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf);
 

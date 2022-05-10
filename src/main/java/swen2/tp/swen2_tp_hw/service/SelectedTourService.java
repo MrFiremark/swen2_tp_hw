@@ -25,8 +25,6 @@ public class SelectedTourService {
         }
     }
 
-
-
     public Tour getSelectedTour() {
         return selectedTour;
     }

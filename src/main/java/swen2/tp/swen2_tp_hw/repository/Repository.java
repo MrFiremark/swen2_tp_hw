@@ -1,5 +1,7 @@
 package swen2.tp.swen2_tp_hw.repository;
 
+import swen2.tp.swen2_tp_hw.service.ConfigService;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,12 +15,14 @@ public abstract class Repository {
     String user;
     String pw;
 
+    private ConfigService configService = new ConfigService();
+
     protected Connection getConnection() throws SQLException, IOException {
-        readConfig();
+        //readConfig();
         Connection connection = DriverManager.getConnection(
-                url,
-                user,
-                pw
+                configService.load("db.url"),
+                configService.load("db.user"),
+                configService.load("db.pw")
         );
 
         return connection;
