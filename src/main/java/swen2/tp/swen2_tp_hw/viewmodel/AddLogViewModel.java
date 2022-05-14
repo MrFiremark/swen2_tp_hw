@@ -17,7 +17,7 @@ public class AddLogViewModel {
 
 
     public void saveTourLog(){
-        //TODO get properties
+        //TODO get properties and validation
         TourLog tourLog = new TourLog("tourID1", "logId2", "date3", "time4", "comment5", "totalTime6","diff7", "rating8");
         selectedTourService.addTourLog(tourLog);
     }

@@ -13,8 +13,6 @@ public class TableMenuController {
         this.tableMenuViewModel = tableMenuViewModel;
     }
 
-
-
     @FXML
     protected void onAddLogClick() {
         tableMenuViewModel.openAddLogWindow();
