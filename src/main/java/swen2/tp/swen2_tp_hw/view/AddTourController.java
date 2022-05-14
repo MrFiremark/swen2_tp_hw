@@ -38,13 +38,18 @@ public class AddTourController {
     private ChoiceBox cb_transportType;
     @FXML
     private Button btn_add;
+    @FXML
+    private Button btn_edit;
 
     public AddTourController(AddTourViewModel addTourViewModel){
         this.addTourViewModel = addTourViewModel;
     }
 
     @FXML
-    private void initialize(){
+    public void initialize(String method){
+        // TODO proper Button handling
+        btn_add.disableProperty().bind(addTourViewModel.getAddButton());
+        btn_edit.disableProperty().bind(addTourViewModel.getEditButton());
         tf_tourname.textProperty().bindBidirectional(addTourViewModel.getTourName());
         ta_description.textProperty().bindBidirectional(addTourViewModel.getDescription());
         tf_to.textProperty().bindBidirectional(addTourViewModel.getTo());

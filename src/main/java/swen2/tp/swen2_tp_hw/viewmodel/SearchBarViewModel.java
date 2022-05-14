@@ -16,7 +16,6 @@ public class SearchBarViewModel {
         try {
 
             FXMLLoader loader = FXMLDependencyInjection.getLoader("searchResult.fxml", Locale.ENGLISH);
-
             Parent root = loader.load();//FXMLDependencyInjection.load("searchResult.fxml", Locale.ENGLISH);
             SearchResultController searchResultController = loader.<SearchResultController>getController();
             searchResultController.initialize(search);

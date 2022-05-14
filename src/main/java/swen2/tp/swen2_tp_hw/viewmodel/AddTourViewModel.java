@@ -1,9 +1,6 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.service.TourService;
 
@@ -16,6 +13,8 @@ public class AddTourViewModel {
     private final StringProperty from = new SimpleStringProperty();
     private final StringProperty to = new SimpleStringProperty();
     private final ObjectProperty<String> transportType = new SimpleObjectProperty<>();
+    private final BooleanProperty addButton = new SimpleBooleanProperty();
+    private final BooleanProperty editButton = new SimpleBooleanProperty();
 
     private final TourService tourService;
 
@@ -37,6 +36,12 @@ public class AddTourViewModel {
     }
     public ObjectProperty<String> getTransportType() {
         return transportType;
+    }
+    public BooleanProperty getAddButton(){
+        return addButton;
+    }
+    public BooleanProperty getEditButton(){
+        return editButton;
     }
 
     public void saveTour(){
