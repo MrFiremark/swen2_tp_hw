@@ -37,6 +37,8 @@ public class SearchResultController {
 
     public void initialize(String searchString){
 
+        this.searchResults.addAll(searchResultViewModel.getSearchResults(searchString));
+
         type.setCellValueFactory(new PropertyValueFactory<>("Type"));
         name.setCellValueFactory(new PropertyValueFactory<>("Name"));
         description.setCellValueFactory(new PropertyValueFactory<>("Description"));
@@ -45,11 +47,9 @@ public class SearchResultController {
         comment.setCellValueFactory(new PropertyValueFactory<>("Comment"));
         difficulty.setCellValueFactory(new PropertyValueFactory<>("Difficulty"));
 
-        this.searchResults.addAll(searchResultViewModel.getSearchResults(searchString));
         System.out.println(searchString);
 
         tv_searchTable.setItems(searchResults);
-
     }
 
 }

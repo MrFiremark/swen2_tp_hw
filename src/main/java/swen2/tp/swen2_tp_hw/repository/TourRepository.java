@@ -42,14 +42,16 @@ public class TourRepository extends Repository{
 
     }
 
-    public Map getTours(){
+    public Map<String, Tour> getTours(){
 
         Map<String, Tour> map = new HashMap<>();
 
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "SELECT id, name, description, transporttype, distance, traveltime, startpoint, endpoint, imagepath FROM tour_data"
+                        "SELECT " +
+                                "id, name, description, transporttype, distance, traveltime, startpoint, endpoint, imagepath " +
+                                "FROM tour_data "
                 );
         ) {
 
@@ -62,14 +64,14 @@ public class TourRepository extends Repository{
                         resultSet.getString("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"),
-                        resultSet.getString("transporttype"),
-                        resultSet.getString("distance"),
-                        resultSet.getString("traveltime"),
-                        resultSet.getDouble("startpoint"),
+                        resultSet.getString("startpoint"),
                         resultSet.getString("endpoint"),
+                        resultSet.getString("transporttype"),
+                        resultSet.getDouble("distance"),
+                        resultSet.getString("traveltime"),
                         resultSet.getString("imagepath")
                 );
-                 map.put(tour.getName(), tour);
+                 map.put(tour.getid(), tour);
             }
 
             return map;

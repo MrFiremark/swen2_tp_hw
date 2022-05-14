@@ -43,7 +43,7 @@ public class TourService {
         }
         toursMap.put(tour.getid(), tour);
         // TODO Path
-        //tourRepository.addTour(tour);
+        tourRepository.addTour(tour);
         notifyListeners(tour);
     }
 
@@ -52,6 +52,10 @@ public class TourService {
         toursMap.remove(tour.getName());
         tourRepository.deleteTour(tour.getid());
         notifyListeners(tour);
+    }
+
+    public void loadTours(){
+        toursMap = tourRepository.getTours();
     }
 
     public Map<String, Tour> getToursMap() {

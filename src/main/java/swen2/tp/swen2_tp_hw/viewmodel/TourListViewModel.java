@@ -22,10 +22,9 @@ public class TourListViewModel implements TourListener {
     public TourListViewModel(TourService tourService, SelectedTourService selectedTourService){
         this.tourService = tourService;
         this.selectedTourService = selectedTourService;
+        tourService.loadTours();
         if(tourService.getToursMap() != null){
-            for (Tour tour: tourService.getToursMap().values()) {
-                observableTours.add(tour);
-            }
+            observableTours.addAll(tourService.getToursMap().values());
         }
         tourService.addListener(this);
     }
