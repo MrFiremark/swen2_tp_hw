@@ -1,34 +1,39 @@
 package swen2.tp.swen2_tp_hw.repository;
 
-import swen2.tp.swen2_tp_hw.model.Tour;
+import swen2.tp.swen2_tp_hw.model.SearchResult;
+import swen2.tp.swen2_tp_hw.service.TourService;
 
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SearchRepository extends Repository{
 
-    public ArrayList<String> getSearchResult(String searchString) throws SQLException, IOException {
+    private ArrayList<SearchResult> searchResult;
+
+    public ArrayList<SearchResult> getSearchResult(String searchString) throws SQLException, IOException {
 
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement1 = connection.prepareStatement(
                         "SELECT " +
-                            "name, description, startpooint, endpoint" +
+                            "id, name, description, startpoint, endpoint" +
                             "   FROM tour_data" +
                             "           WHERE" +
                             "               name like '%'?'%' OR" +
                             "               description like '%'?'%' OR" +
-                            "               startpooint like '%'?'%' OR" +
+                            "               startpoint like '%'?'%' OR" +
                                 "           endpoint like '%'?'%';"
                 );
 
                 PreparedStatement statement2 = connection.prepareStatement(
                         "SELECT " +
-                                "comment, difficulty" +
+                                "tourid, name, description, startpoint, endpoint ,logid, comment, difficulty" +
                                 "   FROM tour_data" +
-                                "   JOIN log_data" +
-                                "       ON tour_data.id=lod_data.tourid" +
+                                "   JOIN tourlog_data" +
+                                "       ON tour_data.id=tourlog_data.tourid" +
                                 "           WHERE" +
                                 "               comment like '%'?'%' OR" +
                                 "               difficulty like '%'?'%';"
@@ -43,26 +48,40 @@ public class SearchRepository extends Repository{
 
             ResultSet resultSet1 = statement1.executeQuery();
 
-            ArrayList<String> resultList = new ArrayList<>();
-            StringBuilder stringBuilder = new StringBuilder();
-
             if(resultSet1.next()){
                 while (resultSet1.next()) {
-                    stringBuilder.append("Tourname: " + resultSet1.getString("name"));
-                    //TODO BUILD FINISHED STRING
-                    resultList.add(stringBuilder.toString());
+                    searchResult.add(
+                            new SearchResult(
+                                "Tour",
+                                resultSet1.getString("id"),
+                                resultSet1.getString("name"),
+                                resultSet1.getString("description"),
+                                resultSet1.getString("startpoint"),
+                                resultSet1.getString("endpoint")
+                            )
+                    );
                 }
             }else {
                 ResultSet resultSet2 = statement2.executeQuery();
 
                 while (resultSet2.next()) {
-                    stringBuilder.append("Tourname: " + resultSet1.getString("name"));
-                    //TODO BUILD FINISHED STRING
-                    resultList.add(stringBuilder.toString());
+                    searchResult.add(
+                            new SearchResult(
+                                "Tourlog",
+                                resultSet2.getString("id"),
+                                resultSet2.getString("logid"),
+                                resultSet2.getString("name"),
+                                resultSet2.getString("description"),
+                                resultSet2.getString("startpoint"),
+                                resultSet2.getString("endpoint"),
+                                resultSet2.getString("comment"),
+                                resultSet2.getString("difficulty")
+                            )
+                    );
                 }
             }
 
-            return resultList;
+            return searchResult;
         }
     }
 }

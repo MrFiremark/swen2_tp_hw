@@ -10,7 +10,6 @@ public class TourListController implements TourListener {
 
     private final TourListViewModel tourListViewModel;
 
-
     public TourListController(TourListViewModel tourListViewModel) {
         this.tourListViewModel = tourListViewModel;
     }
@@ -40,7 +39,5 @@ public class TourListController implements TourListener {
         int index = tourList_listView.getSelectionModel().getSelectedIndex();
         tourListViewModel.itemClicked(index);
     }
-
-
 
 }
