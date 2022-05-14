@@ -1,6 +1,6 @@
 package swen2.tp.swen2_tp_hw.service;
 
-import swen2.tp.swen2_tp_hw.listener.Listener;
+import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.repository.TourRepository;
 
@@ -15,16 +15,16 @@ public class TourService {
     private final TourRepository tourRepository = new TourRepository();
     private final RouteService routeService = new RouteService();
 
-    private ArrayList<Listener> listeners = new ArrayList<>();
+    private ArrayList<TourListener> tourListeners = new ArrayList<>();
 
     private Map<String, Tour> toursMap = new HashMap<>();
 
-    public void addListener(Listener tourListener){
-        listeners.add(tourListener);
+    public void addListener(TourListener tourListener){
+        tourListeners.add(tourListener);
     }
 
     private void notifyListeners(Tour tour) {
-        for ( var listener : listeners ) {
+        for ( var listener : tourListeners) {
             listener.update(tour);
         }
     }
