@@ -46,7 +46,8 @@ public class ControllerFactory {
                 tourLogTableViewModel,
                 tabPaneViewModel,
                 pdfService,
-                selectedTourService
+                selectedTourService,
+                tourService
         );
 
     }

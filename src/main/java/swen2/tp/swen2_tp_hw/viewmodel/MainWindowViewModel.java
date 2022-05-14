@@ -4,6 +4,7 @@ import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.service.PDFService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
+import swen2.tp.swen2_tp_hw.service.TourService;
 
 import java.io.IOException;
 
@@ -17,6 +18,7 @@ public class MainWindowViewModel implements SelectedTourListener {
     private TabPaneViewModel tabPaneViewModel;
     private PDFService pdfService;
     private SelectedTourService selectedTourService;
+    private TourService tourService;
 
     public MainWindowViewModel(
             ListMenuViewModel listMenuViewModel,
@@ -26,7 +28,8 @@ public class MainWindowViewModel implements SelectedTourListener {
             TourLogTableViewModel logTableViewModel,
             TabPaneViewModel tabPaneViewModel,
             PDFService pdfService,
-            SelectedTourService selectedTourService
+            SelectedTourService selectedTourService,
+            TourService tourService
     ) {
         this.listMenuViewModel = listMenuViewModel;
         this.tourListViewModel = tourListViewModel;
@@ -35,13 +38,22 @@ public class MainWindowViewModel implements SelectedTourListener {
         this.logTableViewModel = logTableViewModel;
         this.tabPaneViewModel = tabPaneViewModel;
         this.pdfService = pdfService;
-        this.selectedTourService =selectedTourService;
+        this.selectedTourService = selectedTourService;
+        this.tourService = tourService;
         selectedTourService.addListener(this);
     }
 
     public void generateTourPDF(){
         try {
             pdfService.generateTourPDF(selectedTourService.getSelectedTour());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void generateSummaryPDF(){
+        try {
+            pdfService.generateSummaryPDF(tourService.getToursMap());
         } catch (IOException e) {
             e.printStackTrace();
         }

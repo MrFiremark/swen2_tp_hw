@@ -1,10 +1,13 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
+import javafx.scene.image.Image;
 import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
+
+import java.awt.*;
+import java.io.File;
 
 
 public class TabPaneViewModel implements SelectedTourListener {
@@ -20,60 +23,38 @@ public class TabPaneViewModel implements SelectedTourListener {
     private final StringProperty popularity = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
-    private final StringProperty imagePath = new SimpleStringProperty();
+    private final Property<Image> imagePath = new SimpleObjectProperty<>();
 
     public StringProperty getTourName() {
         return tourName;
     }
-
-    public void setTourName(String tourName) {
-        this.tourName.set(tourName);
+    public Property<Image> getImagePath() {
+        return this.imagePath;
     }
-
-    public String getImagePath() {
-        return imagePath.get();
-    }
-
-    public StringProperty imagePathProperty() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath.set(imagePath);
-    }
-
     public StringProperty getFrom(){
         return this.from;
     }
-
     public StringProperty getTo(){
         return this.to;
     }
-
     public StringProperty getTransportType(){
         return this.transportType;
     }
-
     public StringProperty getDistance(){
         return this.distance;
     }
-
     public StringProperty getTime(){
         return this.time;
     }
-
     public StringProperty getPopularity(){
         return this.popularity;
     }
-
     public StringProperty getChildFriendliness(){
         return this.childFriendliness;
     }
-
     public StringProperty getDescription(){
         return this.description;
     }
-
 
     public TabPaneViewModel(SelectedTourService selectedTourService) {
         this.selectedTourService = selectedTourService;
@@ -85,12 +66,13 @@ public class TabPaneViewModel implements SelectedTourListener {
         from.set("From: " + tour.getFrom());
         to.set("To: " + tour.getTo());
         transportType.set("Transport type: " + tour.getTransportType());
-        // TODO values from HTTP service
         distance.set("Distance in km: " + tour.getDistance());
         time.set("Time: " + tour.getTime());
         // popularity.set("Popularity: " + tour.getPopularity());
         childFriendliness.set("Child friendliness: " + tour.getChildFriendliness());
         description.set("Description: " + tour.getDescription());
-        imagePath.set(tour.getImagePath());
+        //https://stackoverflow.com/questions/7830951/how-can-i-load-computer-directory-images-in-javafx
+        Image image = new Image(new File(tour.getImagePath()).toURI().toString());
+        imagePath.setValue(image);
     }
 }

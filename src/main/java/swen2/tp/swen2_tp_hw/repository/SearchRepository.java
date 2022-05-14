@@ -11,36 +11,37 @@ import java.util.Map;
 
 public class SearchRepository extends Repository{
 
-    private ArrayList<SearchResult> searchResult;
-
     public ArrayList<SearchResult> getSearchResult(String searchString) throws SQLException, IOException {
 
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement1 = connection.prepareStatement(
                         "SELECT " +
-                            "id, name, description, startpoint, endpoint" +
-                            "   FROM tour_data" +
-                            "           WHERE" +
-                            "               name like '%'?'%' OR" +
-                            "               description like '%'?'%' OR" +
-                            "               startpoint like '%'?'%' OR" +
-                                "           endpoint like '%'?'%';"
+                            "id, name, description, startpoint, endpoint " +
+                            "   FROM tour_data " +
+                            "           WHERE " +
+                            "               name like ? OR " +
+                            "               description like ? OR " +
+                            "               startpoint like ? OR " +
+                                "           endpoint like ? ;"
                 );
 
                 PreparedStatement statement2 = connection.prepareStatement(
                         "SELECT " +
-                                "tourid, name, description, startpoint, endpoint ,logid, comment, difficulty" +
-                                "   FROM tour_data" +
-                                "   JOIN tourlog_data" +
-                                "       ON tour_data.id=tourlog_data.tourid" +
-                                "           WHERE" +
-                                "               comment like '%'?'%' OR" +
-                                "               difficulty like '%'?'%';"
+                                "tourid, name, description, startpoint, endpoint ,logid, comment, difficulty " +
+                                "   FROM tour_data " +
+                                "   JOIN tourlog_data " +
+                                "       ON tour_data.id=tourlog_data.tourid " +
+                                "           WHERE " +
+                                "               comment like ? OR " +
+                                "               difficulty like ? ;"
 
                 );
         ) {
 
+            ArrayList<SearchResult> searchResult = new ArrayList<>();
+
+            searchString = "%"+searchString+"%";
             statement1.setString(1, searchString);
             statement1.setString(2, searchString);
             statement1.setString(3, searchString);
@@ -53,11 +54,14 @@ public class SearchRepository extends Repository{
                     searchResult.add(
                             new SearchResult(
                                 "Tour",
-                                resultSet1.getString("id"),
-                                resultSet1.getString("name"),
-                                resultSet1.getString("description"),
-                                resultSet1.getString("startpoint"),
-                                resultSet1.getString("endpoint")
+                                    resultSet1.getString("id"),
+                                    "",
+                                    resultSet1.getString("name"),
+                                    resultSet1.getString("description"),
+                                    resultSet1.getString("startpoint"),
+                                    resultSet1.getString("endpoint"),
+                                    "",
+                                    ""
                             )
                     );
                 }

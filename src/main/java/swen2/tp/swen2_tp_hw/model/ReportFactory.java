@@ -25,11 +25,11 @@ public class ReportFactory {
         int sum = 0;
 
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
+        Date date = new Date();
 
         for (TourLog tourlog : tourLogs
              ) {
-            Date date = null;
             try {
                 date = simpleDateFormat.parse(tourlog.getTotalTime());
             } catch (ParseException e) {
@@ -37,13 +37,13 @@ public class ReportFactory {
             }
             calendar.setTime(date);
             int min = calendar.get(Calendar.HOUR)*60 + calendar.get(Calendar.MINUTE);
-            sum += min+60 + calendar.get(Calendar.SECOND);
+            sum += min+60;
         }
 
         int average = sum/tourLogs.size();
-        Date date = new Date(average* 1000L);
+        Date date2 = new Date(average* 1000L);
 
-        return  simpleDateFormat.format(date);
+        return  simpleDateFormat.format(date2);
     }
 
     public String getAverageRating(ArrayList<TourLog> tourLogs){

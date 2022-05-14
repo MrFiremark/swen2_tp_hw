@@ -26,4 +26,9 @@ public class MainWindowController {
     public void onMenuClickTourReport(){
         mainWindowViewModel.generateTourPDF();
     }
+
+    @FXML
+    public void onMenuClickSummaryReport(){
+        mainWindowViewModel.generateSummaryPDF();
+    }
 }

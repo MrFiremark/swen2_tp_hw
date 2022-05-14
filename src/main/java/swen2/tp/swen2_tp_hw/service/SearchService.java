@@ -12,13 +12,16 @@ public class SearchService {
     private SearchRepository searchRepository = new SearchRepository();
 
     public ArrayList<SearchResult> getSearchResult(String searchString){
+
+        ArrayList<SearchResult> searchResults = new ArrayList<>();
+
         try {
-            return searchRepository.getSearchResult(searchString);
+            searchResults = searchRepository.getSearchResult(searchString);
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return searchResults;
     }
 }

@@ -5,47 +5,34 @@ import javafx.beans.property.StringProperty;
 
 public class SearchResult {
 
-    private StringProperty type;
+    private String type;
     private String tourid;
     private String tourlogid;
-    private StringProperty name;
-    private StringProperty description;
-    private StringProperty from;
-    private StringProperty to;
-    private StringProperty comment;
-    private StringProperty difficulty;
-
-    public SearchResult(String type, String tourid, String name, String description, String from, String to) {
-        this.type = new SimpleStringProperty(type);
-        this.tourid = tourid;
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty(description);
-        this.from = new SimpleStringProperty(from);
-        this.to = new SimpleStringProperty(to);
-    }
+    private String name;
+    private String description;
+    private String from;
+    private String to;
+    private String comment;
+    private String difficulty;
 
     public SearchResult(String type, String tourid, String tourlogid, String name, String description, String from, String to, String comment, String difficulty) {
-        this.type = new SimpleStringProperty(type);
+        this.type = type;
         this.tourid = tourid;
         this.tourlogid = tourlogid;
-        this.name = new SimpleStringProperty(name);
-        this.description = new SimpleStringProperty(description);
-        this.from = new SimpleStringProperty(from);
-        this.to = new SimpleStringProperty(to);
-        this.comment = new SimpleStringProperty(comment);
-        this.difficulty = new SimpleStringProperty(difficulty);
+        this.name = name;
+        this.description = description;
+        this.from = from;
+        this.to = to;
+        this.comment = comment;
+        this.difficulty = difficulty;
     }
 
     public String getType() {
-        return type.get();
-    }
-
-    public StringProperty typeProperty() {
         return type;
     }
 
     public void setType(String type) {
-        this.type.set(type);
+        this.type = type;
     }
 
     public String getTourid() {
@@ -65,74 +52,50 @@ public class SearchResult {
     }
 
     public String getName() {
-        return name.get();
-    }
-
-    public StringProperty nameProperty() {
         return name;
     }
 
     public void setName(String name) {
-        this.name.set(name);
+        this.name = name;
     }
 
     public String getDescription() {
-        return description.get();
-    }
-
-    public StringProperty descriptionProperty() {
         return description;
     }
 
     public void setDescription(String description) {
-        this.description.set(description);
+        this.description = description;
     }
 
     public String getFrom() {
-        return from.get();
-    }
-
-    public StringProperty fromProperty() {
         return from;
     }
 
     public void setFrom(String from) {
-        this.from.set(from);
+        this.from = from;
     }
 
     public String getTo() {
-        return to.get();
-    }
-
-    public StringProperty toProperty() {
         return to;
     }
 
     public void setTo(String to) {
-        this.to.set(to);
+        this.to = to;
     }
 
     public String getComment() {
-        return comment.get();
-    }
-
-    public StringProperty commentProperty() {
         return comment;
     }
 
     public void setComment(String comment) {
-        this.comment.set(comment);
+        this.comment = comment;
     }
 
     public String getDifficulty() {
-        return difficulty.get();
-    }
-
-    public StringProperty difficultyProperty() {
         return difficulty;
     }
 
     public void setDifficulty(String difficulty) {
-        this.difficulty.set(difficulty);
+        this.difficulty = difficulty;
     }
 }

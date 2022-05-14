@@ -60,7 +60,10 @@ public class TabPaneController {
         lbl_popularity.textProperty().bind(tabPaneViewModel.getPopularity());
         lbl_childFriendliness.textProperty().bind(tabPaneViewModel.getChildFriendliness());
         lbl_description.textProperty().bind(tabPaneViewModel.getDescription());
-        changeMap(tabPaneViewModel.getImagePath());
+        if(tabPaneViewModel.getImagePath() != null) {
+            iv_map.imageProperty().bindBidirectional(tabPaneViewModel.getImagePath());
+        }
+        //changeMap(tabPaneViewModel.getImagePath());
         loadChart();
     }
 
@@ -69,6 +72,7 @@ public class TabPaneController {
             System.out.println(path);
             Image image = new Image(String.valueOf(new File(path)));
             iv_map.setImage(image);
+            iv_map.setImage(new Image(String.valueOf(new File(path))));
         }
     }
 

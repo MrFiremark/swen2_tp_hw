@@ -16,7 +16,9 @@ import swen2.tp.swen2_tp_hw.model.TourLog;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
@@ -102,8 +104,10 @@ public class PDFService {
     public void generateSummaryPDF(Map<String, Tour> tourMap) throws IOException {
 
         ReportFactory reportFactory = new ReportFactory();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd_MM_yyyy");
+        LocalDate now = LocalDate.now();
 
-        PdfWriter writer = new PdfWriter("Summary_" + Time.valueOf(LocalTime.MIN) + target );
+        PdfWriter writer = new PdfWriter(configService.load("directory.pdf") + "Summary_" + dtf.format(now)  + target );
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf);
 

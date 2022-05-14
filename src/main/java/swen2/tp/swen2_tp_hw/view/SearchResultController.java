@@ -12,24 +12,23 @@ import swen2.tp.swen2_tp_hw.viewmodel.SearchResultViewModel;
 public class SearchResultController {
 
     private final SearchResultViewModel searchResultViewModel;
-    private ObservableList<SearchResult> searchResults = FXCollections.observableArrayList();
 
     @FXML
     private TableView<SearchResult> tv_searchTable;
     @FXML
-    public TableColumn<SearchResult, String> type;
+    public TableColumn tbc_type;
     @FXML
-    public TableColumn<SearchResult, String> name;
+    public TableColumn tbc_name;
     @FXML
-    public TableColumn<SearchResult, String> description;
+    public TableColumn tbc_description;
     @FXML
-    public TableColumn<SearchResult, String> from;
+    public TableColumn<SearchResult, String> tbc_from;
     @FXML
-    public TableColumn<SearchResult, String> to;
+    public TableColumn<SearchResult, String> tbc_to;
     @FXML
-    public TableColumn<SearchResult, String> comment;
+    public TableColumn<SearchResult, String> tbc_comment;
     @FXML
-    public TableColumn<SearchResult, String> difficulty;
+    public TableColumn<SearchResult, String> tbc_difficulty;
 
     public SearchResultController(SearchResultViewModel searchResultViewModel) {
         this.searchResultViewModel = searchResultViewModel;
@@ -37,19 +36,18 @@ public class SearchResultController {
 
     public void initialize(String searchString){
 
-        this.searchResults.addAll(searchResultViewModel.getSearchResults(searchString));
-
-        type.setCellValueFactory(new PropertyValueFactory<>("Type"));
-        name.setCellValueFactory(new PropertyValueFactory<>("Name"));
-        description.setCellValueFactory(new PropertyValueFactory<>("Description"));
-        from.setCellValueFactory(new PropertyValueFactory<>("From"));
-        to.setCellValueFactory(new PropertyValueFactory<>("To"));
-        comment.setCellValueFactory(new PropertyValueFactory<>("Comment"));
-        difficulty.setCellValueFactory(new PropertyValueFactory<>("Difficulty"));
-
         System.out.println(searchString);
+        searchResultViewModel.setObservableResults(searchString);
 
-        tv_searchTable.setItems(searchResults);
+        tbc_type.setCellValueFactory(new PropertyValueFactory<SearchResult, String>("type"));
+        tbc_name.setCellValueFactory(new PropertyValueFactory<SearchResult, String>("name"));
+        tbc_description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        tbc_from.setCellValueFactory(new PropertyValueFactory<>("from"));
+        tbc_to.setCellValueFactory(new PropertyValueFactory<>("to"));
+        tbc_comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        tbc_difficulty.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
+
+        tv_searchTable.setItems(searchResultViewModel.getObservableResults());
     }
 
 }
