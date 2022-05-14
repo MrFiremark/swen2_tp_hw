@@ -2,11 +2,11 @@ package swen2.tp.swen2_tp_hw.view;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
-import swen2.tp.swen2_tp_hw.listener.Listener;
+import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.viewmodel.TourListViewModel;
 
-public class TourListController implements Listener {
+public class TourListController implements TourListener {
 
     private final TourListViewModel tourListViewModel;
 
