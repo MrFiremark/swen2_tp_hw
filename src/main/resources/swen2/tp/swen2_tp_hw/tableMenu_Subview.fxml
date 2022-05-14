@@ -29,7 +29,7 @@
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></Button>
-                <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="-">
+                <Button fx:id="btn_deleteLog" mnemonicParsing="false" onAction="#onDeleteLogClick" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="-">
                <HBox.margin>
                   <Insets right="10.0" />
                </HBox.margin></Button>

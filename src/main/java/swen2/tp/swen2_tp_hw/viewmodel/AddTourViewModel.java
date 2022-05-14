@@ -41,11 +41,9 @@ public class AddTourViewModel {
     }
 
     public void saveTour(){
-        Tour tour = new Tour(UUID.randomUUID().toString() ,tourName.get(), description.get(), to.get(), from.get(), "Bike");
+        //TODO validation
+        Tour tour = new Tour(UUID.randomUUID().toString() ,tourName.get(), description.get(), from.get(), to.get(), "Bike");
         tourService.addTour(tour);
     }
 
-    public void closeWindow(){
-
-    }
 }

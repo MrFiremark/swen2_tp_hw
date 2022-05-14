@@ -13,13 +13,15 @@ public class TableMenuController {
         this.tableMenuViewModel = tableMenuViewModel;
     }
 
-    @FXML
-    public void initialize(){
 
-    }
 
     @FXML
     protected void onAddLogClick() {
         tableMenuViewModel.openAddLogWindow();
+    }
+
+    @FXML
+    protected void onDeleteLogClick(){
+        tableMenuViewModel.deleteTour();
     }
 }

@@ -50,4 +50,10 @@ public class TourLogTableController implements TourLogListener {
             tv_logList.getItems().add(item);
         }
     }
+
+    @FXML
+    public void itemClicked(){
+        int index = tv_logList.getSelectionModel().getSelectedIndex();
+        logTableViewModel.itemClicked(index);
+    }
 }

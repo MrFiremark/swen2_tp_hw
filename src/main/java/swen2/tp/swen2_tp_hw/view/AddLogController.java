@@ -36,8 +36,14 @@ public class AddLogController {
         closeWindow();
     }
 
+    @FXML
+    protected void onCancelButtonClick(){
+        closeWindow();
+    }
+
     private void closeWindow(){
         Stage stage = (Stage) btn_add.getScene().getWindow();
         stage.close();
     }
+
 }

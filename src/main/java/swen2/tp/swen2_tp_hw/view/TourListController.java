@@ -35,6 +35,7 @@ public class TourListController implements TourListener {
         }
     }
 
+    @FXML
     public void itemClicked(){
         int index = tourList_listView.getSelectionModel().getSelectedIndex();
         tourListViewModel.itemClicked(index);

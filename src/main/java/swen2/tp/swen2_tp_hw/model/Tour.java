@@ -124,6 +124,10 @@ public class Tour {
         this.tourLogs.add(tourLog);
     }
 
+    public void deleteTourLog(TourLog tourLog){
+        this.tourLogs.remove(tourLog);
+    }
+
     public String getPopularity() {
         return popularity;
     }

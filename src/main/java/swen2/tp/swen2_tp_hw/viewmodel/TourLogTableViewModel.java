@@ -29,7 +29,6 @@ public class TourLogTableViewModel implements SelectedTourListener {
         return observableLogs;
     }
 
-
     public void addListener(TourLogListener tourLogListener){
         listeners.add(tourLogListener);
     }
@@ -58,5 +57,12 @@ public class TourLogTableViewModel implements SelectedTourListener {
         observableLogs.clear();
         observableLogs.addAll(tour.getTourLogs());
         notifyListeners();
+    }
+
+    public void itemClicked(int index){
+        if(index != -1){
+            TourLog tourLog = observableLogs.get(index);
+            selectedTourService.setSetSelectedTourLog(tourLog);
+        }
     }
 }

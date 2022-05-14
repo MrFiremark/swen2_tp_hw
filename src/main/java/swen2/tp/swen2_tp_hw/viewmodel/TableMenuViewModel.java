@@ -33,7 +33,7 @@ public class TableMenuViewModel implements SelectedTourLogListener {
     }
 
     public void deleteTour(){
-
+        selectedTourService.deleteTourLog();
     }
 
     @Override

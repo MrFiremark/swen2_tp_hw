@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class LogRepository extends Repository{
 
-    public void addTour(TourLog tourLog){
+    public void addTourLog(TourLog tourLog){
 
         try (
                 Connection connection = getConnection();
@@ -40,7 +40,7 @@ public class LogRepository extends Repository{
 
     }
 
-    public Tour getTours(Tour tour){
+    public Tour getTourLog(Tour tour){
 
         try (
                 Connection connection = getConnection();
@@ -78,7 +78,7 @@ public class LogRepository extends Repository{
         return null;
     }
 
-    public void deleteTour(String logid) {
+    public void deleteTourLog(String logid) {
 
         try (
                 Connection connection = getConnection();
