@@ -2,6 +2,7 @@ package swen2.tp.swen2_tp_hw.view;
 
 
 import swen2.tp.swen2_tp_hw.service.PDFService;
+import swen2.tp.swen2_tp_hw.service.SearchService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 import swen2.tp.swen2_tp_hw.viewmodel.*;
@@ -17,15 +18,19 @@ public class ControllerFactory {
     private final TourLogTableViewModel tourLogTableViewModel;
     private final TableMenuViewModel tableMenuViewModel;
     private final TabPaneViewModel tabPaneViewModel;
+    private final SearchResultViewModel searchResultViewModel;
     private final TourService tourService;
     private final SelectedTourService selectedTourService;
     private final PDFService pdfService;
+    private final SearchService searchService;
 
     public ControllerFactory() {
         tourService = new TourService();
         pdfService = new PDFService();
         selectedTourService = new SelectedTourService();
+        searchService = new SearchService();
         searchBarViewModel = new SearchBarViewModel();
+        searchResultViewModel = new SearchResultViewModel(searchService);
         tourListViewModel = new TourListViewModel(tourService, selectedTourService);
         listMenuViewModel = new ListMenuViewModel(tourService, selectedTourService);
         tourLogTableViewModel = new TourLogTableViewModel(selectedTourService);
@@ -64,6 +69,8 @@ public class ControllerFactory {
             return new TourLogTableController(tourLogTableViewModel);
         } else if (controllerClass == TabPaneController.class){
             return new TabPaneController(tabPaneViewModel);
+        } else if (controllerClass == SearchResultController.class){
+            return new SearchResultController(searchResultViewModel);
         }
 
         throw new IllegalArgumentException("Unknown controller class: " + controllerClass);

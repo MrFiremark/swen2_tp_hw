@@ -1,20 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.SearchResultController">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.SearchResultController">
    <children>
       <Label text="Search Results" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TableView layoutY="31.0" prefHeight="363.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+      <TableView fx:id="tv_searchTable" layoutY="31.0" prefHeight="364.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
         <columns>
-          <TableColumn prefWidth="105.0" text="Field" />
-          <TableColumn prefWidth="494.0" text="Value" />
+          <TableColumn prefWidth="105.0" text="Type" />
+          <TableColumn prefWidth="100.0" text="Name" />
+            <TableColumn prefWidth="128.00001525878906" text="Description" />
+            <TableColumn prefWidth="90.4000244140625" text="From" />
+            <TableColumn prefWidth="81.5999755859375" text="To" />
+            <TableColumn prefWidth="179.20001220703125" text="Comment" />
+            <TableColumn prefWidth="114.4000244140625" text="Difficulty" />
         </columns>
       </TableView>
    </children>

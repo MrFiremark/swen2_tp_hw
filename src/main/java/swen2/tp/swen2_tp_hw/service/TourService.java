@@ -58,8 +58,8 @@ public class TourService {
         return toursMap;
     }
 
-    public Tour getTourFromMap(String tourname){
-        return toursMap.get(tourname);
+    public Tour getTourFromMap(String tourid){
+        return toursMap.get(tourid);
     }
 
     public void updateTourList(){
