@@ -105,4 +105,33 @@ public class TourRepository extends Repository{
             e.printStackTrace();
         }
     }
+
+    public void updateTour(Tour tour){
+
+        try (
+                Connection connection = getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "UPDATE tour_data " +
+                                "SET name=?, description=?, transporttype=?, distance=?, traveltime=?, startpoint=?, endpoint=?, imagepath=? " +
+                                "WHERE id=?"
+                )
+        ) {
+
+            statement.setObject(9, tour.getid());
+            statement.setString(1, tour.getName());
+            statement.setString(2, tour.getDescription());
+            statement.setString(3, tour.getTransportType());
+            statement.setDouble(4, tour.getDistance());
+            statement.setString(5, tour.getTime());
+            statement.setString(6, tour.getFrom());
+            statement.setString(7, tour.getTo());
+            statement.setString(8, tour.getImagePath());
+
+            statement.execute();
+
+
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

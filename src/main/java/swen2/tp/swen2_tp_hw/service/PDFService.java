@@ -75,7 +75,7 @@ public class PDFService {
         table.setFontSize(14).setBackgroundColor(ColorConstants.WHITE);
         ArrayList<TourLog> entryList = tour.getTourLogs();
 
-        for(int i = 0; i <= tour.getTourLogs().size(); i++){
+        for(int i = 0; i < tour.getTourLogs().size(); i++){
             table.addCell(tour.getTourLogs().get(i).getDate());
             table.addCell(tour.getTourLogs().get(i).getTime());
             table.addCell(tour.getTourLogs().get(i).getComment());

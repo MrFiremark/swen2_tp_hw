@@ -37,7 +37,6 @@ public class LogRepository extends Repository{
         } catch (SQLException | IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public Tour getTourLog(Tour tour){
@@ -90,6 +89,31 @@ public class LogRepository extends Repository{
 
             statement.execute();
 
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateTourLog(TourLog tourLog){
+
+        try (
+                Connection connection = getConnection();
+                PreparedStatement statement = connection.prepareStatement(
+                        "UPDATE tourlog_data " +
+                                "SET date=?, time=?, comment=?, difficulty=?, totaltime=?, rating=? " +
+                                "WHERE logid=?;"
+                )
+        ) {
+
+            statement.setString(7, tourLog.getLogid());
+            statement.setString(1, tourLog.getDate());
+            statement.setObject(2, tourLog.getTime());
+            statement.setString(3, tourLog.getComment());
+            statement.setString(4, tourLog.getDifficulty());
+            statement.setString(5, tourLog.getTotalTime());
+            statement.setString(6, tourLog.getRating());
+
+            statement.execute();
 
         } catch (SQLException | IOException e) {
             e.printStackTrace();
