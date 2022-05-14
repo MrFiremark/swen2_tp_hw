@@ -51,6 +51,7 @@ public class AddTourController {
         tf_from.textProperty().bindBidirectional(addTourViewModel.getFrom());
         cb_transportType.setValue("Transport type");
         cb_transportType.setItems(itemList);
+        cb_transportType.valueProperty().bindBidirectional(addTourViewModel.getTransportType());
     }
 
     //public AddTourController(TourService tourService, TourRepository tourRepository) {

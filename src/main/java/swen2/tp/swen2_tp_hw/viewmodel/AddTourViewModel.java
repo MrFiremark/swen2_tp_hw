@@ -1,5 +1,7 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import swen2.tp.swen2_tp_hw.model.Tour;
@@ -13,37 +15,33 @@ public class AddTourViewModel {
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty from = new SimpleStringProperty();
     private final StringProperty to = new SimpleStringProperty();
-    private final StringProperty transportType = new SimpleStringProperty();
+    private final ObjectProperty<String> transportType = new SimpleObjectProperty<>();
 
     private final TourService tourService;
 
     public AddTourViewModel(TourService tourService){
         this.tourService = tourService;
     }
+
     public StringProperty getTourName() {
         return tourName;
     }
-
     public StringProperty getDescription() {
         return description;
     }
-
     public StringProperty getFrom() {
         return from;
     }
-
     public StringProperty getTo() {
         return to;
     }
-
-    public StringProperty getTransportType() {
+    public ObjectProperty<String> getTransportType() {
         return transportType;
     }
 
     public void saveTour(){
         //TODO validation with right data
-        Tour tour = new Tour(UUID.randomUUID().toString() ,tourName.get(), description.get(), from.get(), to.get(), "Bike");
+        Tour tour = new Tour(UUID.randomUUID().toString() ,tourName.get(), description.get(), from.get(), to.get(), transportType.get());
         tourService.addTour(tour);
     }
-
 }

@@ -31,8 +31,15 @@ public class RouteService {
         HttpService httpService = new HttpService();
 
         String apikey = configService.load("mapapi.key");
+        String url;
 
-        String url = "http://www.mapquestapi.com/directions/v2/route?key="+apikey+"&from="+tour.getFrom()+"&to="+tour.getTo();
+        if(tour.getTransportType().equals("Walk")) {
+            url = "http://www.mapquestapi.com/directions/v2/route?key=" + apikey + "&from=" + tour.getFrom() + "&to=" + tour.getTo() + "&routeType=pedestrian";
+        }else if(tour.getTransportType().equals("Bike")){
+            url = "http://www.mapquestapi.com/directions/v2/route?key=" + apikey + "&from=" + tour.getFrom() + "&to=" + tour.getTo() + "&routeType=bycicle";
+        }else{
+            url = "http://www.mapquestapi.com/directions/v2/route?key=" + apikey + "&from=" + tour.getFrom() + "&to=" + tour.getTo();
+        }
 
         ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 

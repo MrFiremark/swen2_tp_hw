@@ -25,8 +25,6 @@ public class SearchBarController {
     @FXML
     protected void onSearchPress() {
         searchBarViewModel.openSearchResultWindow(tf_searchBar.getText());
-
-
     }
 
 }

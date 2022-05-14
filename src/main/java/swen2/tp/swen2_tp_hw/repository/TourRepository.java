@@ -14,6 +14,8 @@ import java.util.UUID;
 
 public class TourRepository extends Repository{
 
+    private LogRepository logRepository = new LogRepository();
+
     public void addTour(Tour tour){
 
         try (
@@ -71,6 +73,7 @@ public class TourRepository extends Repository{
                         resultSet.getString("traveltime"),
                         resultSet.getString("imagepath")
                 );
+                 tour = logRepository.getTourLog(tour);
                  map.put(tour.getid(), tour);
             }
 

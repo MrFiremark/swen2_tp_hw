@@ -1,26 +1,50 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.fxml.FXML;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 //import swen2.tp.swen2_tp_hw.service.LogService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
+
+import java.security.Timestamp;
+import java.time.LocalDate;
+import java.util.UUID;
 
 public class AddLogViewModel {
 
     public final TourService tourService;
     public final SelectedTourService selectedTourService;
 
+    private final ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
+    private final StringProperty durationHour = new SimpleStringProperty();
+    private final StringProperty durationMin = new SimpleStringProperty();
+    private final ObjectProperty<String> difficulty = new SimpleObjectProperty<>();
+    private final StringProperty comment = new SimpleStringProperty();
+    private final ObjectProperty<Number> rating = new SimpleObjectProperty<>();
+
     public AddLogViewModel(TourService tourService, SelectedTourService selectedTourService) {
         this.tourService = tourService;
         this.selectedTourService = selectedTourService;
     }
 
+    public ObjectProperty<LocalDate> getDate(){ return date;}
+    public StringProperty getDurationHour(){ return durationHour;}
+    public StringProperty getDurationMin(){ return durationMin;}
+    public ObjectProperty<String> getDifficulty(){ return difficulty;}
+    public StringProperty getComment(){ return comment;}
+    public ObjectProperty<Number> getRating(){ return rating;}
 
     public void saveTourLog(){
         //TODO get properties and validation
-        TourLog tourLog = new TourLog("tourID1", "logId2", "date3", "time4", "comment5", "totalTime6","diff7", "rating8");
-        selectedTourService.addTourLog(tourLog);
+        if (selectedTourService.getSelectedTour() != null ) {
+            TourLog tourLog = new TourLog(selectedTourService.getSelectedTour().getid(), UUID.randomUUID().toString(), date.get().toString(), "13:13:13", comment.get(), difficulty.get(), durationHour.get() + ":" + durationMin.get(), rating.get().toString());
+            selectedTourService.addTourLog(tourLog);
+        }else{
+            System.out.println("ohje");
+        }
     }
-
-
 }

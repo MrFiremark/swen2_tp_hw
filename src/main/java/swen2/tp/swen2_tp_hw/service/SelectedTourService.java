@@ -27,7 +27,6 @@ public class SelectedTourService {
         }
     }
 
-
     public Tour getSelectedTour() {
         return selectedTour;
     }
@@ -55,6 +54,4 @@ public class SelectedTourService {
             notifyListeners(selectedTour);
         }
     }
-
-
 }

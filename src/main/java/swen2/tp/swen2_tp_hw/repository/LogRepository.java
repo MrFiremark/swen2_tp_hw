@@ -18,18 +18,18 @@ public class LogRepository extends Repository{
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "INSERT INTO log_data (tourid, logid, date, time, comment, difficulty, totaltime, rating) VALUES (?, ?, ?, ?, ?, ?, ?);"
+                        "INSERT INTO tourlog_data (tourid, logid, date, time, comment, difficulty, totaltime, rating) VALUES (?, ?, ?, ?, ?, ?, ?, ?);"
                 )
         ) {
 
             statement.setString(1, tourLog.getTourId());
             statement.setString(2, tourLog.getLogid());
-            statement.setString(2, tourLog.getDate());
-            statement.setObject(3, tourLog.getTime());
-            statement.setString(4, tourLog.getComment());
-            statement.setString(5, tourLog.getDifficulty());
-            statement.setString(6, tourLog.getTotalTime());
-            statement.setString(7, tourLog.getRating());
+            statement.setString(3, tourLog.getDate());
+            statement.setObject(4, tourLog.getTime());
+            statement.setString(5, tourLog.getComment());
+            statement.setString(6, tourLog.getDifficulty());
+            statement.setString(7, tourLog.getTotalTime());
+            statement.setString(8, tourLog.getRating());
 
             statement.execute();
 
@@ -45,10 +45,9 @@ public class LogRepository extends Repository{
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "SELECT tourid, logid, date, time, comment, difficulty, totaltime, rating FROM log_data WHERE tourid = ?"
+                        "SELECT tourid, logid, date, time, comment, difficulty, totaltime, rating FROM tourlog_data WHERE tourid = ?"
                 );
         ) {
-
 
             statement.setString(1, tour.getid());
             ResultSet resultSet = statement.executeQuery();
@@ -66,7 +65,6 @@ public class LogRepository extends Repository{
                             resultSet.getString("rating")
                         )
                 );
-
             }
 
             return tour;
@@ -83,7 +81,7 @@ public class LogRepository extends Repository{
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
-                        "DELETE FROM log_data WHERE logid = ?;"
+                        "DELETE FROM tourlog_data WHERE logid = ?;"
                 )
         ) {
 
