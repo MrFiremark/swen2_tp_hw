@@ -25,5 +25,9 @@ public class ListMenuController{
         listMenuViewModel.deleteTour();
     }
 
+    @FXML
+    protected void onEditTourClick(){
+        listMenuViewModel.openEditTourWindow();
+    }
 
 }

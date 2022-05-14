@@ -32,7 +32,7 @@ public class AddLogController {
     }
 
     @FXML
-    private void initialize(){
+    private void initialize(String method){
         dp_date.valueProperty().bindBidirectional(addLogViewModel.getDate());
         ta_comment.textProperty().bindBidirectional(addLogViewModel.getComment());
         sl_rating.valueProperty().bindBidirectional(addLogViewModel.getRating());
