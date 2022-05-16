@@ -53,6 +53,7 @@ public class TourListViewModel implements TourListener {
 
     @Override
     public void update(Tour tour) {
+        // TODO get whole list from tourservice; no to add
         observableTours.add(tour);
         notifyListeners(tour);
     }
