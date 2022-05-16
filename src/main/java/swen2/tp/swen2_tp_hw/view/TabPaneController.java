@@ -4,7 +4,7 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.PieChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,7 +16,6 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 
 public class TabPaneController {
 
@@ -43,7 +42,9 @@ public class TabPaneController {
     @FXML
     private ImageView iv_map;
     @FXML
-    private PieChart pc_rating;
+    private BarChart bc_rating;
+    @FXML
+    private BarChart bc_difficulty;
 
     public TabPaneController(TabPaneViewModel tabPaneViewModel) {
         this.tabPaneViewModel = tabPaneViewModel;
@@ -63,20 +64,37 @@ public class TabPaneController {
         if(tabPaneViewModel.getImagePath() != null) {
             iv_map.imageProperty().bindBidirectional(tabPaneViewModel.getImagePath());
         }
-        //changeMap(tabPaneViewModel.getImagePath());
-        loadChart();
+        loadRatingChart(tabPaneViewModel.getSelectedTour());
+        //loadPieChart();
     }
 
-    public void changeMap(String path){
-        if(path != null){
-            System.out.println(path);
-            Image image = new Image(String.valueOf(new File(path)));
-            iv_map.setImage(image);
-            iv_map.setImage(new Image(String.valueOf(new File(path))));
-        }
+    public void loadRatingChart(Tour tour){
+
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Ranking");
+        series.getData().add(new XYChart.Data("1 Stern", tour.getRating(1)));
+        series.getData().add(new XYChart.Data("2 Sterne", tour.getRating(2)));
+        series.getData().add(new XYChart.Data("3 Sterne", tour.getRating(3)));
+        series.getData().add(new XYChart.Data("4 Sterne", tour.getRating(4)));
+        series.getData().add(new XYChart.Data("5 Sterne", tour.getRating(5)));
+
+        bc_rating.getData().addAll(series);
     }
 
-    public void loadChart(){
+    public void loadDifficultyCharts(Tour tour){
+
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Difficulty");
+        series.getData().add(new XYChart.Data("Very Easy", tour.getRating(1)));
+        series.getData().add(new XYChart.Data("Easy", tour.getRating(2)));
+        series.getData().add(new XYChart.Data("Normal", tour.getRating(3)));
+        series.getData().add(new XYChart.Data("Hard", tour.getRating(4)));
+        series.getData().add(new XYChart.Data("Very Hard", tour.getRating(5)));
+
+        bc_rating.getData().addAll(series);
+    }
+
+    public void loadPieChart(){
 
         ObservableList<PieChart.Data> pieChartData =
                 FXCollections.observableArrayList(
@@ -85,7 +103,7 @@ public class TabPaneController {
                         new PieChart.Data("Medium", 10),
                         new PieChart.Data("Hard", 22),
                         new PieChart.Data("Very Hard", 30));
-        pc_rating.setData(pieChartData);
-        pc_rating.setTitle("Tour Difficulty");
+        //pc_rating.setData(pieChartData);
+        //pc_rating.setTitle("Tour Difficulty");
     }
 }

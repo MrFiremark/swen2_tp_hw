@@ -19,24 +19,24 @@ public class TourLogTableController implements TourLogListener {
     @FXML
     private TableView<TourLog> tv_logList;
     @FXML
-    private TableColumn tbc_date;
+    private TableColumn<TourLog, String> tbc_date;
     @FXML
-    private TableColumn tbc_comment;
+    private TableColumn<TourLog, String> tbc_comment;
     @FXML
-    private TableColumn tbc_difficulty;
+    private TableColumn<TourLog, String> tbc_difficulty;
     @FXML
-    private TableColumn tbc_totalTime;
+    private TableColumn<TourLog, String> tbc_totalTime;
     @FXML
-    private TableColumn tbc_rating;
+    private TableColumn<TourLog, String> tbc_rating;
 
     @FXML
     public void initialize(){
         //tourList_listView.setItems(tourListViewModel.getObservableTours());
-        tbc_date.setCellValueFactory(new PropertyValueFactory<TourLog, String>("date"));
-        tbc_comment.setCellValueFactory(new PropertyValueFactory<TourLog, String>("comment"));
-        tbc_difficulty.setCellValueFactory(new PropertyValueFactory<TourLog, String>("difficulty"));
-        tbc_totalTime.setCellValueFactory(new PropertyValueFactory<TourLog, String>("totalTime"));
-        tbc_rating.setCellValueFactory(new PropertyValueFactory<TourLog, String>("rating"));
+        tbc_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tbc_comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        tbc_difficulty.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
+        tbc_totalTime.setCellValueFactory(new PropertyValueFactory<>("totalTime"));
+        tbc_rating.setCellValueFactory(new PropertyValueFactory<>("rating"));
         for (TourLog item: logTableViewModel.getObservableLogs()) {
             tv_logList.getItems().add(item);
         }

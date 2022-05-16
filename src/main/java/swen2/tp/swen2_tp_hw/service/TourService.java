@@ -73,6 +73,11 @@ public class TourService {
         if(toursMap == null){
             toursMap = new HashMap<>();
         }
+        toursMap = tourRepository.getTours();
+        for (Tour temp: toursMap.values()
+             ) {
+            temp.setChildFriendliness();
+        }
     }
 
     public Map<String, Tour> getToursMap() {

@@ -61,8 +61,13 @@ public class TabPaneViewModel implements SelectedTourListener {
         selectedTourService.addListener(this);
     }
 
+    public Tour getSelectedTour() {
+        return selectedTourService.getSelectedTour();
+    }
+
     @Override
     public void update(Tour tour) {
+        tourName.set(tour.getName());
         from.set("From: " + tour.getFrom());
         to.set("To: " + tour.getTo());
         transportType.set("Transport type: " + tour.getTransportType());

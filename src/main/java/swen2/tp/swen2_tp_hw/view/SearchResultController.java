@@ -16,11 +16,11 @@ public class SearchResultController {
     @FXML
     private TableView<SearchResult> tv_searchTable;
     @FXML
-    public TableColumn tbc_type;
+    public TableColumn<SearchResult, String> tbc_type;
     @FXML
-    public TableColumn tbc_name;
+    public TableColumn<SearchResult, String> tbc_name;
     @FXML
-    public TableColumn tbc_description;
+    public TableColumn<SearchResult, String> tbc_description;
     @FXML
     public TableColumn<SearchResult, String> tbc_from;
     @FXML
@@ -36,11 +36,13 @@ public class SearchResultController {
 
     public void initialize(String searchString){
 
+        searchResultViewModel.clearObservableResults();
         System.out.println(searchString);
         searchResultViewModel.setObservableResults(searchString);
 
-        tbc_type.setCellValueFactory(new PropertyValueFactory<SearchResult, String>("type"));
-        tbc_name.setCellValueFactory(new PropertyValueFactory<SearchResult, String>("name"));
+        tv_searchTable.getItems().clear();
+        tbc_type.setCellValueFactory(new PropertyValueFactory<>("type"));
+        tbc_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         tbc_description.setCellValueFactory(new PropertyValueFactory<>("description"));
         tbc_from.setCellValueFactory(new PropertyValueFactory<>("from"));
         tbc_to.setCellValueFactory(new PropertyValueFactory<>("to"));

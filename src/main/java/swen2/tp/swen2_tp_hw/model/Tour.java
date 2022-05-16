@@ -146,7 +146,7 @@ public class Tour {
         int averageDifficulty = 0;
 
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 
         for (TourLog tourlog : tourLogs
         ) {
@@ -158,7 +158,7 @@ public class Tour {
             }
             calendar.setTime(date);
             int min = calendar.get(Calendar.HOUR)*60 + calendar.get(Calendar.MINUTE);
-            averageTime += min+60 + calendar.get(Calendar.SECOND);
+            averageTime += min;
 
             switch (tourlog.getDifficulty()) {
                 case "Very Easy" -> averageDifficulty += 1;
@@ -172,10 +172,34 @@ public class Tour {
         averageTime = averageTime/tourLogs.size();
         averageDifficulty = averageDifficulty/tourLogs.size();
 
-        if(averageTime < 3600 && averageDifficulty <= 3 && distance <= 5){
+        if(averageTime < 180 && averageDifficulty <= 3 && distance <= 5){
             this.childFriendliness = "Child Friendly";
         }else {
             this.childFriendliness = "NOT Child Friendly";
         }
     }
+
+    public int getRating(int stars){
+        int count = 0;
+
+        for (TourLog tourlog: tourLogs
+             ) {
+            if(Integer.parseInt(tourlog.getRating()) == stars){
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public double getAverageRating(){
+        double count = 0;
+
+        for (TourLog tourlog: tourLogs
+        ) {
+            count += Integer.parseInt(tourlog.getRating());
+        }
+        return count/tourLogs.size();
+    }
+
+
 }

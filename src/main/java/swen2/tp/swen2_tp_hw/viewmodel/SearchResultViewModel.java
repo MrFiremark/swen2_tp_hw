@@ -28,4 +28,6 @@ public class SearchResultViewModel {
 
     public ObservableList<SearchResult> getObservableResults(){ return observableResults; }
 
+    public void clearObservableResults(){ observableResults.clear();}
+
 }
