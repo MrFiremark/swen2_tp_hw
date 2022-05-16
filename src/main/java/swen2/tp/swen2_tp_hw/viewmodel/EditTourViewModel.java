@@ -2,24 +2,26 @@ package swen2.tp.swen2_tp_hw.viewmodel;
 
 import javafx.beans.property.*;
 import swen2.tp.swen2_tp_hw.model.Tour;
+import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 
 import java.util.UUID;
 
-public class AddTourViewModel {
-
+public class EditTourViewModel {
     private final StringProperty tourName = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty from = new SimpleStringProperty();
     private final StringProperty to = new SimpleStringProperty();
     private final ObjectProperty<String> transportType = new SimpleObjectProperty<>();
-    private final BooleanProperty addButton = new SimpleBooleanProperty();
     private final BooleanProperty editButton = new SimpleBooleanProperty();
 
     private final TourService tourService;
+    private final SelectedTourService selectedTourService;
 
-    public AddTourViewModel(TourService tourService){
+    public EditTourViewModel(TourService tourService, SelectedTourService selectedTourService){
         this.tourService = tourService;
+        this.selectedTourService = selectedTourService;
+        // TODO fill values
     }
 
     public StringProperty getTourName() {
@@ -37,13 +39,17 @@ public class AddTourViewModel {
     public ObjectProperty<String> getTransportType() {
         return transportType;
     }
-    public BooleanProperty getAddButton(){
-        return addButton;
+    public BooleanProperty getEditButton(){
+        return editButton;
     }
 
-    public void saveTour(){
+    public void editTour(){
         //TODO validation with right data
-        Tour tour = new Tour(UUID.randomUUID().toString() ,tourName.get(), description.get(), from.get(), to.get(), transportType.get());
-        tourService.addTour(tour);
+        selectedTourService.getSelectedTour().setName(tourName.get());
+        selectedTourService.getSelectedTour().setDescription(description.get());
+        selectedTourService.getSelectedTour().setFrom(from.get());
+        selectedTourService.getSelectedTour().setTo(to.get());
+        selectedTourService.getSelectedTour().setTransportType(transportType.get());
+        tourService.editTour(selectedTourService.getSelectedTour());
     }
 }

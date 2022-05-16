@@ -54,8 +54,25 @@ public class TourService {
         notifyListeners(tour);
     }
 
+    public void editTour(Tour tour){
+        try {
+            tour = routeService.getRouteInformation(tour);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        tourRepository.updateTour(tour);
+        notifyListeners(tour);
+    }
+
     public void loadTours(){
-        toursMap = tourRepository.getTours();
+        this.toursMap = tourRepository.getTours();
+        if(toursMap == null){
+            toursMap = new HashMap<>();
+        }
     }
 
     public Map<String, Tour> getToursMap() {
@@ -68,6 +85,9 @@ public class TourService {
 
     public void updateTourList(){
        this.toursMap = tourRepository.getTours();
+       if(toursMap == null){
+           toursMap = new HashMap<>();
+       }
     }
 
 

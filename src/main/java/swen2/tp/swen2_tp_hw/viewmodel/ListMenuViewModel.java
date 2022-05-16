@@ -24,13 +24,10 @@ public class ListMenuViewModel{
 
     public void openAddTourWindow(){
         try {
-            FXMLLoader loader = FXMLDependencyInjection.getLoader("addTour.fxml", Locale.ENGLISH);
-            Parent root = loader.load();
-            AddTourController addTourController = loader.getController();
-            addTourController.initialize("add");
+            Parent root = FXMLDependencyInjection.load("addTour.fxml", Locale.ENGLISH);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("Tour Planner");
+            stage.setTitle("Add Tour");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -45,16 +42,12 @@ public class ListMenuViewModel{
         }
     }
     public void openEditTourWindow(){
-        try{
-            FXMLLoader loader = FXMLDependencyInjection.getLoader("addTour.fxml", Locale.ENGLISH);
-            Parent root = loader.load();
-            AddTourController addTourController = loader.getController();
-            addTourController.initialize("edit");
+        try {
+            Parent root = FXMLDependencyInjection.load("editTour.fxml", Locale.ENGLISH);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("Tour Planner");
+            stage.setTitle("Edit Tour");
             stage.setScene(scene);
-
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

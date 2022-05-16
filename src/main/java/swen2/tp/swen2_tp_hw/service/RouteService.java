@@ -36,7 +36,7 @@ public class RouteService {
         if(tour.getTransportType().equals("Walk")) {
             url = "http://www.mapquestapi.com/directions/v2/route?key=" + apikey + "&from=" + tour.getFrom() + "&to=" + tour.getTo() + "&routeType=pedestrian";
         }else if(tour.getTransportType().equals("Bike")){
-            url = "http://www.mapquestapi.com/directions/v2/route?key=" + apikey + "&from=" + tour.getFrom() + "&to=" + tour.getTo() + "&routeType=bycicle";
+            url = "http://www.mapquestapi.com/directions/v2/route?key=" + apikey + "&from=" + tour.getFrom() + "&to=" + tour.getTo() + "&routeType=bicycle";
         }else{
             url = "http://www.mapquestapi.com/directions/v2/route?key=" + apikey + "&from=" + tour.getFrom() + "&to=" + tour.getTo();
         }

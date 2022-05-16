@@ -18,8 +18,8 @@
                     </padding>
                 </Label>
                 <Button fx:id="btn_createTour" mnemonicParsing="false" onAction="#onAddTourClick" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="+" />
-                <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="-" />
-                <Button mnemonicParsing="false" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="[ ]" />
+                <Button fx:id="btn_deleteTour" mnemonicParsing="false" onAction="#onDeleteTourClick" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="-" />
+                <Button fx:id="btn_editTour" mnemonicParsing="false" onAction="#onEditTourClick" prefHeight="20.0" prefWidth="35.0" style="-fx-background-color: #d3d3d3; -fx-border-color: black;" text="[ ]" />
             </children>
             <padding>
                 <Insets left="6.0" top="4.0" />

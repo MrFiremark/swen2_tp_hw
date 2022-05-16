@@ -13,18 +13,17 @@ import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.repository.TourRepository;
 import swen2.tp.swen2_tp_hw.service.TourService;
 import swen2.tp.swen2_tp_hw.viewmodel.AddTourViewModel;
+import swen2.tp.swen2_tp_hw.viewmodel.EditTourViewModel;
 
 import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 import java.util.UUID;
 
-public class AddTourController {
+public class EditTourController {
 
-    //private final TourService tourService;
-    //private final TourRepository tourRepository;
 
     ObservableList<String> itemList = FXCollections.observableArrayList("Bike", "Walk", "Car");
 
-    private final AddTourViewModel addTourViewModel;
+    private final EditTourViewModel editTourViewModel;
 
     @FXML
     private TextField tf_tourname;
@@ -37,28 +36,29 @@ public class AddTourController {
     @FXML
     private ChoiceBox cb_transportType;
     @FXML
-    private Button btn_add;
+    private Button btn_edit;
 
-    public AddTourController(AddTourViewModel addTourViewModel){
-        this.addTourViewModel = addTourViewModel;
+
+    public EditTourController(EditTourViewModel editTourViewModel){
+        this.editTourViewModel = editTourViewModel;
     }
 
     @FXML
     public void initialize(){
         // TODO proper Button handling
-        btn_add.disableProperty().bind(addTourViewModel.getAddButton());
-        tf_tourname.textProperty().bindBidirectional(addTourViewModel.getTourName());
-        ta_description.textProperty().bindBidirectional(addTourViewModel.getDescription());
-        tf_to.textProperty().bindBidirectional(addTourViewModel.getTo());
-        tf_from.textProperty().bindBidirectional(addTourViewModel.getFrom());
+        btn_edit.disableProperty().bind(editTourViewModel.getEditButton());
+        tf_tourname.textProperty().bindBidirectional(editTourViewModel.getTourName());
+        ta_description.textProperty().bindBidirectional(editTourViewModel.getDescription());
+        tf_to.textProperty().bindBidirectional(editTourViewModel.getTo());
+        tf_from.textProperty().bindBidirectional(editTourViewModel.getFrom());
         cb_transportType.setValue("Transport type");
         cb_transportType.setItems(itemList);
-        cb_transportType.valueProperty().bindBidirectional(addTourViewModel.getTransportType());
+        cb_transportType.valueProperty().bindBidirectional(editTourViewModel.getTransportType());
     }
 
     @FXML
-    protected void onAddButtonClick(){
-        addTourViewModel.saveTour();
+    protected void onEditButtonClick(){
+        editTourViewModel.editTour();
         closeWindow();
     }
 
@@ -68,7 +68,7 @@ public class AddTourController {
     }
 
     private void closeWindow(){
-        Stage stage = (Stage) btn_add.getScene().getWindow();
+        Stage stage = (Stage) btn_edit.getScene().getWindow();
         stage.close();
     }
 }

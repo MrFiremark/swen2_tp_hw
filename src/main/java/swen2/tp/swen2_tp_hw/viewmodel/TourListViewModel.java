@@ -63,4 +63,6 @@ public class TourListViewModel implements TourListener {
             selectedTourService.setSelectedTour(tour);
         }
     }
+
+    // TODO maybe update Listener
 }

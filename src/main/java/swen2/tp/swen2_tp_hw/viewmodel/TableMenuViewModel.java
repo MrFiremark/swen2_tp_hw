@@ -24,7 +24,7 @@ public class TableMenuViewModel implements SelectedTourLogListener {
             Parent root = FXMLDependencyInjection.load("addLog.fxml", Locale.ENGLISH);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("Add Tour");
+            stage.setTitle("Add Tourlog");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
