@@ -43,7 +43,7 @@
                      </image>
                   </ImageView>
                </graphic></Button>
-                <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #0088C1; -fx-background-radius: 100;">
+                <Button fx:id="btn_editLog" mnemonicParsing="false" onAction="#onEditLogClick" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #0088C1; -fx-background-radius: 100;">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>

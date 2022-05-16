@@ -21,6 +21,8 @@ public class TourLogTableController implements TourLogListener {
     @FXML
     private TableColumn<TourLog, String> tbc_date;
     @FXML
+    private TableColumn<TourLog, String> tbc_time;
+    @FXML
     private TableColumn<TourLog, String> tbc_comment;
     @FXML
     private TableColumn<TourLog, String> tbc_difficulty;
@@ -33,6 +35,7 @@ public class TourLogTableController implements TourLogListener {
     public void initialize(){
         //tourList_listView.setItems(tourListViewModel.getObservableTours());
         tbc_date.setCellValueFactory(new PropertyValueFactory<>("date"));
+        tbc_time.setCellValueFactory(new PropertyValueFactory<>("time"));
         tbc_comment.setCellValueFactory(new PropertyValueFactory<>("comment"));
         tbc_difficulty.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
         tbc_totalTime.setCellValueFactory(new PropertyValueFactory<>("totalTime"));

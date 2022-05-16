@@ -33,17 +33,13 @@ public class TourListViewModel implements TourListener {
         return observableTours;
     }
 
-    public ChangeListener<Tour> getChangeListener(){
-        return (observableValue, oldValue, newValue) -> notifyListeners(newValue);
-    }
-
     public void addListener(TourListener tourLIstener){
         tourListeners.add(tourLIstener);
     }
 
-    private void notifyListeners(Tour tour) {
+    private void notifyListeners() {
         for ( var listener : tourListeners) {
-            listener.update(tour);
+            listener.update();
         }
     }
 
@@ -52,10 +48,12 @@ public class TourListViewModel implements TourListener {
     }
 
     @Override
-    public void update(Tour tour) {
-        // TODO get whole list from tourservice; no to add
-        observableTours.add(tour);
-        notifyListeners(tour);
+    public void update() {
+        observableTours.clear();
+        for (Tour tour: tourService.getToursMap().values()) {
+            observableTours.add(tour);
+        }
+        notifyListeners();
     }
 
     public void itemClicked(int index){

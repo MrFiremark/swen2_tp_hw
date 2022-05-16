@@ -1,13 +1,15 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
 import javafx.beans.property.*;
+import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
+import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 
 import java.util.UUID;
 
-public class EditTourViewModel {
+public class EditTourViewModel implements SelectedTourListener {
     private final StringProperty tourName = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final StringProperty from = new SimpleStringProperty();
@@ -21,7 +23,7 @@ public class EditTourViewModel {
     public EditTourViewModel(TourService tourService, SelectedTourService selectedTourService){
         this.tourService = tourService;
         this.selectedTourService = selectedTourService;
-        // TODO fill values
+        selectedTourService.addListener(this);
     }
 
     public StringProperty getTourName() {
@@ -51,5 +53,15 @@ public class EditTourViewModel {
         selectedTourService.getSelectedTour().setTo(to.get());
         selectedTourService.getSelectedTour().setTransportType(transportType.get());
         tourService.editTour(selectedTourService.getSelectedTour());
+    }
+
+
+    @Override
+    public void update(Tour tour) {
+        tourName.set(tour.getName());
+        description.set(tour.getDescription());
+        from.set(tour.getFrom());
+        to.set(tour.getTo());
+        transportType.set(tour.getTransportType());
     }
 }

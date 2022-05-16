@@ -22,4 +22,9 @@ public class TableMenuController {
     protected void onDeleteLogClick(){
         tableMenuViewModel.deleteTour();
     }
+
+    @FXML
+    protected void onEditLogClick(){
+        tableMenuViewModel.openEditLogWindow();
+    }
 }

@@ -9,6 +9,7 @@
       <TableView fx:id="tv_logList" onMouseClicked="#itemClicked" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
           <TableColumn fx:id="tbc_date" prefWidth="75.0" text="Date" />
+            <TableColumn fx:id="tbc_time" prefWidth="75.0" text="Time" />
           <TableColumn fx:id="tbc_comment" prefWidth="254.40003967285156" text="Comment" />
             <TableColumn fx:id="tbc_difficulty" minWidth="0.0" prefWidth="89.5999755859375" text="Difficulty" />
             <TableColumn fx:id="tbc_totalTime" prefWidth="90.4000244140625" text="Total Time" />

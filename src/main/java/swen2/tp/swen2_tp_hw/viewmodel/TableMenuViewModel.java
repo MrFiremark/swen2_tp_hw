@@ -24,7 +24,7 @@ public class TableMenuViewModel implements SelectedTourLogListener {
             Parent root = FXMLDependencyInjection.load("addLog.fxml", Locale.ENGLISH);
             Scene scene = new Scene(root);
             Stage stage = new Stage();
-            stage.setTitle("Add Tourlog");
+            stage.setTitle("Add Tour Log");
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -34,6 +34,19 @@ public class TableMenuViewModel implements SelectedTourLogListener {
 
     public void deleteTour(){
         selectedTourService.deleteTourLog();
+    }
+
+    public void openEditLogWindow(){
+        try {
+            Parent root = FXMLDependencyInjection.load("editLog.fxml", Locale.ENGLISH);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("Edit Tour Log");
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

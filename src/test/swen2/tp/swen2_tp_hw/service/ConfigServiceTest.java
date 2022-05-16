@@ -37,5 +37,22 @@ class ConfigServiceTest {
         assertEquals("g6R1j3Y0bqSVIOGYDGzob93YQcS4d5EJ", result);
     }
 
+    @Test
+    void testLoadPdfDirectory(){
+        String url = "directory.pdf";
+        ConfigService configService = new ConfigService();
+        String result = configService.load(url);
+        assertEquals("Reports/", result);
+    }
+
+    @Test
+    void testLoadMapsDirectory(){
+        String url = "directory.maps";
+        ConfigService configService = new ConfigService();
+        String result = configService.load(url);
+        assertEquals("Maps/", result);
+    }
+
+
 
 }

@@ -23,9 +23,9 @@ public class TourService {
         tourListeners.add(tourListener);
     }
 
-    private void notifyListeners(Tour tour) {
+    private void notifyListeners() {
         for ( var listener : tourListeners) {
-            listener.update(tour);
+            listener.update();
         }
     }
 
@@ -44,14 +44,14 @@ public class TourService {
         toursMap.put(tour.getid(), tour);
         // TODO Path
         tourRepository.addTour(tour);
-        notifyListeners(tour);
+        notifyListeners();
     }
 
     public void deleteTour(Tour tour){
         //TODO delete
         toursMap.remove(tour.getid());
         tourRepository.deleteTour(tour.getid());
-        notifyListeners(tour);
+        notifyListeners();
     }
 
     public void editTour(Tour tour){
@@ -65,7 +65,7 @@ public class TourService {
             e.printStackTrace();
         }
         tourRepository.updateTour(tour);
-        notifyListeners(tour);
+        notifyListeners();
     }
 
     public void loadTours(){

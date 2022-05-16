@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class SelectedTourService {
 
     private Tour selectedTour;
-    private TourLog setSelectedTourLog;
+    private TourLog selectedTourLog;
     private final LogRepository logRepository = new LogRepository();
 
     private ArrayList<SelectedTourListener> listeners = new ArrayList<>();
@@ -31,13 +31,17 @@ public class SelectedTourService {
         return selectedTour;
     }
 
+    public TourLog getSetSelectedTourLog(){
+        return selectedTourLog;
+    }
+
     public void setSelectedTour(Tour tour){
         this.selectedTour = tour;
         notifyListeners(tour);
     }
 
     public void setSetSelectedTourLog(TourLog tourLog){
-        this.setSelectedTourLog = tourLog;
+        this.selectedTourLog = tourLog;
     }
 
     public void addTourLog(TourLog tourLog){
@@ -46,11 +50,16 @@ public class SelectedTourService {
         notifyListeners(selectedTour);
     }
 
+    public void editTourLog(){
+        logRepository.updateTourLog(selectedTourLog);
+        notifyListeners(selectedTour);
+    }
+
     public void deleteTourLog(){
         //TODO validation
-        if(setSelectedTourLog != null){
-            selectedTour.deleteTourLog(setSelectedTourLog);
-            logRepository.deleteTourLog(setSelectedTourLog.getLogid());
+        if(selectedTourLog != null){
+            selectedTour.deleteTourLog(selectedTourLog);
+            logRepository.deleteTourLog(selectedTourLog.getLogid());
             notifyListeners(selectedTour);
         }
     }

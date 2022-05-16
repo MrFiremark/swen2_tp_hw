@@ -4,17 +4,12 @@ import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.fxml.FXML;
-import swen2.tp.swen2_tp_hw.model.TourLog;
-//import swen2.tp.swen2_tp_hw.service.LogService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
 
-import java.security.Timestamp;
 import java.time.LocalDate;
-import java.util.UUID;
 
-public class AddLogViewModel {
+public class EditLogViewModel {
 
     public final SelectedTourService selectedTourService;
 
@@ -25,7 +20,7 @@ public class AddLogViewModel {
     private final StringProperty comment = new SimpleStringProperty();
     private final ObjectProperty<Number> rating = new SimpleObjectProperty<>();
 
-    public AddLogViewModel(SelectedTourService selectedTourService) {
+    public EditLogViewModel(SelectedTourService selectedTourService) {
         this.selectedTourService = selectedTourService;
     }
 
@@ -36,13 +31,18 @@ public class AddLogViewModel {
     public StringProperty getComment(){ return comment;}
     public ObjectProperty<Number> getRating(){ return rating;}
 
-    public void saveTourLog(){
-        //TODO  validation and correct time
-        if (selectedTourService.getSelectedTour() != null ) {
-            TourLog tourLog = new TourLog(selectedTourService.getSelectedTour().getid(), UUID.randomUUID().toString(), date.get().toString(), "13:13:13", comment.get(), difficulty.get(), durationHour.get() + ":" + durationMin.get(), String.valueOf(rating.get().intValue()));
-            selectedTourService.addTourLog(tourLog);
+    public void editTourLog(){
+        //TODO validation and correct time
+        if (selectedTourService.getSetSelectedTourLog() != null ) {
+            selectedTourService.getSetSelectedTourLog().setDate(date.get().toString());
+            selectedTourService.getSetSelectedTourLog().setComment(comment.get());
+            selectedTourService.getSetSelectedTourLog().setDifficulty(difficulty.get());
+            selectedTourService.getSetSelectedTourLog().setTotalTime(durationHour.get() + ":" + durationMin.get());
+            selectedTourService.getSetSelectedTourLog().setRating(String.valueOf(rating.get().intValue()));
+            selectedTourService.editTourLog();
         }else{
             System.out.println("No tour selected");
         }
     }
+
 }

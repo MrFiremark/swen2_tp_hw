@@ -27,7 +27,7 @@ public class TourListController implements TourListener {
     }
 
     @Override
-    public void update(Tour tour) {
+    public void update() {
         tourList_listView.getItems().clear();
         for (Tour item: tourListViewModel.getObservableTours()) {
             tourList_listView.getItems().add(item.getName());
