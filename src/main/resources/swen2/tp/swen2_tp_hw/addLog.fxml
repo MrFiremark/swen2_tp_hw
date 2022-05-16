@@ -24,7 +24,7 @@
       <Label layoutX="190.0" layoutY="78.0" text="Min" />
       <ChoiceBox fx:id="cb_difficulty" layoutX="113.0" layoutY="103.0" prefWidth="150.0" />
       <TextArea fx:id="ta_comment" layoutX="111.0" layoutY="143.0" prefHeight="100.0" prefWidth="460.0" />
-      <Slider fx:id="sl_rating" layoutX="111.0" layoutY="263.0" majorTickUnit="1.0" max="5.0" minorTickCount="1" prefHeight="14.0" prefWidth="233.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="2.5" />
+      <Slider fx:id="sl_rating" blockIncrement="1.0" layoutX="111.0" layoutY="263.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="1" prefHeight="14.0" prefWidth="233.0" showTickLabels="true" snapToTicks="true" value="3.0" />
         <Button fx:id="btn_add" layoutX="113.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAddButtonClick" prefHeight="25.0" prefWidth="52.0" text="Add" AnchorPane.bottomAnchor="21.0" />
         <Button fx:id="btn_cancel" layoutX="433.0" layoutY="354.0" mnemonicParsing="false" onAction="#onCancelButtonClick" text="Cancel" AnchorPane.bottomAnchor="21.0" />
     </children>
