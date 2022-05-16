@@ -56,6 +56,10 @@ public class TourService {
 
     public void loadTours(){
         toursMap = tourRepository.getTours();
+        for (Tour temp: toursMap.values()
+             ) {
+            temp.setChildFriendliness();
+        }
     }
 
     public Map<String, Tour> getToursMap() {

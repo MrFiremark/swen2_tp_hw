@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class SearchRepository extends Repository{
@@ -20,32 +21,35 @@ public class SearchRepository extends Repository{
                             "id, name, description, startpoint, endpoint " +
                             "   FROM tour_data " +
                             "           WHERE " +
-                            "               name like ? OR " +
-                            "               description like ? OR " +
-                            "               startpoint like ? OR " +
-                                "           endpoint like ? ;"
+                            "               lower(name) like ? OR " +
+                            "               lower(description) like ? OR " +
+                            "               lower(startpoint) like ? OR " +
+                                "           lower(endpoint) like ? ;"
                 );
 
                 PreparedStatement statement2 = connection.prepareStatement(
                         "SELECT " +
-                                "tourid, name, description, startpoint, endpoint ,logid, comment, difficulty " +
+                                "id, name, description, startpoint, endpoint ,logid, comment, difficulty " +
                                 "   FROM tour_data " +
                                 "   JOIN tourlog_data " +
                                 "       ON tour_data.id=tourlog_data.tourid " +
                                 "           WHERE " +
-                                "               comment like ? OR " +
-                                "               difficulty like ? ;"
+                                "               lower(comment) like ? OR " +
+                                "               lower(difficulty) like ? ;"
 
                 );
         ) {
 
             ArrayList<SearchResult> searchResult = new ArrayList<>();
 
-            searchString = "%"+searchString+"%";
+            searchString = "%"+searchString.toLowerCase(Locale.ROOT)+"%";
             statement1.setString(1, searchString);
             statement1.setString(2, searchString);
             statement1.setString(3, searchString);
             statement1.setString(4, searchString);
+
+            statement2.setString(1, searchString);
+            statement2.setString(2, searchString);
 
             ResultSet resultSet1 = statement1.executeQuery();
 

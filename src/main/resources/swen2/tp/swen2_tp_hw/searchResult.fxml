@@ -15,13 +15,13 @@
       </Label>
       <TableView fx:id="tv_searchTable" layoutY="31.0" prefHeight="364.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
         <columns>
-          <TableColumn prefWidth="105.0" text="Type" />
-          <TableColumn prefWidth="100.0" text="Name" />
-            <TableColumn prefWidth="128.00001525878906" text="Description" />
-            <TableColumn prefWidth="90.4000244140625" text="From" />
-            <TableColumn prefWidth="81.5999755859375" text="To" />
-            <TableColumn prefWidth="179.20001220703125" text="Comment" />
-            <TableColumn prefWidth="114.4000244140625" text="Difficulty" />
+          <TableColumn fx:id="tbc_type" prefWidth="105.0" text="Type" />
+          <TableColumn fx:id="tbc_name" prefWidth="100.0" text="Name" />
+            <TableColumn fx:id="tbc_description" prefWidth="128.00001525878906" text="Description" />
+            <TableColumn fx:id="tbc_from" prefWidth="90.4000244140625" text="From" />
+            <TableColumn fx:id="tbc_to" prefWidth="81.5999755859375" text="To" />
+            <TableColumn fx:id="tbc_comment" prefWidth="179.20001220703125" text="Comment" />
+            <TableColumn fx:id="tbc_difficulty" prefWidth="114.4000244140625" text="Difficulty" />
         </columns>
       </TableView>
    </children>
