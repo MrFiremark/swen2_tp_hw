@@ -70,10 +70,10 @@ public class TourService {
 
     public void loadTours(){
         this.toursMap = tourRepository.getTours();
+        // TODO correct error handling
         if(toursMap == null){
             toursMap = new HashMap<>();
         }
-        toursMap = tourRepository.getTours();
         for (Tour temp: toursMap.values()
              ) {
             temp.setChildFriendliness();

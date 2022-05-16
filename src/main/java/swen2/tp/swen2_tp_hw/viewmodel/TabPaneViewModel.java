@@ -20,7 +20,7 @@ public class TabPaneViewModel implements SelectedTourListener {
     private final StringProperty transportType = new SimpleStringProperty();
     private final StringProperty distance = new SimpleStringProperty();
     private final StringProperty time = new SimpleStringProperty();
-    private final StringProperty popularity = new SimpleStringProperty();
+    //private final StringProperty popularity = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final Property<Image> imagePath = new SimpleObjectProperty<>();
@@ -46,9 +46,11 @@ public class TabPaneViewModel implements SelectedTourListener {
     public StringProperty getTime(){
         return this.time;
     }
+
+    /*
     public StringProperty getPopularity(){
         return this.popularity;
-    }
+    }*/
     public StringProperty getChildFriendliness(){
         return this.childFriendliness;
     }

@@ -34,8 +34,6 @@ public class TabPaneController {
     @FXML
     private Label lbl_time;
     @FXML
-    private Label lbl_popularity;
-    @FXML
     private Label lbl_childFriendliness;
     @FXML
     private Label lbl_description;
@@ -58,13 +56,15 @@ public class TabPaneController {
         lbl_transportType.textProperty().bind(tabPaneViewModel.getTransportType());
         lbl_distance.textProperty().bind(tabPaneViewModel.getDistance());
         lbl_time.textProperty().bind(tabPaneViewModel.getTime());
-        lbl_popularity.textProperty().bind(tabPaneViewModel.getPopularity());
         lbl_childFriendliness.textProperty().bind(tabPaneViewModel.getChildFriendliness());
         lbl_description.textProperty().bind(tabPaneViewModel.getDescription());
         if(tabPaneViewModel.getImagePath() != null) {
             iv_map.imageProperty().bindBidirectional(tabPaneViewModel.getImagePath());
         }
-        loadRatingChart(tabPaneViewModel.getSelectedTour());
+        if(tabPaneViewModel.getSelectedTour() != null){
+            loadRatingChart(tabPaneViewModel.getSelectedTour());
+        }
+
         //loadPieChart();
     }
 
