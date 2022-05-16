@@ -198,7 +198,11 @@ public class Tour {
         ) {
             count += Integer.parseInt(tourlog.getRating());
         }
-        return count/tourLogs.size();
+        if (tourLogs.size() == 0){
+            return 0;
+        }else{
+            return count/tourLogs.size();
+        }
     }
 
 

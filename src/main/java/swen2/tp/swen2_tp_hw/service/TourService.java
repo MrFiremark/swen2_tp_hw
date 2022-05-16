@@ -49,7 +49,7 @@ public class TourService {
 
     public void deleteTour(Tour tour){
         //TODO delete
-        toursMap.remove(tour.getName());
+        toursMap.remove(tour.getid());
         tourRepository.deleteTour(tour.getid());
         notifyListeners(tour);
     }

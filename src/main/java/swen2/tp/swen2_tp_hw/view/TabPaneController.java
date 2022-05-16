@@ -50,6 +50,8 @@ public class TabPaneController {
 
     @FXML
     public void initialize(){
+        bc_rating.visibleProperty().bindBidirectional(tabPaneViewModel.getChartVisibility());
+        bc_difficulty.visibleProperty().bindBidirectional(tabPaneViewModel.getChartVisibility());
         lbl_tourName.textProperty().bind(tabPaneViewModel.getTourName());
         lbl_from.textProperty().bind(tabPaneViewModel.getFrom());
         lbl_to.textProperty().bind(tabPaneViewModel.getTo());
@@ -58,27 +60,10 @@ public class TabPaneController {
         lbl_time.textProperty().bind(tabPaneViewModel.getTime());
         lbl_childFriendliness.textProperty().bind(tabPaneViewModel.getChildFriendliness());
         lbl_description.textProperty().bind(tabPaneViewModel.getDescription());
-        if(tabPaneViewModel.getImagePath() != null) {
-            iv_map.imageProperty().bindBidirectional(tabPaneViewModel.getImagePath());
-        }
-        if(tabPaneViewModel.getSelectedTour() != null){
-            loadRatingChart(tabPaneViewModel.getSelectedTour());
-        }
+        iv_map.imageProperty().bindBidirectional(tabPaneViewModel.getImagePath());
+        bc_rating.dataProperty().bindBidirectional(tabPaneViewModel.getRatingData());
+        //bc_difficulty.dataProperty().bindBidirectional();
 
-        //loadPieChart();
-    }
-
-    public void loadRatingChart(Tour tour){
-
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Ranking");
-        series.getData().add(new XYChart.Data("1 Stern", tour.getRating(1)));
-        series.getData().add(new XYChart.Data("2 Sterne", tour.getRating(2)));
-        series.getData().add(new XYChart.Data("3 Sterne", tour.getRating(3)));
-        series.getData().add(new XYChart.Data("4 Sterne", tour.getRating(4)));
-        series.getData().add(new XYChart.Data("5 Sterne", tour.getRating(5)));
-
-        bc_rating.getData().addAll(series);
     }
 
     public void loadDifficultyCharts(Tour tour){
@@ -94,16 +79,4 @@ public class TabPaneController {
         bc_rating.getData().addAll(series);
     }
 
-    public void loadPieChart(){
-
-        ObservableList<PieChart.Data> pieChartData =
-                FXCollections.observableArrayList(
-                        new PieChart.Data("Very Easy", 13),
-                        new PieChart.Data("Easy", 25),
-                        new PieChart.Data("Medium", 10),
-                        new PieChart.Data("Hard", 22),
-                        new PieChart.Data("Very Hard", 30));
-        //pc_rating.setData(pieChartData);
-        //pc_rating.setTitle("Tour Difficulty");
-    }
 }

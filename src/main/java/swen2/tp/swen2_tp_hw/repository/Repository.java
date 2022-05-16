@@ -27,15 +27,4 @@ public abstract class Repository {
 
         return connection;
     }
-
-    private void readConfig () throws IOException {
-        String row;
-        BufferedReader csvReader = new BufferedReader(new FileReader("C:\\Users\\Raffy\\Desktop\\SWEN1_MTCG_Horvath_ http\\src\\DBConfig"));
-        while ((row = csvReader.readLine()) != null) {
-            String[] data = row.split(";");
-            url = data[0];
-            user = data[1];
-            pw = data[2];
-        }
-    }
 }

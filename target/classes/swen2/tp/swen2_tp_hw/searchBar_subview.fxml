@@ -8,15 +8,15 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="30.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.SearchBarController">
-    <TextField fx:id="tf_searchBar" layoutX="3.0" layoutY="29.0" prefHeight="32.0" prefWidth="545.0" promptText="Search" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="3.0">
+    <TextField fx:id="tf_searchBar" layoutX="3.0" layoutY="29.0" prefHeight="32.0" prefWidth="545.0" promptText="Search" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="52.0" AnchorPane.topAnchor="3.0">
         <font>
             <Font size="13.0" />
         </font></TextField>
-   <Button onAction="#onSearchPress" layoutX="556.0" layoutY="1.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="40.0" style="-fx-background-radius: 100;" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="2.0">
+   <Button layoutX="556.0" layoutY="1.0" mnemonicParsing="false" onAction="#onSearchPress" prefHeight="30.0" prefWidth="30.0" style="-fx-background-radius: 100; -fx-background-color: #ADADAD;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
       <graphic>
-         <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
             <image>
-               <Image url="@../../../img/Vector_search_icon.svg.png" />
+               <Image url="@../../../img/search_icon.png" />
             </image></ImageView>
       </graphic>
    </Button>

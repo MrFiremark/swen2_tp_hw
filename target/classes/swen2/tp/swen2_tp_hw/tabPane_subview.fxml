@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.TabPaneController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.TabPaneController">
     <Label layoutY="6.0" prefHeight="27.0" prefWidth="110.0" text="Tourname:" underline="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
         <padding>
             <Insets bottom="10.0" left="10.0" />
@@ -29,20 +29,41 @@
             <Font size="14.0" />
         </font>
     </Label>
-    <TabPane layoutY="36.0" prefHeight="303.0" prefWidth="955.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="32.0">
+    <TabPane layoutY="36.0" prefHeight="303.0" prefWidth="955.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
         <tabs>
             <Tab text="Description">
                 <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                   <children>
-                     <Label fx:id="lbl_from" layoutX="13.0" layoutY="112.0" text="From:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="112.0" />
-                     <Label fx:id="lbl_to" layoutX="124.0" layoutY="114.0" text="To:" AnchorPane.leftAnchor="124.0" AnchorPane.topAnchor="114.0" />
-                     <Label fx:id="lbl_transportType" layoutX="13.0" layoutY="144.0" text="Transport Type:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="144.0" />
-                     <Label fx:id="lbl_distance" layoutX="13.0" layoutY="175.0" text="Distance:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="175.0" />
-                     <Label fx:id="lbl_time" layoutX="124.0" layoutY="177.0" text="Estimated Time:" AnchorPane.leftAnchor="124.0" AnchorPane.topAnchor="177.0" />
-                     <Label fx:id="lbl_childFriendliness" layoutX="13.0" layoutY="212.0" text="Child-Friendliness:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="212.0" />
-                     <Label fx:id="lbl_description" layoutX="13.0" layoutY="14.0" text="Description:" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="14.0" />
-                     <BarChart fx:id="bc_rating" barGap="3.0" layoutX="233.0" layoutY="-3.0" legendVisible="false" prefHeight="219.0" prefWidth="342.0" title="Overall Rating" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <Label fx:id="lbl_from" layoutX="8.0" layoutY="180.0" text="From:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="180.0">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+                     <Label fx:id="lbl_to" layoutX="8.0" layoutY="210.0" text="To:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="210.0">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+                     <Label fx:id="lbl_transportType" layoutX="15.0" layoutY="234.0" text="Transport Type:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="240.0">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+                     <Label fx:id="lbl_distance" layoutX="14.0" layoutY="257.0" text="Distance:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="270.0">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+                     <Label fx:id="lbl_time" layoutX="14.0" layoutY="284.0" text="Estimated Time:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="300.0">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+                     <Label fx:id="lbl_childFriendliness" layoutX="14.0" layoutY="309.0" text="Child-Friendliness:" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="330.0">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+                     <Label fx:id="lbl_description" alignment="TOP_LEFT" layoutX="13.0" layoutY="4.0" prefHeight="178.0" prefWidth="232.0" text="Description:" wrapText="true" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="4.0">
+                        <font>
+                           <Font size="14.0" />
+                        </font></Label>
+                     <BarChart fx:id="bc_rating" barGap="3.0" blendMode="DARKEN" layoutX="233.0" layoutY="-3.0" legendVisible="false" prefHeight="219.0" prefWidth="342.0" style="-fx-background-color: transparent;" title="Overall Rating" verticalGridLinesVisible="false" verticalZeroLineVisible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                        <xAxis>
                          <CategoryAxis side="BOTTOM" />
                        </xAxis>
@@ -50,7 +71,7 @@
                          <NumberAxis side="LEFT" />
                        </yAxis>
                      </BarChart>
-                     <BarChart fx:id="bc_difficulty" barGap="3.0" layoutX="235.0" layoutY="195.0" legendVisible="false" prefHeight="219.0" prefWidth="342.0" title="Overall Difficulty" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
+                     <BarChart fx:id="bc_difficulty" barGap="3.0" blendMode="DARKEN" layoutX="235.0" layoutY="195.0" legendVisible="false" prefHeight="219.0" prefWidth="342.0" style="-fx-background-color: transparent;" title="Overall Difficulty" verticalGridLinesVisible="false" verticalZeroLineVisible="false" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="200.0">
                         <xAxis>
                            <CategoryAxis side="BOTTOM" />
                         </xAxis>
@@ -58,10 +79,7 @@
                            <NumberAxis side="LEFT" />
                         </yAxis>
                      </BarChart>
-                  </children>
-                  <padding>
-                     <Insets top="2.0" />
-                  </padding></AnchorPane>
+                  </children></AnchorPane>
                 </content>
             </Tab>
             <Tab text="Route">
@@ -76,6 +94,11 @@
                         </children></AnchorPane>
                 </content>
             </Tab>
+         <Tab text="Map">
+            <content>
+               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+         </Tab>
         </tabs>
     </TabPane>
 

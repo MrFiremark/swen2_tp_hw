@@ -55,7 +55,9 @@ public class TourLogTableViewModel implements SelectedTourListener {
     @Override
     public void update(Tour tour) {
         observableLogs.clear();
-        observableLogs.addAll(tour.getTourLogs());
+        if (tour != null) {
+            observableLogs.addAll(tour.getTourLogs());
+        }
         notifyListeners();
     }
 

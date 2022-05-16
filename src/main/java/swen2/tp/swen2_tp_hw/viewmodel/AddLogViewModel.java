@@ -41,7 +41,7 @@ public class AddLogViewModel {
     public void saveTourLog(){
         //TODO get properties and validation
         if (selectedTourService.getSelectedTour() != null ) {
-            TourLog tourLog = new TourLog(selectedTourService.getSelectedTour().getid(), UUID.randomUUID().toString(), date.get().toString(), "13:13:13", comment.get(), difficulty.get(), durationHour.get() + ":" + durationMin.get(), rating.get().toString());
+            TourLog tourLog = new TourLog(selectedTourService.getSelectedTour().getid(), UUID.randomUUID().toString(), date.get().toString(), "13:13:13", comment.get(), difficulty.get(), durationHour.get() + ":" + durationMin.get(), String.valueOf(rating.get().intValue()));
             selectedTourService.addTourLog(tourLog);
         }else{
             System.out.println("ohje");

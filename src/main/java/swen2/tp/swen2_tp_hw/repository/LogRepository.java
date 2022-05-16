@@ -29,7 +29,7 @@ public class LogRepository extends Repository{
             statement.setString(5, tourLog.getComment());
             statement.setString(6, tourLog.getDifficulty());
             statement.setString(7, tourLog.getTotalTime());
-            statement.setString(8, tourLog.getRating());
+            statement.setInt(8, Integer.parseInt(tourLog.getRating()));
 
             statement.execute();
 
@@ -61,7 +61,7 @@ public class LogRepository extends Repository{
                             resultSet.getString("comment"),
                             resultSet.getString("difficulty"),
                             resultSet.getString("totaltime"),
-                            resultSet.getString("rating")
+                            String.valueOf(resultSet.getInt("rating"))
                         )
                 );
             }
@@ -111,7 +111,7 @@ public class LogRepository extends Repository{
             statement.setString(3, tourLog.getComment());
             statement.setString(4, tourLog.getDifficulty());
             statement.setString(5, tourLog.getTotalTime());
-            statement.setString(6, tourLog.getRating());
+            statement.setInt(6, Integer.parseInt(tourLog.getRating()));
 
             statement.execute();
 

@@ -14,7 +14,6 @@ public class AddTourViewModel {
     private final StringProperty to = new SimpleStringProperty();
     private final ObjectProperty<String> transportType = new SimpleObjectProperty<>();
     private final BooleanProperty addButton = new SimpleBooleanProperty();
-    private final BooleanProperty editButton = new SimpleBooleanProperty();
 
     private final TourService tourService;
 

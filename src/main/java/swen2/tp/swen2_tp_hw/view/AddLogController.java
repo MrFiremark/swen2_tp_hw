@@ -32,7 +32,7 @@ public class AddLogController {
     }
 
     @FXML
-    private void initialize(String method){
+    private void initialize(){
         dp_date.valueProperty().bindBidirectional(addLogViewModel.getDate());
         ta_comment.textProperty().bindBidirectional(addLogViewModel.getComment());
         sl_rating.valueProperty().bindBidirectional(addLogViewModel.getRating());
@@ -46,6 +46,7 @@ public class AddLogController {
     @FXML
     protected void onAddButtonClick(){
         addLogViewModel.saveTourLog();
+
         closeWindow();
     }
 
