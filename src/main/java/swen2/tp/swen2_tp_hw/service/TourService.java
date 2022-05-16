@@ -76,7 +76,9 @@ public class TourService {
         }
         for (Tour temp: toursMap.values()
              ) {
-            temp.setChildFriendliness();
+            if (temp.getTourLogs().size() != 0) {
+                temp.setChildFriendliness();
+            }
         }
     }
 
@@ -94,6 +96,5 @@ public class TourService {
            toursMap = new HashMap<>();
        }
     }
-
 
 }
