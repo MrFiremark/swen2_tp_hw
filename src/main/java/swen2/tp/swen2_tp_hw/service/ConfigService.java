@@ -6,6 +6,8 @@ import java.util.Properties;
 
 public class ConfigService {
 
+    // TODO interface so user input can be used
+
     public String load(String key) {
 
         Properties properties = new Properties();

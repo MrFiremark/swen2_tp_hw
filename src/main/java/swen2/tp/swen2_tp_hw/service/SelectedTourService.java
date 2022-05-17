@@ -1,6 +1,7 @@
 package swen2.tp.swen2_tp_hw.service;
 
 import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
+import swen2.tp.swen2_tp_hw.listener.SelectedTourLogListener;
 import swen2.tp.swen2_tp_hw.listener.TourLogListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.model.TourLog;
@@ -15,15 +16,22 @@ public class SelectedTourService {
     private final LogRepository logRepository = new LogRepository();
 
     private ArrayList<SelectedTourListener> listeners = new ArrayList<>();
-    private ArrayList<TourLogListener> tourLogListeners = new ArrayList<>();
+    private ArrayList<SelectedTourLogListener> tourLogListeners = new ArrayList<>();
 
     public void addListener(SelectedTourListener listener){
         listeners.add(listener);
     }
-
+    public void addListener(SelectedTourLogListener listener){
+        tourLogListeners.add(listener);
+    }
     public void notifyListeners(Tour tour) {
         for ( var listener : listeners ) {
             listener.update(tour);
+        }
+    }
+    public void notifyListeners(TourLog tourLog){
+        for ( var listener : tourLogListeners ) {
+            listener.update(tourLog);
         }
     }
 
@@ -42,6 +50,7 @@ public class SelectedTourService {
 
     public void setSetSelectedTourLog(TourLog tourLog){
         this.selectedTourLog = tourLog;
+        notifyListeners(tourLog);
     }
 
     public void addTourLog(TourLog tourLog){
@@ -52,7 +61,7 @@ public class SelectedTourService {
 
     public void editTourLog(){
         logRepository.updateTourLog(selectedTourLog);
-        notifyListeners(selectedTour);
+        notifyListeners(selectedTourLog);
     }
 
     public void deleteTourLog(){

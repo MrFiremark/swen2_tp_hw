@@ -46,7 +46,6 @@ public class AddLogController {
     @FXML
     protected void onAddButtonClick(){
         addLogViewModel.saveTourLog();
-
         closeWindow();
     }
 

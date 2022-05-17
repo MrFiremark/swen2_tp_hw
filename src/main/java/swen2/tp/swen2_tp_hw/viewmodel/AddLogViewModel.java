@@ -40,9 +40,20 @@ public class AddLogViewModel {
         //TODO  validation and correct time
         if (selectedTourService.getSelectedTour() != null ) {
             TourLog tourLog = new TourLog(selectedTourService.getSelectedTour().getid(), UUID.randomUUID().toString(), date.get().toString(), "13:13:13", comment.get(), difficulty.get(), durationHour.get() + ":" + durationMin.get(), String.valueOf(rating.get().intValue()));
+            resetValues();
             selectedTourService.addTourLog(tourLog);
         }else{
             System.out.println("No tour selected");
         }
     }
+
+    private void resetValues(){
+        date.set(null);
+        durationHour.set("");
+        durationMin.set("");
+        comment.set("");
+        difficulty.set("");
+        rating.set(1);
+    }
+
 }
