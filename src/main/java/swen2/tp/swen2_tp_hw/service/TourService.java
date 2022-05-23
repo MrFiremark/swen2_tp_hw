@@ -14,6 +14,7 @@ public class TourService {
 
     private final TourRepository tourRepository = new TourRepository();
     private final RouteService routeService = new RouteService();
+    private final AttributeService attributeService = new AttributeService();
 
     private ArrayList<TourListener> tourListeners = new ArrayList<>();
 
@@ -77,7 +78,7 @@ public class TourService {
         for (Tour temp: toursMap.values()
              ) {
             if (temp.getTourLogs().size() != 0) {
-                temp.setChildFriendliness();
+                temp.setChildFriendliness(attributeService.setChildFriendliness(temp));
             }
         }
     }

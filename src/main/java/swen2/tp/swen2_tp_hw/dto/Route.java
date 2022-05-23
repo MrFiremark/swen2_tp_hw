@@ -7,11 +7,4 @@ public class Route {
     public String formattedTime;
     public String sessionId;
 
-    public double getDistance() {
-        return distance;
-    }
-
-    public String getFormattedTime() {
-        return formattedTime;
-    }
 }

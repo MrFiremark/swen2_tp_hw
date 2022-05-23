@@ -45,8 +45,8 @@ public class RouteService {
 
         RouteResponse routeResponse = objectMapper.readValue(httpService.handleHttpRequest(url).body(), RouteResponse.class);
 
-        tour.setDistance(routeResponse.route.getDistance());
-        tour.setTime(routeResponse.route.getFormattedTime());
+        tour.setDistance(routeResponse.route.distance);
+        tour.setTime(routeResponse.route.formattedTime);
 
         url = "https://www.mapquestapi.com/staticmap/v5/map?key="+apikey+"&" +
                 "session=" + routeResponse.route.sessionId + "&" +

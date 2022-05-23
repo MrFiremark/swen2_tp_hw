@@ -7,6 +7,7 @@ import javafx.scene.chart.XYChart;
 import javafx.scene.image.Image;
 import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
+import swen2.tp.swen2_tp_hw.service.AttributeService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 
 import java.awt.*;
@@ -16,6 +17,7 @@ import java.io.File;
 public class TabPaneViewModel implements SelectedTourListener {
 
     private final SelectedTourService selectedTourService;
+    private final AttributeService attributeService;
 
     private final StringProperty tourName = new SimpleStringProperty();
     private final StringProperty from = new SimpleStringProperty();
@@ -67,8 +69,9 @@ public class TabPaneViewModel implements SelectedTourListener {
         return this.description;
     }
 
-    public TabPaneViewModel(SelectedTourService selectedTourService) {
+    public TabPaneViewModel(SelectedTourService selectedTourService, AttributeService attributeService) {
         this.selectedTourService = selectedTourService;
+        this.attributeService = attributeService;
         selectedTourService.addListener(this);
     }
 
@@ -92,6 +95,7 @@ public class TabPaneViewModel implements SelectedTourListener {
             Image image = new Image(new File(tour.getImagePath()).toURI().toString());
             imagePath.setValue(image);
             ratingData.set(loadRatingChart(tour));
+            difficultyData.set(loadDifficultyChart(tour));
             chartVisibility.set(true);
         }else {
             tourName.set("");
@@ -114,11 +118,11 @@ public class TabPaneViewModel implements SelectedTourListener {
 
         XYChart.Series series = new XYChart.Series();
         series.setName("Ranking");
-        series.getData().add(new XYChart.Data("1 Stern", tour.getRating(1)));
-        series.getData().add(new XYChart.Data("2 Sterne", tour.getRating(2)));
-        series.getData().add(new XYChart.Data("3 Sterne", tour.getRating(3)));
-        series.getData().add(new XYChart.Data("4 Sterne", tour.getRating(4)));
-        series.getData().add(new XYChart.Data("5 Sterne", tour.getRating(5)));
+        series.getData().add(new XYChart.Data("1 Stern", attributeService.getRating(tour, 1)));
+        series.getData().add(new XYChart.Data("2 Sterne", attributeService.getRating(tour,2)));
+        series.getData().add(new XYChart.Data("3 Sterne", attributeService.getRating(tour,3)));
+        series.getData().add(new XYChart.Data("4 Sterne", attributeService.getRating(tour,4)));
+        series.getData().add(new XYChart.Data("5 Sterne", attributeService.getRating(tour,5)));
 
         ratingData.add(series);
         return ratingData;
@@ -130,11 +134,11 @@ public class TabPaneViewModel implements SelectedTourListener {
 
         XYChart.Series series = new XYChart.Series();
         series.setName("Difficulty");
-        series.getData().add(new XYChart.Data("Very Easy", tour.getDifficulty("Very Easy")));
-        series.getData().add(new XYChart.Data("Easy", tour.getDifficulty("Easy")));
-        series.getData().add(new XYChart.Data("Normal", tour.getDifficulty("Normal")));
-        series.getData().add(new XYChart.Data("Hard", tour.getDifficulty("Hard")));
-        series.getData().add(new XYChart.Data("Very Hard", tour.getDifficulty("Very Hard")));
+        series.getData().add(new XYChart.Data("Very Easy", attributeService.getDifficulty(tour,"Very Easy")));
+        series.getData().add(new XYChart.Data("Easy", attributeService.getDifficulty(tour,"Easy")));
+        series.getData().add(new XYChart.Data("Normal", attributeService.getDifficulty(tour,"Normal")));
+        series.getData().add(new XYChart.Data("Hard", attributeService.getDifficulty(tour,"Hard")));
+        series.getData().add(new XYChart.Data("Very Hard", attributeService.getDifficulty(tour,"Very Hard")));
 
         difficultyData.add(series);
 

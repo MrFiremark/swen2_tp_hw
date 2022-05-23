@@ -140,6 +140,10 @@ public class Tour {
         return childFriendliness;
     }
 
+    public void setChildFriendliness(String childFriendliness) {
+        this.childFriendliness = childFriendliness;
+    }
+    /*
     public void setChildFriendliness() {
 
         int averageTime = 0;
@@ -215,7 +219,7 @@ public class Tour {
         }else{
             return count/tourLogs.size();
         }
-    }
+    }*/
 
 
 }

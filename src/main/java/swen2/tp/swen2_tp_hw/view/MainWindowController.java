@@ -20,4 +20,14 @@ public class MainWindowController {
     public void onMenuClickSummaryReport(){
         mainWindowViewModel.generateSummaryPDF();
     }
+
+    @FXML
+    public void onMenuClickExportTour(){
+        mainWindowViewModel.exportTour();
+    }
+
+    @FXML
+    public void onMenuClickImportTour(){
+        mainWindowViewModel.importTour();
+    }
 }

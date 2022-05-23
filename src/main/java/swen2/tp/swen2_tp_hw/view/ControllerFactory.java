@@ -1,10 +1,7 @@
 package swen2.tp.swen2_tp_hw.view;
 
 
-import swen2.tp.swen2_tp_hw.service.PDFService;
-import swen2.tp.swen2_tp_hw.service.SearchService;
-import swen2.tp.swen2_tp_hw.service.SelectedTourService;
-import swen2.tp.swen2_tp_hw.service.TourService;
+import swen2.tp.swen2_tp_hw.service.*;
 import swen2.tp.swen2_tp_hw.viewmodel.*;
 
 public class ControllerFactory {
@@ -25,6 +22,8 @@ public class ControllerFactory {
     private final SelectedTourService selectedTourService;
     private final PDFService pdfService;
     private final SearchService searchService;
+    private final AttributeService attributeService;
+    private final DataService dataService;
 
     public ControllerFactory() {
         tourService = new TourService();
@@ -32,12 +31,14 @@ public class ControllerFactory {
         selectedTourService = new SelectedTourService();
         searchService = new SearchService();
         searchBarViewModel = new SearchBarViewModel();
+        attributeService = new AttributeService();
+        dataService = new DataService();
         searchResultViewModel = new SearchResultViewModel(searchService);
         tourListViewModel = new TourListViewModel(tourService, selectedTourService);
         listMenuViewModel = new ListMenuViewModel(tourService, selectedTourService);
         tourLogTableViewModel = new TourLogTableViewModel(selectedTourService);
         tableMenuViewModel = new TableMenuViewModel(selectedTourService);
-        tabPaneViewModel = new TabPaneViewModel(selectedTourService);
+        tabPaneViewModel = new TabPaneViewModel(selectedTourService, attributeService);
         addTourViewModel = new AddTourViewModel(tourService);
         addLogViewModel = new AddLogViewModel(selectedTourService);
         editTourViewModel = new EditTourViewModel(tourService, selectedTourService);
@@ -51,7 +52,8 @@ public class ControllerFactory {
                 tabPaneViewModel,
                 pdfService,
                 selectedTourService,
-                tourService
+                tourService,
+                dataService
         );
 
     }

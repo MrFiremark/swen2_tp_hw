@@ -2,6 +2,7 @@ package swen2.tp.swen2_tp_hw.viewmodel;
 
 import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
+import swen2.tp.swen2_tp_hw.service.DataService;
 import swen2.tp.swen2_tp_hw.service.PDFService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
@@ -19,6 +20,7 @@ public class MainWindowViewModel implements SelectedTourListener {
     private PDFService pdfService;
     private SelectedTourService selectedTourService;
     private TourService tourService;
+    private DataService dataService;
 
     public MainWindowViewModel(
             ListMenuViewModel listMenuViewModel,
@@ -29,7 +31,8 @@ public class MainWindowViewModel implements SelectedTourListener {
             TabPaneViewModel tabPaneViewModel,
             PDFService pdfService,
             SelectedTourService selectedTourService,
-            TourService tourService
+            TourService tourService,
+            DataService dataService
     ) {
         this.listMenuViewModel = listMenuViewModel;
         this.tourListViewModel = tourListViewModel;
@@ -40,6 +43,7 @@ public class MainWindowViewModel implements SelectedTourListener {
         this.pdfService = pdfService;
         this.selectedTourService = selectedTourService;
         this.tourService = tourService;
+        this.dataService = dataService;
         selectedTourService.addListener(this);
     }
 
@@ -57,6 +61,14 @@ public class MainWindowViewModel implements SelectedTourListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void exportTour(){
+        dataService.exportTour(selectedTourService.getSelectedTour());
+    }
+
+    public void importTour(){
+        tourService.addTour(dataService.importTour());
     }
 
     @Override
