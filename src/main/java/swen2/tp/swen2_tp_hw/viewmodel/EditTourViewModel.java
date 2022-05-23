@@ -58,10 +58,12 @@ public class EditTourViewModel implements SelectedTourListener {
 
     @Override
     public void update(Tour tour) {
-        tourName.set(tour.getName());
-        description.set(tour.getDescription());
-        from.set(tour.getFrom());
-        to.set(tour.getTo());
-        transportType.set(tour.getTransportType());
+        if (tour != null) {
+            tourName.set(tour.getName());
+            description.set(tour.getDescription());
+            from.set(tour.getFrom());
+            to.set(tour.getTo());
+            transportType.set(tour.getTransportType());
+        }
     }
 }

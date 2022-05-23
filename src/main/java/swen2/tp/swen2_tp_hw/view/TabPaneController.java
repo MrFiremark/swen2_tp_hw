@@ -62,21 +62,6 @@ public class TabPaneController {
         lbl_description.textProperty().bind(tabPaneViewModel.getDescription());
         iv_map.imageProperty().bindBidirectional(tabPaneViewModel.getImagePath());
         bc_rating.dataProperty().bindBidirectional(tabPaneViewModel.getRatingData());
-        //bc_difficulty.dataProperty().bindBidirectional();
-
+        bc_difficulty.dataProperty().bindBidirectional(tabPaneViewModel.getDifficultyData());
     }
-
-    public void loadDifficultyCharts(Tour tour){
-
-        XYChart.Series series = new XYChart.Series();
-        series.setName("Difficulty");
-        series.getData().add(new XYChart.Data("Very Easy", tour.getRating(1)));
-        series.getData().add(new XYChart.Data("Easy", tour.getRating(2)));
-        series.getData().add(new XYChart.Data("Normal", tour.getRating(3)));
-        series.getData().add(new XYChart.Data("Hard", tour.getRating(4)));
-        series.getData().add(new XYChart.Data("Very Hard", tour.getRating(5)));
-
-        bc_rating.getData().addAll(series);
-    }
-
 }

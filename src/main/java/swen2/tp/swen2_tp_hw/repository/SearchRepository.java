@@ -53,7 +53,7 @@ public class SearchRepository extends Repository{
 
             ResultSet resultSet1 = statement1.executeQuery();
 
-            if(resultSet1.next()){
+            if(resultSet1 != null){
                 while (resultSet1.next()) {
                     searchResult.add(
                             new SearchResult(

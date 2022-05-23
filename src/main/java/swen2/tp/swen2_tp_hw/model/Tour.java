@@ -191,6 +191,18 @@ public class Tour {
         return count;
     }
 
+    public int getDifficulty(String difficulty){
+        int count = 0;
+
+        for (TourLog tourlog: tourLogs
+        ) {
+            if(tourlog.getDifficulty().equals(difficulty)){
+                count++;
+            }
+        }
+        return count;
+    }
+
     public double getAverageRating(){
         double count = 0;
 

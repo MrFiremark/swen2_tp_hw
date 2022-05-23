@@ -29,6 +29,7 @@ public class TabPaneViewModel implements SelectedTourListener {
     private final Property<Image> imagePath = new SimpleObjectProperty<>();
     private final BooleanProperty chartVisibility = new SimpleBooleanProperty(false);
     private final ObjectProperty<ObservableList<XYChart.Series>> ratingData = new SimpleObjectProperty<>();
+    private final ObjectProperty<ObservableList<XYChart.Series>> difficultyData = new SimpleObjectProperty<>();
 
     public StringProperty getTourName() {
         return tourName;
@@ -53,6 +54,7 @@ public class TabPaneViewModel implements SelectedTourListener {
     }
     public BooleanProperty getChartVisibility(){ return this.chartVisibility; }
     public ObjectProperty<ObservableList<XYChart.Series>> getRatingData(){ return ratingData; }
+    public ObjectProperty<ObservableList<XYChart.Series>> getDifficultyData(){ return difficultyData; }
 
     /*
     public StringProperty getPopularity(){
@@ -120,5 +122,22 @@ public class TabPaneViewModel implements SelectedTourListener {
 
         ratingData.add(series);
         return ratingData;
+    }
+
+    public ObservableList<XYChart.Series> loadDifficultyChart(Tour tour){
+
+        ObservableList<XYChart.Series> difficultyData = FXCollections.observableArrayList();
+
+        XYChart.Series series = new XYChart.Series();
+        series.setName("Difficulty");
+        series.getData().add(new XYChart.Data("Very Easy", tour.getDifficulty("Very Easy")));
+        series.getData().add(new XYChart.Data("Easy", tour.getDifficulty("Easy")));
+        series.getData().add(new XYChart.Data("Normal", tour.getDifficulty("Normal")));
+        series.getData().add(new XYChart.Data("Hard", tour.getDifficulty("Hard")));
+        series.getData().add(new XYChart.Data("Very Hard", tour.getDifficulty("Very Hard")));
+
+        difficultyData.add(series);
+
+        return difficultyData;
     }
 }
