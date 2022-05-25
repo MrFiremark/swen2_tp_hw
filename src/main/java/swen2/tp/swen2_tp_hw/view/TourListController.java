@@ -5,11 +5,13 @@ import javafx.scene.control.ListView;
 import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.viewmodel.TourListViewModel;
+import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
+import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
 public class TourListController implements TourListener {
 
     private final TourListViewModel tourListViewModel;
-
+    private static ILoggerWrapper logger = LoggerFactory.getLogger();
     public TourListController(TourListViewModel tourListViewModel) {
         this.tourListViewModel = tourListViewModel;
     }
@@ -23,6 +25,7 @@ public class TourListController implements TourListener {
         for (Tour item: tourListViewModel.getObservableTours()) {
             tourList_listView.getItems().add(item.getName());
         }
+        //TODO make index a interger property
         tourListViewModel.addListener(this);
     }
 
@@ -38,6 +41,8 @@ public class TourListController implements TourListener {
     public void itemClicked(){
         int index = tourList_listView.getSelectionModel().getSelectedIndex();
         tourListViewModel.itemClicked(index);
+        logger.debug("Debug message");
+        System.out.println(logger);
     }
 
 }

@@ -4,7 +4,7 @@ import org.apache.logging.log4j.Logger;
 
 public class InitializedState extends LoggerBaseState{
 
-        private final Logger logger;
+    private final Logger logger;
 
     public InitializedState(Logger logger) {
         this.logger = logger;

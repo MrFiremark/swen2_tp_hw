@@ -20,7 +20,7 @@ public class TableMenuController {
 
     @FXML
     protected void onDeleteLogClick(){
-        tableMenuViewModel.deleteTour();
+        tableMenuViewModel.deleteTourLog();
     }
 
     @FXML

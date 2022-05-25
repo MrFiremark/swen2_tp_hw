@@ -1,7 +1,10 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
 import swen2.tp.swen2_tp_hw.model.Report;
 import swen2.tp.swen2_tp_hw.model.SearchResult;
 import swen2.tp.swen2_tp_hw.service.SearchService;
@@ -26,7 +29,13 @@ public class SearchResultViewModel {
         }
     }
 
+
     public ObservableList<SearchResult> getObservableResults(){ return observableResults; }
+
+    public void setSelectedSearchResult(){
+        //TODO get index from table view and then get tour id
+        // maybe with change listener
+    }
 
     public void clearObservableResults(){ observableResults.clear();}
 

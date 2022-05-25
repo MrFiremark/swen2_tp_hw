@@ -20,37 +20,43 @@ public class TableMenuViewModel implements SelectedTourLogListener {
     }
 
     public void openAddLogWindow(){
-        try {
-            Parent root = FXMLDependencyInjection.load("addLog.fxml", Locale.ENGLISH);
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("Add Tour Log");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(selectedTourService.getSelectedTour() != null){
+            try {
+                Parent root = FXMLDependencyInjection.load("addLog.fxml", Locale.ENGLISH);
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setTitle("Add Tour Log");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public void deleteTour(){
-        selectedTourService.deleteTourLog();
+    public void deleteTourLog(){
+        if(selectedTourService.getSetSelectedTourLog() != null){
+            selectedTourService.deleteTourLog();
+        }
     }
 
     public void openEditLogWindow(){
-        try {
-            Parent root = FXMLDependencyInjection.load("editLog.fxml", Locale.ENGLISH);
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("Edit Tour Log");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(selectedTourService.getSetSelectedTourLog() != null){
+            try {
+                Parent root = FXMLDependencyInjection.load("editLog.fxml", Locale.ENGLISH);
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setTitle("Edit Tour Log");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
     @Override
     public void update(TourLog tourLog) {
-
+        // TODO dont know if this is useful
     }
 }

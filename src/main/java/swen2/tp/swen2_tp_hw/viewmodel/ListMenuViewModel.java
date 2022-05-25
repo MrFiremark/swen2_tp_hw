@@ -41,16 +41,19 @@ public class ListMenuViewModel{
             selectedTourService.setSelectedTour(null);
         }
     }
+
     public void openEditTourWindow(){
-        try {
-            Parent root = FXMLDependencyInjection.load("editTour.fxml", Locale.ENGLISH);
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setTitle("Edit Tour");
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(selectedTourService.getSelectedTour() != null){
+            try {
+                Parent root = FXMLDependencyInjection.load("editTour.fxml", Locale.ENGLISH);
+                Scene scene = new Scene(root);
+                Stage stage = new Stage();
+                stage.setTitle("Edit Tour");
+                stage.setScene(scene);
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
