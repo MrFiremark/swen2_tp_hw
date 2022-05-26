@@ -1,6 +1,6 @@
 package swen2.tp.swen2_tp_hw.dto;
 
-public class JSONTourLog {
+public class TourLogDTO {
 
     public String tourId;
     public String logid;

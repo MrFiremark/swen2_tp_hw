@@ -76,7 +76,6 @@ public class LogRepository extends Repository{
     }
 
     public void deleteTourLog(String logid) {
-
         try (
                 Connection connection = getConnection();
                 PreparedStatement statement = connection.prepareStatement(
@@ -85,8 +84,6 @@ public class LogRepository extends Repository{
         ) {
 
             statement.setObject(1, logid);
-            //statement.setString(2, tour.getName());
-
             statement.execute();
 
         } catch (SQLException | IOException e) {

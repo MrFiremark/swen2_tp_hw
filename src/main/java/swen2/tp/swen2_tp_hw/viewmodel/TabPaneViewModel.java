@@ -25,7 +25,6 @@ public class TabPaneViewModel implements SelectedTourListener {
     private final StringProperty transportType = new SimpleStringProperty();
     private final StringProperty distance = new SimpleStringProperty();
     private final StringProperty time = new SimpleStringProperty();
-    //private final StringProperty popularity = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
     private final Property<Image> imagePath = new SimpleObjectProperty<>();
@@ -57,11 +56,6 @@ public class TabPaneViewModel implements SelectedTourListener {
     public BooleanProperty getChartVisibility(){ return this.chartVisibility; }
     public ObjectProperty<ObservableList<XYChart.Series>> getRatingData(){ return ratingData; }
     public ObjectProperty<ObservableList<XYChart.Series>> getDifficultyData(){ return difficultyData; }
-
-    /*
-    public StringProperty getPopularity(){
-        return this.popularity;
-    }*/
     public StringProperty getChildFriendliness(){
         return this.childFriendliness;
     }
@@ -88,7 +82,6 @@ public class TabPaneViewModel implements SelectedTourListener {
             transportType.set("Transport type: " + tour.getTransportType());
             distance.set("Distance: " + tour.getDistance() + " km");
             time.set("Time: " + tour.getTime());
-            // popularity.set("Popularity: " + tour.getPopularity());
             childFriendliness.set("Child friendliness: " + tour.getChildFriendliness());
             description.set("Description: \n" + tour.getDescription());
             //https://stackoverflow.com/questions/7830951/how-can-i-load-computer-directory-images-in-javafx
@@ -104,7 +97,6 @@ public class TabPaneViewModel implements SelectedTourListener {
             transportType.set("");
             distance.set("");
             time.set("");
-            // popularity.set("");
             childFriendliness.set("");
             description.set("");
             imagePath.setValue(null);

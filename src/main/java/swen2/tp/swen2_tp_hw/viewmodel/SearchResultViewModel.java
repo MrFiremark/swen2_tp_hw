@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class SearchResultViewModel {
 
     public final SearchService searchService;
-    private ObservableList<SearchResult> observableResults = FXCollections.observableArrayList();
+    private final ObservableList<SearchResult> observableResults = FXCollections.observableArrayList();
 
     public SearchResultViewModel(SearchService searchService) {
         this.searchService = searchService;
@@ -24,9 +24,7 @@ public class SearchResultViewModel {
 
         ArrayList<SearchResult> searchResults = searchService.getSearchResult(searchString);
 
-        for (SearchResult searchResult: searchResults) {
-            observableResults.add(searchResult);
-        }
+        observableResults.addAll(searchResults);
     }
 
 

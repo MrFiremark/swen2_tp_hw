@@ -1,10 +1,8 @@
 package swen2.tp.swen2_tp_hw.dto;
 
-import swen2.tp.swen2_tp_hw.model.TourLog;
-
 import java.util.ArrayList;
 
-public class JSONTour {
+public class TourDTO {
 
     public String id;
     public String name;
@@ -15,8 +13,6 @@ public class JSONTour {
     public double distance;
     public String time;
     public String imagePath;
-    public String popularity;
-    public String childFriendliness;
-    public ArrayList<JSONTourLog> tourLogs;
+    public ArrayList<TourLogDTO> tourLogs;
 
 }

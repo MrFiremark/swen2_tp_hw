@@ -13,11 +13,6 @@ public class TourLog {
     private String totalTime;
     private String rating;
 
-    // Only for now
-    public TourLog(){
-        this.logid = "1";
-    }
-
     public TourLog(String tourId, String logid, String date, String time, String comment, String difficulty, String totalTime, String rating) {
         this.tourId = tourId;
         this.logid = logid;

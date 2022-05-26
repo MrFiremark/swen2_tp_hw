@@ -1,12 +1,11 @@
 package swen2.tp.swen2_tp_hw.service;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.exc.StreamReadException;
 import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.util.JSONPObject;
-import swen2.tp.swen2_tp_hw.dto.JSONTour;
-import swen2.tp.swen2_tp_hw.dto.JSONTourLog;
+import swen2.tp.swen2_tp_hw.dto.TourDTO;
+import swen2.tp.swen2_tp_hw.dto.TourLogDTO;
+import swen2.tp.swen2_tp_hw.mapper.Mapper;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 
@@ -16,6 +15,7 @@ public class DataService {
 
     private ObjectMapper objectMapper = new ObjectMapper();
     private ConfigService configService = new ConfigService();
+    private Mapper mapper = new Mapper();
 
     public void exportTour(Tour tour){
         String path = configService.load("directory.export");
@@ -34,17 +34,11 @@ public class DataService {
 
     public Tour importTour(){
 
-        Tour importedTour = null;
+        TourDTO tourDTO = null;
 
         try {
             FileReader reader = new FileReader("JSON_Export/Test4.json");
-            JSONTour json = objectMapper.readValue(reader, JSONTour.class);
-            importedTour = new Tour(json.id,json.name,json.description,json.from,json.to,json.transportType,json.distance,json.time,json.imagePath);
-            for (JSONTourLog jtl : json.tourLogs
-                 ) {
-                importedTour.addTourLog(new TourLog(jtl.tourId, jtl.logid, jtl.date, jtl.time, jtl.comment, jtl.difficulty, jtl.totalTime, jtl.rating));
-            }
-
+            tourDTO = objectMapper.readValue(reader, TourDTO.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (StreamReadException e) {
@@ -55,6 +49,6 @@ public class DataService {
             e.printStackTrace();
         }
 
-        return importedTour;
+        return mapper.toUser(tourDTO);
     }
 }
