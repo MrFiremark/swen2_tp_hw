@@ -7,15 +7,39 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.EditLogController">
+<AnchorPane prefHeight="360.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.EditLogController">
     <children>
-        <Label layoutX="64.0" layoutY="20.0" text="Date:" />
-        <Label layoutX="44.0" layoutY="55.0" text="Duration:" />
-        <Label layoutX="44.0" layoutY="106.0" text="Difficulty:" />
-        <Label layoutX="41.0" layoutY="143.0" text="Comment:" />
-        <Label layoutX="60.0" layoutY="263.0" text="Rating:" />
+      <ImageView fitHeight="400.0" fitWidth="640.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../img/Background_TourLog.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="10.0" layoutY="10.0" prefHeight="360.0" prefWidth="640.0" style="-fx-background-color: White; -fx-opacity: 40%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Label layoutX="64.0" layoutY="20.0" text="Date:" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="19.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+        <Label layoutX="44.0" layoutY="55.0" text="Duration:" AnchorPane.leftAnchor="33.0" AnchorPane.topAnchor="54.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+        <Label layoutX="44.0" layoutY="106.0" text="Difficulty:" AnchorPane.leftAnchor="32.0" AnchorPane.topAnchor="106.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+        <Label layoutX="41.0" layoutY="143.0" text="Comment:" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="183.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
+        <Label layoutX="60.0" layoutY="263.0" text="Rating:" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="260.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Label>
         <DatePicker fx:id="dp_date" layoutX="111.0" layoutY="16.0" />
         <TextField fx:id="tf_durationHour" layoutX="112.0" layoutY="51.0" prefHeight="25.0" prefWidth="49.0" />
         <Label layoutX="168.0" layoutY="54.0" text=":" />
@@ -25,7 +49,13 @@
         <ChoiceBox fx:id="cb_difficulty" layoutX="113.0" layoutY="103.0" prefHeight="25.0" prefWidth="174.0" />
         <TextArea fx:id="ta_comment" layoutX="111.0" layoutY="143.0" prefHeight="100.0" prefWidth="460.0" />
         <Slider fx:id="sl_rating" blockIncrement="1.0" layoutX="111.0" layoutY="263.0" majorTickUnit="1.0" max="5.0" min="1.0" minorTickCount="1" prefHeight="14.0" prefWidth="233.0" showTickLabels="true" snapToTicks="true" value="3.0" />
-        <Button fx:id="btn_edit" layoutX="113.0" layoutY="354.0" mnemonicParsing="false" onAction="#onEditButtonClick" prefHeight="25.0" prefWidth="52.0" text="Edit" AnchorPane.bottomAnchor="21.0" />
-        <Button fx:id="btn_cancel" layoutX="433.0" layoutY="354.0" mnemonicParsing="false" onAction="#onCancelButtonClick" text="Cancel" AnchorPane.bottomAnchor="21.0" />
+        <Button fx:id="btn_edit" layoutX="113.0" layoutY="354.0" mnemonicParsing="false" onAction="#onEditButtonClick" prefHeight="30.0" prefWidth="80.0" style="-fx-background-radius: 100;" text="Edit" AnchorPane.bottomAnchor="16.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
+        <Button fx:id="btn_cancel" layoutX="433.0" layoutY="354.0" mnemonicParsing="false" onAction="#onCancelButtonClick" prefHeight="30.0" prefWidth="80.0" style="-fx-background-radius: 100;" text="Cancel" AnchorPane.bottomAnchor="16.0">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font></Button>
     </children>
 </AnchorPane>
