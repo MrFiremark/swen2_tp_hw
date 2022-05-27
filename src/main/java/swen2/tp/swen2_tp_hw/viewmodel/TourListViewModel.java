@@ -18,6 +18,8 @@ import java.util.ArrayList;
 public class TourListViewModel implements TourListener {
 
     private ObservableList<Tour> observableTours = FXCollections.observableArrayList();
+    private ObservableList<String> tourNames = FXCollections.observableArrayList();
+    private final ObjectProperty<ObservableList<String>> tourNameData = new SimpleObjectProperty<>();
 
     private ArrayList<TourListener> tourListeners = new ArrayList<>();
 
@@ -30,6 +32,11 @@ public class TourListViewModel implements TourListener {
         tourService.loadTours();
         if(tourService.getToursMap() != null){
             observableTours.addAll(tourService.getToursMap().values());
+            for (Tour tour: tourService.getToursMap().values()
+                 ) {
+                tourNames.add(tour.getName());
+            }
+            tourNameData.set(tourNames);
         }
         tourService.addListener(this);
     }
@@ -37,6 +44,7 @@ public class TourListViewModel implements TourListener {
     public ObservableList<Tour> getObservableTours() {
         return observableTours;
     }
+    public ObjectProperty<ObservableList<String>> getTourNameData() { return tourNameData; }
 
     public void addListener(TourListener tourLIstener){
         tourListeners.add(tourLIstener);
@@ -55,9 +63,12 @@ public class TourListViewModel implements TourListener {
     @Override
     public void update() {
         observableTours.clear();
+        tourNames.clear();
         for (Tour tour: tourService.getToursMap().values()) {
             observableTours.add(tour);
+            tourNames.add(tour.getName());
         }
+        tourNameData.set(tourNames);
         notifyListeners();
     }
 
@@ -66,8 +77,8 @@ public class TourListViewModel implements TourListener {
             Tour tour = observableTours.get(index);
             selectedTourService.setSelectedTour(tour);
         }
+        System.out.println(index);
     }
-
 
     // TODO maybe update Listener
 }

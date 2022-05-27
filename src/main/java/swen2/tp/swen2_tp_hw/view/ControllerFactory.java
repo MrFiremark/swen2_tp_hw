@@ -84,11 +84,8 @@ public class ControllerFactory {
             return new EditLogController(editLogViewModel);
         }
 
-
-
         throw new IllegalArgumentException("Unknown controller class: " + controllerClass);
     }
-
 
     //
     // Singleton-Pattern with early-binding

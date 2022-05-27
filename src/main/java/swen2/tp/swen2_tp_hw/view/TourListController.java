@@ -1,14 +1,18 @@
 package swen2.tp.swen2_tp_hw.view;
 
+import javafx.beans.InvalidationListener;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionModel;
 import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.viewmodel.TourListViewModel;
 import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
 import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
-public class TourListController implements TourListener {
+public class TourListController {
 
     private final TourListViewModel tourListViewModel;
     private static ILoggerWrapper logger = LoggerFactory.getLogger();
@@ -21,20 +25,7 @@ public class TourListController implements TourListener {
 
     @FXML
     public void initialize(){
-        //tourList_listView.setItems(tourListViewModel.getObservableTours());
-        for (Tour item: tourListViewModel.getObservableTours()) {
-            tourList_listView.getItems().add(item.getName());
-        }
-        //TODO make index a interger property
-        tourListViewModel.addListener(this);
-    }
-
-    @Override
-    public void update() {
-        tourList_listView.getItems().clear();
-        for (Tour item: tourListViewModel.getObservableTours()) {
-            tourList_listView.getItems().add(item.getName());
-        }
+        tourList_listView.itemsProperty().bindBidirectional(tourListViewModel.getTourNameData());
     }
 
     @FXML
@@ -44,5 +35,4 @@ public class TourListController implements TourListener {
         logger.debug("Debug message");
         System.out.println(logger);
     }
-
 }
