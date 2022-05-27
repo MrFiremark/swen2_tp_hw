@@ -33,7 +33,7 @@ public class ControllerFactory {
         searchBarViewModel = new SearchBarViewModel();
         attributeService = new AttributeService();
         dataService = new DataService();
-        searchResultViewModel = new SearchResultViewModel(searchService);
+        searchResultViewModel = new SearchResultViewModel(tourService, selectedTourService, searchService);
         tourListViewModel = new TourListViewModel(tourService, selectedTourService);
         listMenuViewModel = new ListMenuViewModel(tourService, selectedTourService);
         tourLogTableViewModel = new TourLogTableViewModel(selectedTourService);

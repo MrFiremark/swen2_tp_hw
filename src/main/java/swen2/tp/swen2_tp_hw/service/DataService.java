@@ -32,12 +32,12 @@ public class DataService {
 
     }
 
-    public Tour importTour(){
+    public Tour importTour(String path){
 
         TourDTO tourDTO = null;
 
         try {
-            FileReader reader = new FileReader("JSON_Export/Test4.json");
+            FileReader reader = new FileReader(path);
             tourDTO = objectMapper.readValue(reader, TourDTO.class);
         } catch (FileNotFoundException e) {
             e.printStackTrace();

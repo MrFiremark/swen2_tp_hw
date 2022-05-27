@@ -8,6 +8,7 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import swen2.tp.swen2_tp_hw.model.SearchResult;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.viewmodel.SearchResultViewModel;
@@ -59,13 +60,17 @@ public class SearchResultController {
             TableRow<SearchResult> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
                 if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
-                    SearchResult rowData = row.getItem();
-                    //TODO implement index property
-                    searchResultViewModel.setSelectedSearchResult();
+                    int index = tv_searchTable.getSelectionModel().getSelectedIndex();
+                    searchResultViewModel.setSelectedSearchResult(index);
+                    closeWindow();
                 }
             });
             return row ;
         });
     }
 
+    private void closeWindow(){
+        Stage stage = (Stage)tv_searchTable.getScene().getWindow();
+        stage.close();
+    }
 }
