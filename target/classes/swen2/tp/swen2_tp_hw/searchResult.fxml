@@ -3,17 +3,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.SearchResultController">
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.SearchResultController">
    <children>
-      <Label text="Search Results" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0">
+      <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@../../../img/Background_Searchresult.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="16.0" layoutY="16.0" prefHeight="25.0" prefWidth="119.0" style="-fx-background-color: white; -fx-background-radius: 100; -fx-opacity: 70%;" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="6.0">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <TableView fx:id="tv_searchTable" layoutY="31.0" prefHeight="364.0" prefWidth="739.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
+      <Label text="Search Results" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="6.0">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tv_searchTable" layoutY="31.0" prefHeight="364.0" prefWidth="739.0" style="-fx-opacity: 80%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="36.0">
         <columns>
           <TableColumn fx:id="tbc_type" prefWidth="105.0" text="Type" />
           <TableColumn fx:id="tbc_name" prefWidth="100.0" text="Name" />

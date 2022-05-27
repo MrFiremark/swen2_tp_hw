@@ -27,6 +27,7 @@ public class TabPaneViewModel implements SelectedTourListener {
     private final StringProperty time = new SimpleStringProperty();
     private final StringProperty childFriendliness = new SimpleStringProperty();
     private final StringProperty description = new SimpleStringProperty();
+    private final StringProperty avgRating = new SimpleStringProperty();
     private final Property<Image> imagePath = new SimpleObjectProperty<>();
     private final BooleanProperty chartVisibility = new SimpleBooleanProperty(false);
     private final ObjectProperty<ObservableList<XYChart.Series>> ratingData = new SimpleObjectProperty<>();
@@ -62,6 +63,7 @@ public class TabPaneViewModel implements SelectedTourListener {
     public StringProperty getDescription(){
         return this.description;
     }
+    public StringProperty getAvgRating() { return avgRating;}
 
     public TabPaneViewModel(SelectedTourService selectedTourService, AttributeService attributeService) {
         this.selectedTourService = selectedTourService;
@@ -84,6 +86,7 @@ public class TabPaneViewModel implements SelectedTourListener {
             time.set("Time: " + tour.getTime());
             childFriendliness.set("Child friendliness: " + tour.getChildFriendliness());
             description.set("Description: \n" + tour.getDescription());
+            avgRating.set("Average Rating: " + attributeService.getAverageRating(tour));
             //https://stackoverflow.com/questions/7830951/how-can-i-load-computer-directory-images-in-javafx
             Image image = new Image(new File(tour.getImagePath()).toURI().toString());
             imagePath.setValue(image);

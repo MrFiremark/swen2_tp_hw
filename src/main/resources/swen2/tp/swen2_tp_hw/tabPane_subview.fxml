@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.BarChart?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.NumberAxis?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="522.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.TabPaneController">
+<AnchorPane prefHeight="522.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="swen2.tp.swen2_tp_hw.view.TabPaneController">
     <Label layoutY="6.0" prefHeight="27.0" prefWidth="110.0" text="Tourname:" underline="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="6.0">
         <padding>
             <Insets bottom="10.0" left="10.0" />
@@ -90,7 +85,7 @@
                                        <NumberAxis side="LEFT" />
                                     </yAxis>
                                  </BarChart>
-                                 <Label text="Average Rating:" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="209.0">
+                                 <Label fx:id="lbl_avgRating" text="Average Rating:" AnchorPane.rightAnchor="170.0" AnchorPane.topAnchor="209.0">
                                     <font>
                                        <Font size="14.0" />
                                     </font>

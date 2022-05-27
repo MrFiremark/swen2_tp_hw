@@ -3,6 +3,8 @@ package swen2.tp.swen2_tp_hw.service;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -86,7 +88,7 @@ public class AttributeService {
         if (tour.getTourLogs().size() == 0){
             return 0;
         }else{
-            return count/tour.getTourLogs().size();
+            return BigDecimal.valueOf(count/tour.getTourLogs().size()).setScale(2, RoundingMode.HALF_UP).doubleValue();
         }
     }
 }

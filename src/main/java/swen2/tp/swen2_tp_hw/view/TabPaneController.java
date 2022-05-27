@@ -38,6 +38,8 @@ public class TabPaneController {
     @FXML
     private Label lbl_description;
     @FXML
+    private Label lbl_avgRating;
+    @FXML
     private ImageView iv_map;
     @FXML
     private BarChart bc_rating;
@@ -60,6 +62,7 @@ public class TabPaneController {
         lbl_time.textProperty().bind(tabPaneViewModel.getTime());
         lbl_childFriendliness.textProperty().bind(tabPaneViewModel.getChildFriendliness());
         lbl_description.textProperty().bind(tabPaneViewModel.getDescription());
+        lbl_avgRating.textProperty().bind(tabPaneViewModel.getAvgRating());
         iv_map.imageProperty().bindBidirectional(tabPaneViewModel.getImagePath());
         bc_rating.dataProperty().bindBidirectional(tabPaneViewModel.getRatingData());
         bc_difficulty.dataProperty().bindBidirectional(tabPaneViewModel.getDifficultyData());
