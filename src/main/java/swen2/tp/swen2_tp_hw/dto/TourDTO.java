@@ -13,6 +13,7 @@ public class TourDTO {
     public double distance;
     public String time;
     public String imagePath;
+    public String childFriendliness;
     public ArrayList<TourLogDTO> tourLogs;
 
 }

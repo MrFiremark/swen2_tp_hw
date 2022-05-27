@@ -88,5 +88,4 @@ public class TourLog {
         this.rating = rating;
     }
 
-
 }

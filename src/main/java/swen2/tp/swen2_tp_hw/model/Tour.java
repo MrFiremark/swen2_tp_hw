@@ -17,7 +17,6 @@ public class Tour {
     private double distance;
     private String time;
     private String imagePath;
-    private String popularity;
     private String childFriendliness;
     private ArrayList<TourLog> tourLogs;
 
@@ -126,14 +125,6 @@ public class Tour {
 
     public void deleteTourLog(TourLog tourLog){
         this.tourLogs.remove(tourLog);
-    }
-
-    public String getPopularity() {
-        return popularity;
-    }
-
-    public void setPopularity(String popularity) {
-        this.popularity = popularity;
     }
 
     public String getChildFriendliness() {

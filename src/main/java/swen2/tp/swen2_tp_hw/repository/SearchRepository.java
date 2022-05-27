@@ -53,11 +53,11 @@ public class SearchRepository extends Repository{
 
             ResultSet resultSet1 = statement1.executeQuery();
 
-            if(resultSet1 != null){
+            if(resultSet1 != null) {
                 while (resultSet1.next()) {
                     searchResult.add(
                             new SearchResult(
-                                "Tour",
+                                    "Tour",
                                     resultSet1.getString("id"),
                                     "",
                                     resultSet1.getString("name"),
@@ -69,21 +69,23 @@ public class SearchRepository extends Repository{
                             )
                     );
                 }
-            }else {
-                ResultSet resultSet2 = statement2.executeQuery();
+            }
 
+            ResultSet resultSet2 = statement2.executeQuery();
+
+            if(resultSet2 != null) {
                 while (resultSet2.next()) {
                     searchResult.add(
                             new SearchResult(
-                                "Tourlog",
-                                resultSet2.getString("id"),
-                                resultSet2.getString("logid"),
-                                resultSet2.getString("name"),
-                                resultSet2.getString("description"),
-                                resultSet2.getString("startpoint"),
-                                resultSet2.getString("endpoint"),
-                                resultSet2.getString("comment"),
-                                resultSet2.getString("difficulty")
+                                    "Tourlog",
+                                    resultSet2.getString("id"),
+                                    resultSet2.getString("logid"),
+                                    resultSet2.getString("name"),
+                                    resultSet2.getString("description"),
+                                    resultSet2.getString("startpoint"),
+                                    resultSet2.getString("endpoint"),
+                                    resultSet2.getString("comment"),
+                                    resultSet2.getString("difficulty")
                             )
                     );
                 }

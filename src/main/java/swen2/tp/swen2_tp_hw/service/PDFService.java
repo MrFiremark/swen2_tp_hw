@@ -57,7 +57,6 @@ public class PDFService {
                 .add(new ListItem("Transport type: " + tour.getTransportType()))
                 .add(new ListItem("Estimated distance: " + tour.getDistance()))
                 .add(new ListItem("Estimated traveltime: " + tour.getTime()))
-                .add(new ListItem("Popularity: " + tour.getPopularity()))
                 .add(new ListItem("Child-Friendliness: " + tour.getChildFriendliness()));
         document.add(listHeader);
         document.add(list);
