@@ -77,8 +77,6 @@ public class TourListViewModel implements TourListener {
             Tour tour = observableTours.get(index);
             selectedTourService.setSelectedTour(tour);
         }
-        System.out.println(index);
     }
 
-    // TODO maybe update Listener
 }

@@ -11,12 +11,15 @@ import swen2.tp.swen2_tp_hw.listener.TourLogListener;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
+import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
+import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
 import java.time.LocalDate;
 
 public class EditLogViewModel implements SelectedTourLogListener {
 
-    public final SelectedTourService selectedTourService;
+    private ILoggerWrapper logger = LoggerFactory.getLogger();
+    private final SelectedTourService selectedTourService;
 
     private final ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
     private final StringProperty durationHour = new SimpleStringProperty();
@@ -38,8 +41,7 @@ public class EditLogViewModel implements SelectedTourLogListener {
     public ObjectProperty<Number> getRating(){ return rating;}
 
     public void editTourLog(){
-        //TODO validation and correct time
-        if (selectedTourService.getSetSelectedTourLog() != null ) {
+        if (checkMinutes() ) {
             selectedTourService.getSetSelectedTourLog().setDate(date.get().toString());
             selectedTourService.getSetSelectedTourLog().setComment(comment.get());
             selectedTourService.getSetSelectedTourLog().setDifficulty(difficulty.get());
@@ -47,7 +49,7 @@ public class EditLogViewModel implements SelectedTourLogListener {
             selectedTourService.getSetSelectedTourLog().setRating(String.valueOf(rating.get().intValue()));
             selectedTourService.editTourLog();
         }else{
-            System.out.println("No tour selected");
+            logger.error("Error creating tour log [err:61]. Wrong minutes format.");
         }
     }
 
@@ -60,5 +62,17 @@ public class EditLogViewModel implements SelectedTourLogListener {
         durationHour.set(duration[0]);
         durationMin.set(duration[1]);
         rating.set(Integer.parseInt(tourLog.getRating()));
+    }
+
+    private boolean checkMinutes(){
+        try{
+            int min = Integer.parseInt(durationMin.get());
+            if(min > 60){
+                return false;
+            }
+        }catch(Exception e){
+            return false;
+        }
+        return true;
     }
 }

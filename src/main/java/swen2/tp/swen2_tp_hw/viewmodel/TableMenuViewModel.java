@@ -11,7 +11,7 @@ import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import java.io.IOException;
 import java.util.Locale;
 
-public class TableMenuViewModel implements SelectedTourLogListener {
+public class TableMenuViewModel {
 
     private final SelectedTourService selectedTourService;
 
@@ -53,10 +53,5 @@ public class TableMenuViewModel implements SelectedTourLogListener {
                 e.printStackTrace();
             }
         }
-    }
-
-    @Override
-    public void update(TourLog tourLog) {
-        // TODO dont know if this is useful
     }
 }

@@ -31,8 +31,6 @@ public class TourService {
     }
 
     public void addTour(Tour tour){
-        // TODO validation
-
         try {
             tour = routeService.getRouteInformation(tour);
         } catch (URISyntaxException e) {
@@ -43,13 +41,11 @@ public class TourService {
             e.printStackTrace();
         }
         toursMap.put(tour.getid(), tour);
-        // TODO Path
         tourRepository.addTour(tour);
         notifyListeners();
     }
 
     public void deleteTour(Tour tour){
-        //TODO delete
         toursMap.remove(tour.getid());
         tourRepository.deleteTour(tour.getid());
         notifyListeners();

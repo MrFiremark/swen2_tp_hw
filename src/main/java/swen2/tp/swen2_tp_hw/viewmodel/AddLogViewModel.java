@@ -9,6 +9,8 @@ import swen2.tp.swen2_tp_hw.model.TourLog;
 //import swen2.tp.swen2_tp_hw.service.LogService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
+import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
+import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
 import java.security.Timestamp;
 import java.time.LocalDate;
@@ -16,7 +18,8 @@ import java.util.UUID;
 
 public class AddLogViewModel {
 
-    public final SelectedTourService selectedTourService;
+    private ILoggerWrapper logger = LoggerFactory.getLogger();
+    private final SelectedTourService selectedTourService;
 
     private final ObjectProperty<LocalDate> date = new SimpleObjectProperty<>();
     private final StringProperty durationHour = new SimpleStringProperty();
@@ -37,13 +40,12 @@ public class AddLogViewModel {
     public ObjectProperty<Number> getRating(){ return rating;}
 
     public void saveTourLog(){
-        //TODO  validation and correct time
-        if (selectedTourService.getSelectedTour() != null ) {
-            TourLog tourLog = new TourLog(selectedTourService.getSelectedTour().getid(), UUID.randomUUID().toString(), date.get().toString(), "13:13:13", comment.get(), difficulty.get(), durationHour.get() + ":" + durationMin.get(), String.valueOf(rating.get().intValue()));
+        if (checkMinutes()) {
+            TourLog tourLog = new TourLog(selectedTourService.getSelectedTour().getid(), UUID.randomUUID().toString(), date.get().toString(), "00:00:00", comment.get(), difficulty.get(), durationHour.get() + ":" + durationMin.get(), String.valueOf(rating.get().intValue()));
             resetValues();
             selectedTourService.addTourLog(tourLog);
         }else{
-            System.out.println("No tour selected");
+            logger.error("Error creating tour log [err:61]. Wrong minutes format.");
         }
     }
 
@@ -54,6 +56,18 @@ public class AddLogViewModel {
         comment.set("");
         difficulty.set("");
         rating.set(1);
+    }
+
+    private boolean checkMinutes(){
+        try{
+            int min = Integer.parseInt(durationMin.get());
+            if(min > 60){
+                return false;
+            }
+        }catch(Exception e){
+            return false;
+        }
+        return true;
     }
 
 }

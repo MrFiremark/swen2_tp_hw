@@ -65,7 +65,6 @@ public class SelectedTourService {
     }
 
     public void deleteTourLog(){
-        //TODO validation
         if(selectedTourLog != null){
             selectedTour.deleteTourLog(selectedTourLog);
             logRepository.deleteTourLog(selectedTourLog.getLogid());

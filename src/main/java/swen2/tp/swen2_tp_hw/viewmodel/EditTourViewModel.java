@@ -46,7 +46,6 @@ public class EditTourViewModel implements SelectedTourListener {
     }
 
     public void editTour(){
-        //TODO validation with right data
         selectedTourService.getSelectedTour().setName(tourName.get());
         selectedTourService.getSelectedTour().setDescription(description.get());
         selectedTourService.getSelectedTour().setFrom(from.get());
