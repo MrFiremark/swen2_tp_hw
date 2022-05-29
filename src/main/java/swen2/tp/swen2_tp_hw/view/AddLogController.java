@@ -26,6 +26,10 @@ public class AddLogController {
     private ChoiceBox cb_difficulty;
     @FXML
     private Button btn_add;
+    @FXML
+    private Label lbl_warning;
+    @FXML
+    private Label lvl_warningNull;
 
     public AddLogController(AddLogViewModel addLogViewModel) {
         this.addLogViewModel = addLogViewModel;
@@ -35,6 +39,7 @@ public class AddLogController {
     private void initialize(){
         addLogViewModel.resetWindow();
         btn_add.disableProperty().bind(addLogViewModel.getEnabled());
+        lbl_warning.visibleProperty().bindBidirectional(addLogViewModel.getWarningVisibility());
         dp_date.valueProperty().bindBidirectional(addLogViewModel.getDate());
         ta_comment.textProperty().bindBidirectional(addLogViewModel.getComment());
         sl_rating.valueProperty().bindBidirectional(addLogViewModel.getRating());
@@ -43,13 +48,14 @@ public class AddLogController {
         cb_difficulty.setValue("Difficulty");
         cb_difficulty.setItems(itemList);
         cb_difficulty.valueProperty().bindBidirectional(addLogViewModel.getDifficulty());
-
     }
 
     @FXML
     protected void onAddButtonClick(){
         addLogViewModel.saveTourLog();
-        closeWindow();
+        if(!lbl_warning.visibleProperty().get()) {
+            closeWindow();
+        }
     }
 
     @FXML

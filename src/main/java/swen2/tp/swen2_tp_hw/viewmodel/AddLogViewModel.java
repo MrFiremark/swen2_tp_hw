@@ -25,6 +25,7 @@ public class AddLogViewModel {
     private final StringProperty comment = new SimpleStringProperty();
     private final ObjectProperty<Number> rating = new SimpleObjectProperty<>();
     private final BooleanProperty enabled = new SimpleBooleanProperty();
+    private final BooleanProperty warningVisibility = new SimpleBooleanProperty(false);
 
     public AddLogViewModel(SelectedTourService selectedTourService) {
         this.selectedTourService = selectedTourService;
@@ -42,28 +43,25 @@ public class AddLogViewModel {
     public ObjectProperty<String> getDifficulty(){ return difficulty;}
     public StringProperty getComment(){ return comment;}
     public ObjectProperty<Number> getRating(){ return rating;}
-    public BooleanProperty getEnabled(){
-        return enabled;
-    }
+    public BooleanProperty getEnabled(){return enabled;}
+    public BooleanProperty getWarningVisibility(){return warningVisibility;}
 
     public void saveTourLog(){
         if (checkMinutes()) {
             TourLog tourLog = new TourLog(selectedTourService.getSelectedTour().getid(), UUID.randomUUID().toString(), date.get().toString(), "00:00:00", comment.get(), difficulty.get(), durationHour.get() + ":" + durationMin.get(), String.valueOf(rating.get().intValue()));
-            resetValues();
             selectedTourService.addTourLog(tourLog);
-        }else{
-            logger.error("Error creating tour log [err:61]. Wrong minutes format.");
         }
     }
 
     public void resetWindow(){
+        warningVisibility.set(false);
         resetValues();
     }
 
     private void resetValues(){
         date.set(null);
-        durationHour.set("");
-        durationMin.set("");
+        durationHour.set("00");
+        durationMin.set("00");
         comment.set("");
         difficulty.set("");
         rating.set(1);
@@ -73,11 +71,16 @@ public class AddLogViewModel {
         try{
             int min = Integer.parseInt(durationMin.get());
             if(min > 60){
+                warningVisibility.set(true);
+                logger.error("Error creating tour log [err:61]. Wrong minutes format.");
                 return false;
             }
         }catch(Exception e){
+            warningVisibility.set(true);
+            logger.error("Error creating tour log [err:62]. Wrong number format.");
             return false;
         }
+        warningVisibility.set(false);
         return true;
     }
 
