@@ -50,8 +50,6 @@ public class AttributeService {
             //tour.setChildFriendliness("NOT Child Friendly");
             return "NOT Child Friendly";
         }
-
-        //return tour;
     }
 
     public int getRating(Tour tour, int stars){

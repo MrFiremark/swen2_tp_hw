@@ -48,7 +48,6 @@ public class TourService {
     public void deleteTour(Tour tour){
         toursMap.remove(tour.getid());
         tourRepository.deleteTour(tour.getid());
-
         notifyListeners();
     }
 
@@ -68,7 +67,6 @@ public class TourService {
 
     public void loadTours(){
         this.toursMap = tourRepository.getTours();
-        // TODO correct error handling
         if(toursMap == null){
             toursMap = new HashMap<>();
         }

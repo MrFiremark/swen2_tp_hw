@@ -21,7 +21,7 @@ public class ConfigService {
             ex.printStackTrace();
         }
         if(properties.getProperty(key) == null){
-            logger.debug("File error[err:405]. Could not find key: " + key);
+            logger.error("File error[err:405]. Could not find key: " + key);
         }
         return properties.getProperty(key);
 
