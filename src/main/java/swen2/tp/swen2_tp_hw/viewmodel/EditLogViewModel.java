@@ -21,6 +21,7 @@ public class EditLogViewModel implements SelectedTourLogListener {
     private final StringProperty comment = new SimpleStringProperty();
     private final ObjectProperty<Number> rating = new SimpleObjectProperty<>();
     private final BooleanProperty enabled = new SimpleBooleanProperty();
+    private final BooleanProperty warningVisibility = new SimpleBooleanProperty(false);
 
     public EditLogViewModel(SelectedTourService selectedTourService) {
         this.selectedTourService = selectedTourService;
@@ -42,6 +43,7 @@ public class EditLogViewModel implements SelectedTourLogListener {
     public BooleanProperty getEnabled(){
         return enabled;
     }
+    public BooleanProperty getWarningVisibility(){return warningVisibility;}
 
     public void editTourLog(){
         if (checkMinutes() ) {
@@ -57,6 +59,7 @@ public class EditLogViewModel implements SelectedTourLogListener {
     }
 
     public void resetWindow(){
+        warningVisibility.set(false);
         resetValues();
     }
 
@@ -75,11 +78,16 @@ public class EditLogViewModel implements SelectedTourLogListener {
         try{
             int min = Integer.parseInt(durationMin.get());
             if(min > 60){
+                warningVisibility.set(true);
+                logger.error("Error creating tour log [err:61]. Wrong minutes format.");
                 return false;
             }
         }catch(Exception e){
+            warningVisibility.set(true);
+            logger.error("Error creating tour log [err:62]. Wrong number format.");
             return false;
         }
+        warningVisibility.set(false);
         return true;
     }
 

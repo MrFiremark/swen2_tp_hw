@@ -44,14 +44,6 @@ public class TourLogTableViewModel implements SelectedTourListener {
         observableLogs.addAll(logs);
     }
 
-    public void addNewTourLog(TourLog log) {
-        observableLogs.add(log);
-    }
-
-    public void deleteTourLog(TourLog log) {
-        observableLogs.remove(log);
-    }
-
     @Override
     public void update(Tour tour) {
         observableLogs.clear();

@@ -1,5 +1,6 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
@@ -7,11 +8,15 @@ import swen2.tp.swen2_tp_hw.service.DataService;
 import swen2.tp.swen2_tp_hw.service.PDFService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
+import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
+import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 
-public class MainWindowViewModel implements SelectedTourListener {
+public class MainWindowViewModel {
+
+    private ILoggerWrapper logger = LoggerFactory.getLogger();
 
     private ListMenuViewModel listMenuViewModel;
     private TourListViewModel tourListViewModel;
@@ -46,7 +51,6 @@ public class MainWindowViewModel implements SelectedTourListener {
         this.selectedTourService = selectedTourService;
         this.tourService = tourService;
         this.dataService = dataService;
-        selectedTourService.addListener(this);
     }
 
     public void generateTourPDF(){
@@ -57,13 +61,23 @@ public class MainWindowViewModel implements SelectedTourListener {
                 e.printStackTrace();
             }
         }
+        else{
+            logger.warn("Report error[1000]. No tour selected.");
+            createErrorDialog("Error creating Report!", "No tour selected!");
+        }
     }
 
     public void generateSummaryPDF(){
-        try {
-            pdfService.generateSummaryPDF(tourService.getToursMap());
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(selectedTourService.getSelectedTour().getTourLogs().size() > 0){
+            try {
+                pdfService.generateSummaryPDF(tourService.getToursMap());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            logger.warn("Summary error[err:1001]. No tour logs created.");
+            createErrorDialog("Error creating Summary!", "No tour logs created!");
         }
     }
 
@@ -89,8 +103,11 @@ public class MainWindowViewModel implements SelectedTourListener {
         tourService.addTour(dataService.importTour(selectedFile.toString()));
     }
 
-    @Override
-    public void update(Tour tour){
-
+    private void createErrorDialog(String header, String content){
+        Alert dialog = new Alert(Alert.AlertType.ERROR);
+        dialog.setTitle("Error");
+        dialog.setHeaderText(header);
+        dialog.setContentText(content);
+        dialog.showAndWait();
     }
 }

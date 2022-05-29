@@ -30,7 +30,6 @@ public class SearchResultViewModel {
     public void setObservableResults(String searchString){
 
         ArrayList<SearchResult> searchResults = searchService.getSearchResult(searchString);
-
         observableResults.addAll(searchResults);
     }
 

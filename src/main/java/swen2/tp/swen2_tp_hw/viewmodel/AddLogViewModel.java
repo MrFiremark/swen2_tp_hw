@@ -10,6 +10,7 @@ import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
 import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
 import java.security.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -83,5 +84,4 @@ public class AddLogViewModel {
         warningVisibility.set(false);
         return true;
     }
-
 }

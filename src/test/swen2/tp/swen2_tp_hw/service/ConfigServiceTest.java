@@ -7,6 +7,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class ConfigServiceTest {
 
     @Test
+    void testWrongKey(){
+        String url = "Hello";
+        ConfigService configService = new ConfigService();
+        String result = configService.load(url);
+        assertNull(result);
+    }
+
+    @Test
     void testLoadUrl() {
         String url = "db.url";
         ConfigService configService = new ConfigService();

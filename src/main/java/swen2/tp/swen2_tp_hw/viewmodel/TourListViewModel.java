@@ -46,18 +46,14 @@ public class TourListViewModel implements TourListener {
     }
     public ObjectProperty<ObservableList<String>> getTourNameData() { return tourNameData; }
 
-    public void addListener(TourListener tourLIstener){
-        tourListeners.add(tourLIstener);
+    public void addListener(TourListener tourListener){
+        tourListeners.add(tourListener);
     }
 
     private void notifyListeners() {
         for ( var listener : tourListeners) {
             listener.update();
         }
-    }
-
-    public void deleteTour(Tour tour) {
-        observableTours.remove(tour);
     }
 
     @Override

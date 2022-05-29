@@ -28,8 +28,6 @@ public class AddLogController {
     private Button btn_add;
     @FXML
     private Label lbl_warning;
-    @FXML
-    private Label lvl_warningNull;
 
     public AddLogController(AddLogViewModel addLogViewModel) {
         this.addLogViewModel = addLogViewModel;

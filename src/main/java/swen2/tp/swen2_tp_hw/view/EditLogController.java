@@ -27,6 +27,8 @@ public class EditLogController {
     private ChoiceBox cb_difficulty;
     @FXML
     private Button btn_edit;
+    @FXML
+    private Label lbl_warning;
 
     public EditLogController(EditLogViewModel editLogViewModel) {
         this.editLogViewModel = editLogViewModel;
@@ -36,6 +38,7 @@ public class EditLogController {
     private void initialize(){
         editLogViewModel.resetWindow();
         btn_edit.disableProperty().bind(editLogViewModel.getEnabled());
+        lbl_warning.visibleProperty().bindBidirectional(editLogViewModel.getWarningVisibility());
         dp_date.valueProperty().bindBidirectional(editLogViewModel.getDate());
         ta_comment.textProperty().bindBidirectional(editLogViewModel.getComment());
         sl_rating.valueProperty().bindBidirectional(editLogViewModel.getRating());
@@ -49,7 +52,9 @@ public class EditLogController {
     @FXML
     protected void onEditButtonClick(){
         editLogViewModel.editTourLog();
-        closeWindow();
+        if(!lbl_warning.visibleProperty().get()) {
+            closeWindow();
+        }
     }
 
     @FXML
