@@ -11,13 +11,18 @@ public abstract class Repository {
 
     private ConfigService configService = new ConfigService();
 
-    protected Connection getConnection() throws SQLException, IOException {
+    protected Connection getConnection(){
 
-        Connection connection = DriverManager.getConnection(
-                configService.load("db.url"),
-                configService.load("db.user"),
-                configService.load("db.pw")
-        );
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection(
+                    configService.load("db.url"),
+                    configService.load("db.user"),
+                    configService.load("db.pw")
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return connection;
     }

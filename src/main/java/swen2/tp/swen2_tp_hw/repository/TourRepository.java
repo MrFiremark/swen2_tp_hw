@@ -1,6 +1,7 @@
 package swen2.tp.swen2_tp_hw.repository;
 
 import swen2.tp.swen2_tp_hw.model.Tour;
+import swen2.tp.swen2_tp_hw.model.TourLog;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -35,8 +36,14 @@ public class TourRepository extends Repository{
 
             statement.execute();
 
+            if(tour.getTourLogs().size() != 0){
+                for (TourLog tourlog: tour.getTourLogs()
+                ) {
+                    logRepository.addTourLog(tourlog);
+                }
+            }
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -77,7 +84,7 @@ public class TourRepository extends Repository{
 
             return map;
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -94,12 +101,10 @@ public class TourRepository extends Repository{
         ) {
 
             statement.setObject(1, id);
-            //statement.setString(2, tour.getName());
 
             statement.execute();
 
-
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -128,7 +133,7 @@ public class TourRepository extends Repository{
             statement.execute();
 
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

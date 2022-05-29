@@ -34,7 +34,7 @@ public class LogRepository extends Repository{
             statement.execute();
 
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -68,7 +68,7 @@ public class LogRepository extends Repository{
 
             return tour;
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
 
@@ -86,7 +86,7 @@ public class LogRepository extends Repository{
             statement.setObject(1, logid);
             statement.execute();
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -112,7 +112,7 @@ public class LogRepository extends Repository{
 
             statement.execute();
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

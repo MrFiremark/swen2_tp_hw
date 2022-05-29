@@ -25,7 +25,7 @@ public class HttpService {
         HttpResponse<String> response;
 
         response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofString());
-        if(response.statusCode() >= 400){
+        if(response.statusCode() != 200){
             logger.error("HTTP error [err:" + response.statusCode() + "]. Could not retrieve route information.");
         }
 
@@ -43,7 +43,7 @@ public class HttpService {
         HttpResponse<byte[]> response;
 
         response = HttpClient.newBuilder().build().send(request, HttpResponse.BodyHandlers.ofByteArray());
-        if(response.statusCode() >= 400){
+        if(response.statusCode() != 200){
             logger.error("HTTP error [err:" + response.statusCode() + "]. Could not retrieve map information.");
         }
         return response;
