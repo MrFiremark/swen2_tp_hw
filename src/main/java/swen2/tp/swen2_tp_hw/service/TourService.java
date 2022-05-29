@@ -46,8 +46,9 @@ public class TourService {
     }
 
     public void deleteTour(Tour tour){
+        tourRepository.deleteTour(tour);
         toursMap.remove(tour.getid());
-        tourRepository.deleteTour(tour.getid());
+
         notifyListeners();
     }
 

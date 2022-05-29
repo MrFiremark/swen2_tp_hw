@@ -35,7 +35,6 @@ class RouteServiceTest {
         RouteService routeService = new RouteService();
         Tour testSucess = new Tour(UUID.randomUUID().toString(), "UnitTest", "This is a UnitTest", "Vienna", "Linz", "Walk");
         testSucess = routeService.getRouteInformation(testSucess);
-        assertNotNull(testSucess.getTime());
         assertEquals(testSucess.getTime(), "45:30:10");
         assertEquals(testSucess.getDistance(), 113.759);
     }

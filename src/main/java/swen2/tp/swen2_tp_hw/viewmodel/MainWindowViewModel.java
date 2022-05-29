@@ -18,16 +18,16 @@ public class MainWindowViewModel {
 
     private ILoggerWrapper logger = LoggerFactory.getLogger();
 
-    private ListMenuViewModel listMenuViewModel;
-    private TourListViewModel tourListViewModel;
-    private SearchBarViewModel searchBarViewModel;
-    private TableMenuViewModel tableMenuViewModel;
-    private TourLogTableViewModel logTableViewModel;
-    private TabPaneViewModel tabPaneViewModel;
-    private PDFService pdfService;
-    private SelectedTourService selectedTourService;
-    private TourService tourService;
-    private DataService dataService;
+    private final ListMenuViewModel listMenuViewModel;
+    private final TourListViewModel tourListViewModel;
+    private final SearchBarViewModel searchBarViewModel;
+    private final TableMenuViewModel tableMenuViewModel;
+    private final TourLogTableViewModel logTableViewModel;
+    private final TabPaneViewModel tabPaneViewModel;
+    private final PDFService pdfService;
+    private final SelectedTourService selectedTourService;
+    private final TourService tourService;
+    private final DataService dataService;
 
     public MainWindowViewModel(
             ListMenuViewModel listMenuViewModel,

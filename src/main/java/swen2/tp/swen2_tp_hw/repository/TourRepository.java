@@ -91,7 +91,7 @@ public class TourRepository extends Repository{
         return null;
     }
 
-    public void deleteTour(String id) {
+    public void deleteTour(Tour tour) {
 
         try (
                 Connection connection = getConnection();
@@ -100,9 +100,16 @@ public class TourRepository extends Repository{
                 )
         ) {
 
-            statement.setObject(1, id);
+            statement.setObject(1, tour.getid());
 
             statement.execute();
+
+            if(tour.getTourLogs().size() != 0){
+                for (TourLog tourlog: tour.getTourLogs()
+                ) {
+                    logRepository.deleteTourLog(tourlog.getLogid());
+                }
+            }
 
         } catch (SQLException e) {
             e.printStackTrace();

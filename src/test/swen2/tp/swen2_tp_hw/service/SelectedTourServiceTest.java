@@ -1,8 +1,6 @@
 package swen2.tp.swen2_tp_hw.service;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnit;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 
