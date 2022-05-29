@@ -39,7 +39,7 @@ public class SelectedTourService {
         return selectedTour;
     }
 
-    public TourLog getSetSelectedTourLog(){
+    public TourLog getSelectedTourLog(){
         return selectedTourLog;
     }
 

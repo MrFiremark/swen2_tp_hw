@@ -33,6 +33,8 @@ public class AddLogController {
 
     @FXML
     private void initialize(){
+        addLogViewModel.resetWindow();
+        btn_add.disableProperty().bind(addLogViewModel.getEnabled());
         dp_date.valueProperty().bindBidirectional(addLogViewModel.getDate());
         ta_comment.textProperty().bindBidirectional(addLogViewModel.getComment());
         sl_rating.valueProperty().bindBidirectional(addLogViewModel.getRating());
@@ -41,6 +43,7 @@ public class AddLogController {
         cb_difficulty.setValue("Difficulty");
         cb_difficulty.setItems(itemList);
         cb_difficulty.valueProperty().bindBidirectional(addLogViewModel.getDifficulty());
+
     }
 
     @FXML

@@ -50,10 +50,12 @@ public class MainWindowViewModel implements SelectedTourListener {
     }
 
     public void generateTourPDF(){
-        try {
-            pdfService.generateTourPDF(selectedTourService.getSelectedTour());
-        } catch (IOException e) {
-            e.printStackTrace();
+        if(selectedTourService.getSelectedTour() != null){
+            try {
+                pdfService.generateTourPDF(selectedTourService.getSelectedTour());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -66,7 +68,15 @@ public class MainWindowViewModel implements SelectedTourListener {
     }
 
     public void exportTour(){
-        dataService.exportTour(selectedTourService.getSelectedTour());
+        if(selectedTourService.getSelectedTour() != null){
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save Export File");
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("JSON Files", "*.json"),
+                    new FileChooser.ExtensionFilter("All Files", "*.*"));
+            File selectedFile = fileChooser.showSaveDialog(null);
+            dataService.exportTour(selectedTourService.getSelectedTour(), selectedFile.toString());
+        }
     }
 
     public void importTour(){

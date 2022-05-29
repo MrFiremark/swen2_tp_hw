@@ -2,12 +2,9 @@ package swen2.tp.swen2_tp_hw.viewmodel;
 
 import javafx.beans.property.*;
 import swen2.tp.swen2_tp_hw.listener.SelectedTourListener;
-import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
-
-import java.util.UUID;
 
 public class EditTourViewModel implements SelectedTourListener {
     private final StringProperty tourName = new SimpleStringProperty();
@@ -15,7 +12,7 @@ public class EditTourViewModel implements SelectedTourListener {
     private final StringProperty from = new SimpleStringProperty();
     private final StringProperty to = new SimpleStringProperty();
     private final ObjectProperty<String> transportType = new SimpleObjectProperty<>();
-    private final BooleanProperty editButton = new SimpleBooleanProperty();
+    private final BooleanProperty enabled = new SimpleBooleanProperty();
 
     private final TourService tourService;
     private final SelectedTourService selectedTourService;
@@ -23,6 +20,11 @@ public class EditTourViewModel implements SelectedTourListener {
     public EditTourViewModel(TourService tourService, SelectedTourService selectedTourService){
         this.tourService = tourService;
         this.selectedTourService = selectedTourService;
+        enabled.bind(tourName.isEmpty()
+                .or(description.isEmpty())
+                .or(from.isEmpty())
+                .or(to.isEmpty())
+                .or(transportType.isNull()));
         selectedTourService.addListener(this);
     }
 
@@ -41,8 +43,8 @@ public class EditTourViewModel implements SelectedTourListener {
     public ObjectProperty<String> getTransportType() {
         return transportType;
     }
-    public BooleanProperty getEditButton(){
-        return editButton;
+    public BooleanProperty getEnabled(){
+        return enabled;
     }
 
     public void editTour(){
@@ -64,5 +66,17 @@ public class EditTourViewModel implements SelectedTourListener {
             to.set(tour.getTo());
             transportType.set(tour.getTransportType());
         }
+    }
+
+    public void resetWindow(){
+        resetValues();
+    }
+
+    private void resetValues(){
+        tourName.set("");
+        description.set("");
+        from.set("");
+        to.set("");
+        transportType.set("");
     }
 }

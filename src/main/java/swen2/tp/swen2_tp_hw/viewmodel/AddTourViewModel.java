@@ -13,12 +13,16 @@ public class AddTourViewModel {
     private final StringProperty from = new SimpleStringProperty();
     private final StringProperty to = new SimpleStringProperty();
     private final ObjectProperty<String> transportType = new SimpleObjectProperty<>();
-    private final BooleanProperty addButton = new SimpleBooleanProperty();
-
+    private final BooleanProperty enabled = new SimpleBooleanProperty();
     private final TourService tourService;
 
     public AddTourViewModel(TourService tourService){
         this.tourService = tourService;
+        enabled.bind(tourName.isEmpty()
+                .or(description.isEmpty())
+                .or(from.isEmpty())
+                .or(to.isEmpty())
+                .or(transportType.isNull()));
     }
 
     public StringProperty getTourName() {
@@ -36,14 +40,18 @@ public class AddTourViewModel {
     public ObjectProperty<String> getTransportType() {
         return transportType;
     }
-    public BooleanProperty getAddButton(){
-        return addButton;
+    public BooleanProperty getEnabled(){
+        return enabled;
     }
 
     public void saveTour(){
-        Tour tour = new Tour(UUID.randomUUID().toString() ,tourName.get(), description.get(), from.get(), to.get(), transportType.get());
+        Tour tour = new Tour(UUID.randomUUID().toString(), tourName.get(), description.get(), from.get(), to.get(), transportType.get());
         resetValues();
         tourService.addTour(tour);
+    }
+
+    public void resetWindow(){
+        resetValues();
     }
 
     private void resetValues(){
@@ -53,6 +61,5 @@ public class AddTourViewModel {
         to.set("");
         transportType.set("");
     }
-
 
 }

@@ -4,8 +4,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import swen2.tp.swen2_tp_hw.FXMLDependencyInjection;
-import swen2.tp.swen2_tp_hw.listener.SelectedTourLogListener;
-import swen2.tp.swen2_tp_hw.model.TourLog;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 
 import java.io.IOException;
@@ -35,13 +33,13 @@ public class TableMenuViewModel {
     }
 
     public void deleteTourLog(){
-        if(selectedTourService.getSetSelectedTourLog() != null){
+        if(selectedTourService.getSelectedTourLog() != null){
             selectedTourService.deleteTourLog();
         }
     }
 
     public void openEditLogWindow(){
-        if(selectedTourService.getSetSelectedTourLog() != null){
+        if(selectedTourService.getSelectedTourLog() != null){
             try {
                 Parent root = FXMLDependencyInjection.load("editLog.fxml", Locale.ENGLISH);
                 Scene scene = new Scene(root);

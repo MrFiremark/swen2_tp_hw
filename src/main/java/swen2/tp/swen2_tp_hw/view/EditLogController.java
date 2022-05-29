@@ -34,6 +34,8 @@ public class EditLogController {
 
     @FXML
     private void initialize(){
+        editLogViewModel.resetWindow();
+        btn_edit.disableProperty().bind(editLogViewModel.getEnabled());
         dp_date.valueProperty().bindBidirectional(editLogViewModel.getDate());
         ta_comment.textProperty().bindBidirectional(editLogViewModel.getComment());
         sl_rating.valueProperty().bindBidirectional(editLogViewModel.getRating());

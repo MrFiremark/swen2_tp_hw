@@ -1,9 +1,6 @@
 package swen2.tp.swen2_tp_hw.viewmodel;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import javafx.fxml.FXML;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 //import swen2.tp.swen2_tp_hw.service.LogService;
@@ -27,9 +24,16 @@ public class AddLogViewModel {
     private final ObjectProperty<String> difficulty = new SimpleObjectProperty<>();
     private final StringProperty comment = new SimpleStringProperty();
     private final ObjectProperty<Number> rating = new SimpleObjectProperty<>();
+    private final BooleanProperty enabled = new SimpleBooleanProperty();
 
     public AddLogViewModel(SelectedTourService selectedTourService) {
         this.selectedTourService = selectedTourService;
+        enabled.bind(date.isNull()
+                .or(durationHour.isEmpty())
+                .or(durationMin.isEmpty())
+                .or(difficulty.isNull())
+                .or(comment.isEmpty())
+                .or(rating.isNull()));
     }
 
     public ObjectProperty<LocalDate> getDate(){ return date;}
@@ -38,6 +42,9 @@ public class AddLogViewModel {
     public ObjectProperty<String> getDifficulty(){ return difficulty;}
     public StringProperty getComment(){ return comment;}
     public ObjectProperty<Number> getRating(){ return rating;}
+    public BooleanProperty getEnabled(){
+        return enabled;
+    }
 
     public void saveTourLog(){
         if (checkMinutes()) {
@@ -47,6 +54,10 @@ public class AddLogViewModel {
         }else{
             logger.error("Error creating tour log [err:61]. Wrong minutes format.");
         }
+    }
+
+    public void resetWindow(){
+        resetValues();
     }
 
     private void resetValues(){

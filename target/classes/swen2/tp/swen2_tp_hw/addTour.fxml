@@ -17,7 +17,7 @@
             <Image url="@../../../img/Background_Tour.jpg" />
          </image>
       </ImageView>
-      <Label prefHeight="340.0" prefWidth="600.0" style="-fx-background-color: white; -fx-opacity: 60%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label maxHeight="340.0" maxWidth="600.0" prefHeight="340.0" prefWidth="600.0" style="-fx-background-color: white; -fx-opacity: 60%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <Label layoutX="46.0" layoutY="18.0" text="Tour name:">
          <font>
             <Font name="System Bold" size="14.0" />

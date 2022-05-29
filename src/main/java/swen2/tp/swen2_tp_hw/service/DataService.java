@@ -17,11 +17,11 @@ public class DataService {
     private ConfigService configService = new ConfigService();
     private Mapper mapper = new Mapper();
 
+    /*
     public void exportTour(Tour tour){
         String path = configService.load("directory.export");
         try {
             String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(tour);
-            System.out.println(json);
             PrintWriter out = new PrintWriter(new FileWriter(path + tour.getName() + ".json"));
             out.write(json);
             out.flush();
@@ -29,7 +29,18 @@ public class DataService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
 
+    public void exportTour(Tour tour, String path){
+        try {
+            String json = objectMapper.writerWithDefaultPrettyPrinter().writeValueAsString(tour);
+            PrintWriter out = new PrintWriter(new FileWriter(path));
+            out.write(json);
+            out.flush();
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public Tour importTour(String path){
