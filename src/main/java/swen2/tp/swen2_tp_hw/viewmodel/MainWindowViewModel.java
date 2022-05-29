@@ -59,48 +59,65 @@ public class MainWindowViewModel {
                 pdfService.generateTourPDF(selectedTourService.getSelectedTour());
             } catch (IOException e) {
                 e.printStackTrace();
+                logger.warn("Report error[1000]. " + e);
             }
         }
         else{
-            logger.warn("Report error[1000]. No tour selected.");
+            logger.warn("Report error[1001]. No tour selected.");
             createErrorDialog("Error creating Report!", "No tour selected!");
         }
     }
 
     public void generateSummaryPDF(){
-        if(selectedTourService.getSelectedTour().getTourLogs().size() > 0){
+        if(selectedTourService.getSelectedTour() != null && selectedTourService.getSelectedTour().getTourLogs().size() > 0 ){
             try {
                 pdfService.generateSummaryPDF(tourService.getToursMap());
             } catch (IOException e) {
                 e.printStackTrace();
+                logger.warn("Report error[1010]. " + e);
             }
         }
         else{
-            logger.warn("Summary error[err:1001]. No tour logs created.");
+            logger.warn("Summary error[err:1011]. No tour logs created.");
             createErrorDialog("Error creating Summary!", "No tour logs created!");
         }
     }
 
     public void exportTour(){
         if(selectedTourService.getSelectedTour() != null){
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Save Export File");
-            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("JSON Files", "*.json"),
-                    new FileChooser.ExtensionFilter("All Files", "*.*"));
-            File selectedFile = fileChooser.showSaveDialog(null);
-            dataService.exportTour(selectedTourService.getSelectedTour(), selectedFile.toString());
+            try{
+                FileChooser fileChooser = new FileChooser();
+                fileChooser.setTitle("Save Export File");
+                fileChooser.getExtensionFilters().addAll(
+                        new FileChooser.ExtensionFilter("JSON Files", "*.json"),
+                        new FileChooser.ExtensionFilter("All Files", "*.*"));
+                File selectedFile = fileChooser.showSaveDialog(null);
+                dataService.exportTour(selectedTourService.getSelectedTour(), selectedFile.toString());
+            }catch(NullPointerException ex){
+                logger.warn("Export error[err:1020] " + ex);
+            }catch(Exception ex){
+                logger.warn("Export error[err:1021] " + ex);
+            }
+
+        }else{
+            logger.warn("Export error[err:1022]. No tour selected.");
+            createErrorDialog("Error exporting tour!", "No tour selected!");
         }
     }
 
     public void importTour(){
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Import File");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("JSON Files", "*.json"),
-                new FileChooser.ExtensionFilter("All Files", "*.*"));
-        File selectedFile = fileChooser.showOpenDialog(null);
-        tourService.addTour(dataService.importTour(selectedFile.toString()));
+        try{
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Open Import File");
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("JSON Files", "*.json"));
+            File selectedFile = fileChooser.showOpenDialog(null);
+            tourService.addTour(dataService.importTour(selectedFile.toString()));
+        }catch(NullPointerException ex){
+            logger.warn("Import error[err:1030] " + ex);
+        }catch(Exception ex){
+            logger.warn("Import error[err:1031] " + ex);
+        }
     }
 
     private void createErrorDialog(String header, String content){
