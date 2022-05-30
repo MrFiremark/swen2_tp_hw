@@ -122,9 +122,17 @@ public class Tour {
     public void addTourLog(TourLog tourLog){
         this.tourLogs.add(tourLog);
     }
-
     public void deleteTourLog(TourLog tourLog){
         this.tourLogs.remove(tourLog);
+    }
+
+    public TourLog getTourLog(String tourLogId){
+        for (TourLog tourLog: tourLogs) {
+            if(tourLog.getLogid().equals(tourLogId)){
+                return tourLog;
+            }
+        }
+        return null;
     }
 
     public String getChildFriendliness() {

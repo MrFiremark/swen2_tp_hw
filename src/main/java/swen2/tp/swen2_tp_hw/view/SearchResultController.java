@@ -40,7 +40,6 @@ public class SearchResultController {
     public void initialize(String searchString){
 
         searchResultViewModel.clearObservableResults();
-        System.out.println(searchString);
         searchResultViewModel.setObservableResults(searchString);
 
         tv_searchTable.getItems().clear();
@@ -53,8 +52,6 @@ public class SearchResultController {
         tbc_difficulty.setCellValueFactory(new PropertyValueFactory<>("difficulty"));
 
         tv_searchTable.setItems(searchResultViewModel.getObservableResults());
-
-
 
         tv_searchTable.setRowFactory( tv -> {
             TableRow<SearchResult> row = new TableRow<>();

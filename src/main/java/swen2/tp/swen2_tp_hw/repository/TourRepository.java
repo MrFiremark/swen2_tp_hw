@@ -82,13 +82,11 @@ public class TourRepository extends Repository{
                  map.put(tour.getid(), tour);
             }
 
-            return map;
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return null;
+        return map;
     }
 
     public void deleteTour(Tour tour) {

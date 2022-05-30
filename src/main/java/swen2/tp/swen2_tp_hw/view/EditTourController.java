@@ -37,7 +37,6 @@ public class EditTourController {
 
     @FXML
     public void initialize(){
-        editTourViewModel.resetWindow();
         btn_edit.disableProperty().bind(editTourViewModel.getEnabled());
         tf_tourname.textProperty().bindBidirectional(editTourViewModel.getTourName());
         ta_description.textProperty().bindBidirectional(editTourViewModel.getDescription());

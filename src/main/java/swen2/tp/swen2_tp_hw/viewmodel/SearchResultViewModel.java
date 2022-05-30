@@ -8,6 +8,7 @@ import javafx.scene.control.TableView;
 import swen2.tp.swen2_tp_hw.model.Report;
 import swen2.tp.swen2_tp_hw.model.SearchResult;
 import swen2.tp.swen2_tp_hw.model.Tour;
+import swen2.tp.swen2_tp_hw.model.TourLog;
 import swen2.tp.swen2_tp_hw.service.SearchService;
 import swen2.tp.swen2_tp_hw.service.SelectedTourService;
 import swen2.tp.swen2_tp_hw.service.TourService;
@@ -28,7 +29,6 @@ public class SearchResultViewModel {
     }
 
     public void setObservableResults(String searchString){
-
         ArrayList<SearchResult> searchResults = searchService.getSearchResult(searchString);
         observableResults.addAll(searchResults);
     }
@@ -40,8 +40,10 @@ public class SearchResultViewModel {
         SearchResult searchResult = observableResults.get(index);
         Tour tour = tourService.getTourFromMap(searchResult.getTourid());
         selectedTourService.setSelectedTour(tour);
-        if(searchResult.getTourlogid() != null){
-            // TODO Get tour log
+        if(!searchResult.getTourlogid().equals("")){
+            TourLog tourLog = tourService.getTourLog(selectedTourService.getSelectedTour(), searchResult.getTourlogid());
+            selectedTourService.setSetSelectedTourLog(tourLog);
+
         }
     }
 

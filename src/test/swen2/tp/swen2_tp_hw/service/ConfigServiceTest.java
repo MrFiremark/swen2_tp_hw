@@ -16,7 +16,7 @@ class ConfigServiceTest {
 
     @Test
     void testLoadUrl() {
-        String url = "db.url";
+        String url = "db.url.test";
         ConfigService configService = new ConfigService();
         String result = configService.load(url);
         assertEquals("Test", result);
@@ -24,14 +24,14 @@ class ConfigServiceTest {
 
     @Test
     void testLoadUser(){
-        String url = "db.user";
+        String url = "db.user.test";
         ConfigService configService = new ConfigService();
         String result = configService.load(url);
         assertEquals("User", result);
     }
     @Test
     void testLoadPassword(){
-        String url = "db.pw";
+        String url = "db.pw.test";
         ConfigService configService = new ConfigService();
         String result = configService.load(url);
         assertEquals("Password", result);

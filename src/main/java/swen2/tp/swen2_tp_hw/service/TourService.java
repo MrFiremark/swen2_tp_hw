@@ -2,6 +2,7 @@ package swen2.tp.swen2_tp_hw.service;
 
 import swen2.tp.swen2_tp_hw.listener.TourListener;
 import swen2.tp.swen2_tp_hw.model.Tour;
+import swen2.tp.swen2_tp_hw.model.TourLog;
 import swen2.tp.swen2_tp_hw.repository.TourRepository;
 
 import java.io.IOException;
@@ -85,6 +86,10 @@ public class TourService {
 
     public Tour getTourFromMap(String tourid){
         return toursMap.get(tourid);
+    }
+
+    public TourLog getTourLog(Tour tour, String tourLogId){
+        return tour.getTourLog(tourLogId);
     }
 
     public void updateTourList(){

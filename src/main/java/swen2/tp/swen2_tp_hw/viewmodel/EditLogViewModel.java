@@ -60,7 +60,6 @@ public class EditLogViewModel implements SelectedTourLogListener {
 
     public void resetWindow(){
         warningVisibility.set(false);
-        resetValues();
     }
 
     @Override

@@ -20,6 +20,7 @@
          </image>
       </ImageView>
       <Label layoutX="10.0" layoutY="10.0" prefHeight="360.0" prefWidth="640.0" style="-fx-background-color: White; -fx-opacity: 40%;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <Label fx:id="lbl_warning" layoutX="241.0" layoutY="50.0" text="! Wrong input (must be number &lt;60) !" textFill="#d30909" AnchorPane.leftAnchor="241.0" AnchorPane.topAnchor="50.0"/>
         <Label layoutX="64.0" layoutY="20.0" text="Date:" AnchorPane.leftAnchor="59.0" AnchorPane.topAnchor="19.0">
          <font>
             <Font name="System Bold" size="14.0" />

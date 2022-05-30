@@ -90,7 +90,6 @@ public class SearchRepository extends Repository{
                     );
                 }
             }
-
             return searchResult;
         }
     }

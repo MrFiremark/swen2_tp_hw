@@ -68,10 +68,6 @@ public class EditTourViewModel implements SelectedTourListener {
         }
     }
 
-    public void resetWindow(){
-        resetValues();
-    }
-
     private void resetValues(){
         tourName.set("");
         description.set("");

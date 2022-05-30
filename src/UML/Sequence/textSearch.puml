@@ -1,0 +1,18 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+SearchBarViewModel -> SearchResultController: Creates window and sends searchString
+SearchResultController -> SearchResultViewModel: Sends search String
+SearchResultViewModel -> SearchService: Sends search String
+SearchService -> SearchRepository: Sends search String
+SearchRepository -> Database: Sends search String
+Database -> Database: Gets search results
+Database --> SearchRepository: Returns results
+SearchRepository --> SearchService: Returns results
+SearchResultViewModel -> SearchResultViewModel: Sets results in \nobservable list
+SearchResultViewModel -> SearchResultController: Display results
+
+
+@enduml
