@@ -13,6 +13,7 @@ public class SelectedTourService {
 
     private Tour selectedTour;
     private TourLog selectedTourLog;
+    private final AttributeService attributeService = new AttributeService();
     private final LogRepository logRepository = new LogRepository();
 
     private ArrayList<SelectedTourListener> listeners = new ArrayList<>();
@@ -56,11 +57,13 @@ public class SelectedTourService {
     public void addTourLog(TourLog tourLog){
         selectedTour.addTourLog(tourLog);
         logRepository.addTourLog(tourLog);
+        attributeService.setChildFriendliness(selectedTour);
         notifyListeners(selectedTour);
     }
 
     public void editTourLog(){
         logRepository.updateTourLog(selectedTourLog);
+        attributeService.setChildFriendliness(selectedTour);
         notifyListeners(selectedTourLog);
     }
 

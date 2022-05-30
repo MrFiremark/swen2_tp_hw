@@ -43,7 +43,6 @@ public class SearchResultViewModel {
         if(!searchResult.getTourlogid().equals("")){
             TourLog tourLog = tourService.getTourLog(selectedTourService.getSelectedTour(), searchResult.getTourlogid());
             selectedTourService.setSetSelectedTourLog(tourLog);
-
         }
     }
 
