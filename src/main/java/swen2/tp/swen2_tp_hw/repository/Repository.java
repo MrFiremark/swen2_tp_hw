@@ -1,6 +1,8 @@
 package swen2.tp.swen2_tp_hw.repository;
 
 import swen2.tp.swen2_tp_hw.service.ConfigService;
+import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
+import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -9,6 +11,7 @@ import java.sql.SQLException;
 
 public abstract class Repository {
 
+    private ILoggerWrapper logger = LoggerFactory.getLogger();
     private ConfigService configService = new ConfigService();
 
     protected Connection getConnection(){
@@ -22,6 +25,10 @@ public abstract class Repository {
             );
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.error("SQL error[err:5401]. Error creating connection to database.");
+        } catch(Exception ex){
+            ex.printStackTrace();
+            logger.error("SQL error[err:5402]. " + ex);
         }
 
         return connection;

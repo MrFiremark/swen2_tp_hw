@@ -2,6 +2,8 @@ package swen2.tp.swen2_tp_hw.repository;
 
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.model.TourLog;
+import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
+import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -12,6 +14,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LogRepository extends Repository{
+
+    private ILoggerWrapper logger = LoggerFactory.getLogger();
 
     public void addTourLog(TourLog tourLog){
 
@@ -34,8 +38,15 @@ public class LogRepository extends Repository{
             statement.execute();
 
 
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             e.printStackTrace();
+            logger.error("SQL error[err:5440]. " + e);
+        }catch (NullPointerException ex){
+            ex.printStackTrace();
+            logger.error("SQL error[err:5441]. " + ex);
+        } catch(Exception ex){
+            ex.printStackTrace();
+            logger.error("SQL error[err:5442]. " + ex);
         }
     }
 
@@ -68,8 +79,15 @@ public class LogRepository extends Repository{
 
             return tour;
 
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             e.printStackTrace();
+            logger.error("SQL error[err:5450]. " + e);
+        }catch (NullPointerException ex){
+            ex.printStackTrace();
+            logger.error("SQL error[err:5451]. " + ex);
+        } catch(Exception ex){
+            ex.printStackTrace();
+            logger.error("SQL error[err:5452]. " + ex);
         }
 
         return null;
@@ -112,8 +130,15 @@ public class LogRepository extends Repository{
 
             statement.execute();
 
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             e.printStackTrace();
+            logger.error("SQL error[err:5460]. " + e);
+        }catch (NullPointerException ex){
+            ex.printStackTrace();
+            logger.error("SQL error[err:5461]. " + ex);
+        } catch(Exception ex){
+            ex.printStackTrace();
+            logger.error("SQL error[err:5462]. " + ex);
         }
     }
 

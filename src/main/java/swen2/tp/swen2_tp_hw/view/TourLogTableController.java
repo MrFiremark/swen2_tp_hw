@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import swen2.tp.swen2_tp_hw.listener.TourLogListener;
 import swen2.tp.swen2_tp_hw.model.TourLog;
 import swen2.tp.swen2_tp_hw.viewmodel.TourLogTableViewModel;
 

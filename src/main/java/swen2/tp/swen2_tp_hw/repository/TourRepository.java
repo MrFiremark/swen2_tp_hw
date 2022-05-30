@@ -2,6 +2,8 @@ package swen2.tp.swen2_tp_hw.repository;
 
 import swen2.tp.swen2_tp_hw.model.Tour;
 import swen2.tp.swen2_tp_hw.model.TourLog;
+import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
+import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -13,6 +15,7 @@ import java.util.Map;
 
 public class TourRepository extends Repository{
 
+    private ILoggerWrapper logger = LoggerFactory.getLogger();
     private LogRepository logRepository = new LogRepository();
 
     public void addTour(Tour tour){
@@ -45,6 +48,10 @@ public class TourRepository extends Repository{
 
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.warn("SQL error[err:5410]. " + e);
+        } catch(NullPointerException ex){
+            ex.printStackTrace();
+            logger.warn("SQL error[err:5411]. " + ex);
         }
 
     }
@@ -61,13 +68,12 @@ public class TourRepository extends Repository{
                                 "FROM tour_data "
                 );
         ) {
-
             ResultSet resultSet = statement.executeQuery();
 
             Tour tour = null;
 
             while(resultSet.next()){
-                 tour = new Tour(
+                tour = new Tour(
                         resultSet.getString("id"),
                         resultSet.getString("name"),
                         resultSet.getString("description"),
@@ -78,12 +84,19 @@ public class TourRepository extends Repository{
                         resultSet.getString("traveltime"),
                         resultSet.getString("imagepath")
                 );
-                 tour = logRepository.getTourLog(tour);
-                 map.put(tour.getid(), tour);
+                tour = logRepository.getTourLog(tour);
+                map.put(tour.getid(), tour);
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
+            logger.warn("SQL error[err:5420]. " + e);
+        } catch (NullPointerException ex){
+            ex.printStackTrace();
+            logger.warn("SQL error[err:5421]. " + ex);
+        } catch(Exception ex){
+            ex.printStackTrace();
+            logger.warn("SQL error[err:5422]. " + ex);
         }
 
         return map;
@@ -138,8 +151,15 @@ public class TourRepository extends Repository{
             statement.execute();
 
 
-        } catch (SQLException e) {
+        }catch (SQLException e) {
             e.printStackTrace();
+            logger.error("SQL error[err:5430]. " + e);
+        }catch (NullPointerException ex){
+            ex.printStackTrace();
+            logger.error("SQL error[err:5431]. " + ex);
+        } catch(Exception ex){
+            ex.printStackTrace();
+            logger.error("SQL error[err:5432]. " + ex);
         }
     }
 }

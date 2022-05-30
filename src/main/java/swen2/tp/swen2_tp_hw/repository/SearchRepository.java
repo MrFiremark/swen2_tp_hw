@@ -2,6 +2,8 @@ package swen2.tp.swen2_tp_hw.repository;
 
 import swen2.tp.swen2_tp_hw.model.SearchResult;
 import swen2.tp.swen2_tp_hw.service.TourService;
+import swen2.tp.swen2_tp_hw.wrapper.ILoggerWrapper;
+import swen2.tp.swen2_tp_hw.wrapper.LoggerFactory;
 
 import java.io.IOException;
 import java.sql.*;
@@ -42,7 +44,7 @@ public class SearchRepository extends Repository{
 
             ArrayList<SearchResult> searchResult = new ArrayList<>();
 
-            searchString = "%"+searchString.toLowerCase(Locale.ROOT)+"%";
+            searchString = "%" + searchString.toLowerCase(Locale.ROOT) + "%";
             statement1.setString(1, searchString);
             statement1.setString(2, searchString);
             statement1.setString(3, searchString);
@@ -53,7 +55,7 @@ public class SearchRepository extends Repository{
 
             ResultSet resultSet1 = statement1.executeQuery();
 
-            if(resultSet1 != null) {
+            if (resultSet1 != null) {
                 while (resultSet1.next()) {
                     searchResult.add(
                             new SearchResult(
@@ -73,7 +75,7 @@ public class SearchRepository extends Repository{
 
             ResultSet resultSet2 = statement2.executeQuery();
 
-            if(resultSet2 != null) {
+            if (resultSet2 != null) {
                 while (resultSet2.next()) {
                     searchResult.add(
                             new SearchResult(
